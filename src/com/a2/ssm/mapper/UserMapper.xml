@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.a2.ssm.mapper.UserMapper">
+	<!-- 解决表名与字段不匹配 -->
+	<resultMap type="com.a2.ssm.model.User" id="userResultMap">
+		<id property="uId" column="u_id"/>
+		<result property="uName" column="u_name"/>
+		<result property="uPwd" column="u_pwd"/>		
+		<result property="uHead" column="u_head"/>
+		<result property="uEmail" column="u_email"/>
+		<result property="uCent" column="u_cent"/>
+		<result property="uState" column="u_state"/>
+		<result property="uCode" column="u_code"/>
+		<result column="u_roleId" property="uRoleid" jdbcType="INTEGER" />
+	</resultMap>
+	
+	<!-- 查询全部User -->
+	<select id="listAll" resultMap="userResultMap">
+		select *from t_user
+	</select>
+	<!-- 查询状态为已激活用户 -->
+	<select id="list" resultMap="userResultMap" parameterType="int">
+		select *from t_user where u_state=1 and u_roleId != ''
+	</select>
+	<!-- 查询非管理员用户 -->
+	<select id="listByRole" resultMap="userResultMap">
+		select *from t_user where u_roleId = 2 or u_roleId =3
+	</select>
+	<!-- 查询管理员用户 -->
+	<select id="listByAdminRole" resultMap="userResultMap">
+		select *from t_user where u_roleId not in(2,3)
+	</select>
+	<select id="getByRole" resultMap="userResultMap" parameterType="int">
+		select *from t_user where u_roleId=#{uRoleid}
+	</select>
+	
+	<!-- 根据id查询用户信息  -->
+	<select id="getById" resultMap="userResultMap" parameterType="int">
+		select *from t_user where u_id=#{uId}
+	</select>
+	<!-- 根据name和pwd和查询用户信息  -->
+	<select id="getByName" resultMap="userResultMap" parameterType="com.a2.ssm.model.User">
+		select *from t_user where u_name=#{uName} and u_pwd=#{uPwd}
+		<if test="uRoleid != null and uRoleid != '' ">
+		and u_roleId=#{uRoleid}
+		</if>
+	</select>
+	<!-- 根据uName查询用户信息(lx) -->
+	<select id="findByName" resultMap="userResultMap" parameterType="com.a2.ssm.model.User">
+		select *from t_user where u_name=#{uName}
+	</select>
+	<!-- 根据uCode查询用户信息 -->
+	<select id="getByCode" resultMap="userResultMap" parameterType="com.a2.ssm.model.User">
+		select *from t_user where u_code=#{uCode}
+	</select>
+	<!-- 更新用户信息 -->
+	<update id="update" parameterType="com.a2.ssm.model.User">
+		update t_user set u_name=#{uName}, u_pwd=#{uPwd}, u_head=#{uHead}, u_email=#{uEmail}, u_cent=#{uCent}, u_state=#{uState},u_code=#{uCode},u_roleId=#{uRoleid} where u_id=#{uId}
+	</update>
+	<!-- 更新管理员信息 -->
+	<update id="updateAdmin" parameterType="com.a2.ssm.model.User">
+		update t_user set u_roleId=#{uRoleid},u_pwd=#{uPwd} where u_id=#{uId}
+	</update>
+	<update id="jhAdmin" parameterType="com.a2.ssm.model.User">
+		update t_user set u_state=1 where u_id=#{uId}
+	</update>
+	<!-- 删除用户信息 -->
+	<update id="delete" parameterType="com.a2.ssm.model.User">
+		update t_user set u_state=0 where u_id=#{uId}
+	</update>
+	<!-- 添加用户 -->
+	<insert id="save" parameterType="com.a2.ssm.model.User">
+		insert into t_user(u_name,u_pwd,u_head,u_email,u_cent,u_state,u_code,u_roleId) values(#{uName},#{uPwd},'head1.png',#{uEmail},'0','0',#{uCode},#{uRoleid})
+	</insert>
+	<insert id="saveAdmin" parameterType="com.a2.ssm.model.User">
+		insert into t_user(u_name,u_pwd,u_head,u_email,u_cent,u_state,u_code,u_roleId) values(#{uName},#{uPwd},'head1.png',null,'0','1',#{uCode},#{uRoleid})
+	</insert>
+	
+</mapper>

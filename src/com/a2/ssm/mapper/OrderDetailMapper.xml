@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.a2.ssm.mapper.OrderDetailMapper" >
+  <resultMap id="orderDetailResultMap" type="com.a2.ssm.model.OrderDetail" >
+    <id column="od_id" property="odId" jdbcType="INTEGER" />
+    <result column="od_num" property="odNum" jdbcType="VARCHAR" />
+    <result column="od_total" property="odTotal" jdbcType="VARCHAR" />
+    <result column="od_orderId" property="odOrderid" jdbcType="INTEGER" />
+	<result column="od_productId" property="odProductid" jdbcType="INTEGER" />
+	<result column="ps_id" property="psId" jdbcType="INTEGER" />
+	<result column="comm_state" property="commState" jdbcType="INTEGER"/>
+  </resultMap>
+  
+   	<!-- 查询全部订单 -->
+	<select id="list" resultMap="orderDetailResultMap">
+		select *from t_orderdetail
+	</select>
+	<!-- 根据id查询订单信息  -->
+	<select id="getById" resultMap="orderDetailResultMap" parameterType="int">
+		select *from t_orderdetail where od_orderId=#{odOrderid}
+	</select>
+	<!-- 更新订单信息 -->
+	<update id="update" parameterType="com.a2.ssm.model.OrderDetail">
+		update t_orderdetail set c_num=#{cNum}, c_createTime=#{cCreatetime}, c_productId=#{cProductid}, c_userId=#{cUserid} where c_id=#{cId}
+	</update>
+	<!-- 删除订单信息 -->
+	<delete id="delete" parameterType="com.a2.ssm.model.OrderDetail">
+		delete t_orderdetail  where c_id=#{cId}
+	</delete>
+	<!-- 添加订单 -->
+	<insert id="save" parameterType="com.a2.ssm.model.OrderDetail">
+		insert into t_orderdetail() values()
+	</insert>
+	<!-- 根据订单id查询订单信息  -->
+	<select id="getByOrderId" resultMap="orderDetailResultMap" parameterType="int">
+		select *from t_orderdetail where 1=1 and od_orderId=#{odOrderid}
+	</select>
+  
+</mapper>

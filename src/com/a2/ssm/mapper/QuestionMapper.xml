@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.a2.ssm.mapper.QuestionMapper" >
+  <resultMap id="questionResultMap" type="com.a2.ssm.model.Question" >
+    <id column="qu_id" property="quId" jdbcType="INTEGER" />
+    <result column="qu_question" property="quQuestion" jdbcType="VARCHAR" />
+    <result column="qu_answer" property="quAnswer" jdbcType="VARCHAR" />
+	<result column="qu_userId" property="quUserid" jdbcType="INTEGER" />
+  </resultMap>
+  
+ 	<!-- 查询全部Question -->
+	
+	<!-- 根据id查询密码问题信息  -->
+	
+	<!-- 更新密码问题信息 -->
+	
+	<!-- 删除密码问题信息 -->
+
+	<!-- 添加密码问题 -->
+  
+</mapper>

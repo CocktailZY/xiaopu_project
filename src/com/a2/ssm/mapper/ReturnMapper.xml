@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.a2.ssm.mapper.ReturnMapper" >
+  <resultMap id="returnResultMap" type="com.a2.ssm.model.Return" >
+    <id column="re_id" property="reId" jdbcType="INTEGER" />
+    <result column="re_reason" property="reReason" jdbcType="VARCHAR" />
+    <result column="re_content" property="reContent" jdbcType="VARCHAR" />
+    <result column="re_state" property="reState" jdbcType="INTEGER" />
+    <result column="re_date" property="reDate" jdbcType="VARCHAR" />
+    <result column="re_orderdetailId" property="reOrderdetailid" jdbcType="INTEGER" />
+  </resultMap>
+  	<!-- 查询全部Return -->
+	
+	<!-- 根据id查询退货信息  -->
+	
+	<!-- 更新退货信息 -->
+	
+	<!-- 删除退货信息 -->
+
+	<!-- 添加退货 -->
+  
+</mapper>

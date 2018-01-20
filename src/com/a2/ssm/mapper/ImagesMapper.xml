@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.a2.ssm.mapper.ImagesMapper">
+	<!-- 解决表名与字段不匹配 -->
+	<resultMap type="com.a2.ssm.model.Images" id="imagesResultMap">
+		<id property="imId" column="im_id"/>
+		<result property="imAddress" column="im_address"/>
+		<result property="pId" column="p_id"/>
+		<result property="commId" column="comm_id"/>
+	</resultMap>
+	
+	<!-- 查询全部Images -->
+	
+	<!-- 根据id查询商品图片信息  -->
+	<select id="getById" parameterType="int" resultMap="imagesResultMap">
+		select * from t_images where 1=1 and im_id=#{imId}
+	
+	</select>
+	<!-- 更新商品图片信息 -->
+	<update id="update" parameterType="com.a2.ssm.model.Images">
+		update t_images
+		<set> 
+			<if test="imAddress != null and imAddress != '' ">
+				 im_address = #{imAddress},
+			</if>
+ 		 </set>
+		 where im_id = #{imId}
+	</update>
+	
+	<!-- 删除商品图片信息 -->
+
+	<!-- 添加商品图片 -->
+	<insert id="save" parameterType="com.a2.ssm.model.Images">
+		insert into t_images(im_address,p_id)
+		values(#{imAddress},#{pId})
+	</insert>
+	<!-- 根据商品ID查询图片信息 -->
+	<select id="getByPId" parameterType="int" resultMap="imagesResultMap">
+		select * from t_images where p_id=#{pId}
+	
+	</select>
+	<!-- 根据评价ID查询图片信息 -->
+	<select id="getByCommId" parameterType="int" resultMap="imagesResultMap">
+		select * from t_images where comm_id=#{commId}
+	
+	</select>
+	
+</mapper>

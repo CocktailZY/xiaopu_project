@@ -1,0 +1,31 @@
+.pcmtitle{
+	margin-bottom: 10px;
+	font-family: "微软雅黑";
+	font-size:20px;
+	font-weight: 500;
+	color: #C85E0B;
+
+}
+
+
+.pcm{
+	margin-bottom: 5px;
+	font-family: "微软雅黑";
+}
+
+
+.div-head{
+	
+		width: 150px;
+		height: 30px;
+		background:#000000; 
+		opacity:0.70; float: right;
+		position:absolute;
+		bottom:0;
+		display:none; 
+		text-align:center;
+		height:30px;
+  		line-height:30px;
+		color:white;
+	
+}

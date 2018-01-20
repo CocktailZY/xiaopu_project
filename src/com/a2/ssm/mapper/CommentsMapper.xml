@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.a2.ssm.mapper.CommentsMapper" >
+  <resultMap id="commentsResultMap" type="com.a2.ssm.model.Comments" >
+    <id column="comm_id" property="commId" jdbcType="INTEGER" />
+    <result column="comm_content" property="commContent" jdbcType="VARCHAR" />
+    <result column="parentId" property="parentid" jdbcType="INTEGER" />
+    <result column="comm_productId" property="commProductid" jdbcType="INTEGER" />
+     <result column="comm_time" property="commTime" jdbcType="VARCHAR" />
+    <result column="comm_userId" property="commUserid" jdbcType="INTEGER" />
+    <result column="comm_star" property="commStar" jdbcType="INTEGER" />
+    <result column="s_id" property="sId" jdbcType="INTEGER" />
+  </resultMap>
+  
+    <!-- 查询全部Comments -->
+    
+    <!-- 根据评论ID查询评论信息 -->
+	<select id="getById" parameterType="int" resultMap="commentsResultMap">
+		select * from t_comments where 1=1 and comm_id=#{commId } and parentId=0
+	</select>
+	<!-- 根据商品id查询评论信息并且父ID为0  -->
+	<select id="getByPIdByParentId" parameterType="int" resultMap="commentsResultMap">
+		select * from t_comments where 1=1 and comm_productId=#{commProductid } and parentId=0
+	</select>
+	<!-- 更新评论信息 -->
+	
+	<!-- 删除评论信息 -->
+
+	<!-- 添加评论 -->
+	
+	<!-- 根据商品ID查询评论信息 -->
+	<select id="getByPId" parameterType="int" resultMap="commentsResultMap">
+		select * from t_comments where 1=1 and comm_productId=#{commProductid }
+	</select>
+	<!-- 根据父ID查询评论信息 -->
+  	<select id="getByParentId" parameterType="int" resultMap="commentsResultMap">
+  		select * from t_comments where 1=1 and parentId=#{parentid }
+  	</select>
+  	<!-- 根据店铺ID查询评论信息 -->
+  	<select id="getBySId" parameterType="int" resultMap="commentsResultMap">
+  		select * from t_comments where 1=1 and s_id=#{sId } and parentId=0
+  	</select>
+  	<!-- 模糊查询评论信息 -->
+  	<select id="cxlistgetBySId" parameterType="hashmap" resultMap="commentsResultMap">
+  		select * from t_comments where 1=1 and parentId=0
+  		<if test="sId != null and sId != 0">
+  			and s_id=#{sId}
+  		</if>
+  		<if test="commStar != null and commStar != -3">
+  			and comm_star=#{commStar}
+  		</if>
+  		<if test="xTime != null and xTime != '' and yTime != null and yTime != ''">
+			and comm_time between &apos;#{xTime}&apos; and &apos;#{yTime}&apos;
+		
+		</if>
+		<if test="(xTime != null and xTime != '') and (yTime == null or yTime = '')">
+			and comm_time &gt; &apos;#{xTime}&apos;
+		
+		</if>
+		<if test="(xTime == null or xTime = '') and (yTime != null and yTime != '')">
+			and comm_time &lt; &apos;#{yTime}&apos;
+		
+		</if>
+  	
+  	</select>
+  	<!-- 模糊查询评论信息.分页 -->
+  	<select id="cxlistgetBySIdPage" parameterType="hashmap" resultMap="commentsResultMap">
+  		select * from t_comments where 1=1 and parentId=0
+  		<if test="sId != null and sId != 0">
+  			and s_id=#{sId}
+  		</if>
+  		<if test="commStar != null and commStar != -3">
+  			and comm_star=#{commStar}
+  		</if>
+  		<if test="xTime != null and xTime != '' and yTime != null and yTime != ''">
+			and comm_time between &apos;#{xTime}&apos; and &apos;#{yTime}&apos;
+		
+		</if>
+		<if test="(xTime != null and xTime != '') and (yTime == null or yTime = '')">
+			and comm_time &gt; &apos;#{xTime}&apos;
+		
+		</if>
+		<if test="(xTime == null or xTime = '') and (yTime != null and yTime != '')">
+			and comm_time &lt; &apos;#{yTime}&apos;
+		
+		</if>
+  		limit #{rowStart},#{pageSize}
+  	</select>
+  	<!-- 添加店铺回复 -->
+  	<insert id="addhuifu" parameterType="com.a2.ssm.model.Comments">
+  		insert into t_comments(comm_content,parentId,comm_productId,comm_time,comm_userId,comm_star,s_id)
+  		values(#{commContent},#{parentid},#{commProductid},#{commTime},#{commUserid},#{commStar},#{sId})
+  	</insert>
+</mapper>

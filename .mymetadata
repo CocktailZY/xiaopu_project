@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project-module
+  type="WEB"
+  name="emporium"
+  id="myeclipse.1472362150280"
+  context-root="/emporium"
+  j2ee-spec="5.0"
+  archive="emporium.war">
+  <attributes>
+    <attribute name="webrootdir" value="WebRoot" />
+  </attributes>
+</project-module>
+

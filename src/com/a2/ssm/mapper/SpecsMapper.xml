@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.a2.ssm.mapper.SpecsMapper" >
+  <resultMap id="specsResultMap" type="com.a2.ssm.model.Specs" >
+    <id column="sp_id" property="spId" jdbcType="INTEGER" />
+    <result column="sp_fications" property="spFications" jdbcType="VARCHAR" />
+	<result column="ts_id" property="tsId" jdbcType="INTEGER" />
+  </resultMap>
+  
+  	<!-- 查询全部Specs -->
+  	<select id="list" resultMap="specsResultMap" parameterType="com.a2.ssm.model.Specs">
+  		select *from t_specs where 1=1
+  		<if test="spFications != null and spFications != '' ">
+  			and sp_fications=#{spFications}
+  		</if>
+  		<if test="tsId != null and tsId != '' ">
+  			and ts_id=#{tsId}
+  		</if>
+  	</select>
+	
+	<!-- 根据id查询规格信息  -->
+	<select id="getById" parameterType="int" resultMap="specsResultMap">
+		select * from t_specs where sp_id=#{spId}
+	</select>
+	<!-- 更新规格信息 -->
+	<update id="update" parameterType="com.a2.ssm.model.Specs">
+		update t_specs set sp_fications=#{spFications}, ts_id=#{tsId} where sp_id=#{spId}
+	</update>
+	<!-- 删除规格信息 -->
+	<delete id="delete" parameterType="int">
+		delete from t_specs where sp_id=#{spId}
+	</delete>
+	<!-- 添加规格 -->
+	<insert id="save" parameterType="com.a2.ssm.model.Specs">
+		insert into t_specs(sp_fications,ts_id) values(#{spFications},#{tsId})
+	</insert>
+	<!--根据类型_规格Id查询商品规格  -->
+	<select id="getByTsId" parameterType="int" resultMap="specsResultMap">
+		select * from t_specs where ts_id=#{id}
+	</select>
+	<!--根据Id查询商品规格列表  -->
+  	<select id="getBySpId" parameterType="int" resultMap="specsResultMap">
+		select * from t_specs where sp_id=#{spId}
+	</select>
+</mapper>

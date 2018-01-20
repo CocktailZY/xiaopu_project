@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.a2.ssm.mapper.AddressMapper" >
+  <resultMap type="com.a2.ssm.model.Address" id="addressResultMap" >
+    <id column="add_id" property="addId" jdbcType="INTEGER" />
+    <result column="add_tel" property="addTel" jdbcType="VARCHAR" />
+    <result column="add_name" property="addName" jdbcType="VARCHAR" />
+    <result column="address" property="address" jdbcType="VARCHAR" />
+	<result column="add_userId" property="addUserid" jdbcType="INTEGER" /> 
+	<result column="add_state" property="addState" jdbcType="INTEGER" />  
+  </resultMap>
+  
+  	<!-- 查询全部Address -->
+	
+	<!-- 根据id查询地址信息  -->
+	<select id="getById" resultMap="addressResultMap" parameterType="int">
+		select * from t_address where add_id=#{addId}
+	</select>
+	<!-- 根据用户id查询地址信息 -->
+	<select id="getListByUid" resultMap="addressResultMap" parameterType="int">
+		select * from t_address where add_userId=#{addUserid}
+	</select>
+	<!-- 更新地址信息 -->
+	<update id="update" parameterType="com.a2.ssm.model.Address">
+		update t_address set add_tel=#{addTel}, add_name=#{addName}, address=#{address}, add_userId=#{addUserid}, add_state=#{addState} where add_id=#{addId}
+	</update>
+	<!-- 根据id删除地址信息 -->
+	<delete id="delete" parameterType="com.a2.ssm.model.Address">
+		delete from t_address where add_id=#{addId}
+	</delete>
+	<!-- 添加地址 -->
+  	<insert id="save" parameterType="com.a2.ssm.model.Address">
+		insert into t_address(add_tel,add_name,address,add_userId,add_state) values(#{addTel},#{addName},#{address},#{addUserid},'0')
+	</insert>
+</mapper>

@@ -1,0 +1,36 @@
+@CHARSET "UTF-8";
+
+#shop{
+	display: none;
+}
+
+#shop-t{
+	display: none;
+}
+
+#mall{
+	display: none;
+}
+
+#mall-t{
+	display: none;
+}
+
+#mallbulletion-add{
+	display: none;
+}
+.mallbulletion-add{
+	border-style: solid;
+	font-size: large;
+	font-weight: bold;
+	color: white;
+}
+.mallbulletion-add:hover{
+	background-color:#777777;
+	border-color: #777777;
+}
+
+.mycheckbox{
+	width:74%;
+	margin-left: 7%;
+}

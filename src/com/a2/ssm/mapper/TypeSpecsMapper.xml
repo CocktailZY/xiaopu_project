@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.a2.ssm.mapper.TypeSpecsMapper" >
+  <resultMap id="typeSpecsResultMap" type="com.a2.ssm.model.TypeSpecs" >
+    <id column="ts_id" property="tsId" jdbcType="INTEGER" />
+    <result column="ts_title" property="tsTitle" jdbcType="VARCHAR" />
+	<result column="ts_productTypeId" property="tsProducttypeid" jdbcType="INTEGER" />
+  </resultMap>
+  
+  	<!-- 查询全部TypeSpecs -->
+	<select id="list" parameterType="com.a2.ssm.model.TypeSpecs" resultMap="typeSpecsResultMap">
+		select *from t_type_specs where 1=1
+		<if test="tsProducttypeid != null and tsProducttypeid != '' ">
+			and ts_productTypeId=#{tsProducttypeid}
+		</if>
+		<if test="tsTitle != null and tsTitle != '' ">
+			and ts_title=#{tsTitle}
+		</if>
+	</select>
+	<!-- 根据id查询类型规格关系信息  -->
+	<select id="getById" parameterType="int" resultMap="typeSpecsResultMap">
+		select * from t_type_specs where ts_id=#{tsId}
+	</select>
+	<!--根据商品类型ID查询所有类型规格信息  -->
+	<select id="getByTypeId" parameterType="int" resultMap="typeSpecsResultMap">
+		select * from t_type_specs where ts_productTypeId=#{id}
+	</select>
+	<!-- 更新类型规格关系信息 -->
+	<update id="update" parameterType="com.a2.ssm.model.TypeSpecs">
+		update t_type_specs set ts_title=#{tsTitle}, ts_productTypeId=#{tsProducttypeid} where ts_id=#{tsId}
+	</update>
+	<!-- 删除类型规格关系信息 -->
+	<delete id="delete" parameterType="int">
+		delete from t_type_specs where ts_id=#{tsId}
+	</delete>
+	<!-- 添加类型规格关系 -->
+	<insert id="save" parameterType="com.a2.ssm.model.TypeSpecs">
+		insert into t_type_specs(ts_title,ts_productTypeId) values(#{tsTitle},#{tsProducttypeid})
+	</insert>
+	
+</mapper>

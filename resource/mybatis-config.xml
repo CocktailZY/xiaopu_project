@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0//EN" "http://mybatis.org/dtd/mybatis-3-config.dtd" >
+<configuration>
+	<mappers>
+		<mapper resource="com/a2/ssm/mapper/TypeSpecsMapper.xml" />
+		<mapper resource="com/a2/ssm/mapper/ProductTypeMapper.xml" />
+		<mapper resource="com/a2/ssm/mapper/ProductMapper.xml" />
+		<mapper resource="com/a2/ssm/mapper/SpecsMapper.xml" />
+		<mapper resource="com/a2/ssm/mapper/BrandMapper.xml" />
+		<mapper resource="com/a2/ssm/mapper/ImagesMapper.xml" />
+		<mapper resource="com/a2/ssm/mapper/ProductSpecsMapper.xml" />
+	</mappers>
+
+</configuration>

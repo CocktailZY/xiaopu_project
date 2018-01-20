@@ -1,0 +1,95 @@
+.cbody{
+	width: 80%;
+	margin-left: auto;
+	margin-right: auto;
+}
+.checkall{
+	display: inline;
+	line-height: 60px;
+	font-size: 17px;
+	font-family: "微软雅黑";
+}
+.cart-top{
+	height: 60px;
+}
+.smessage{
+	display: inline;
+	line-height: 60px;
+	font-size: 17px;
+	font-family: "微软雅黑";
+}
+.count{
+	text-align: center;
+	display: inline;
+	line-height: 60px;
+	font-size: 17px;
+	font-family: "微软雅黑";
+}
+.menoy{
+	text-align: center;
+	display: inline;
+	line-height: 60px;
+	font-size: 17px;
+	font-family: "微软雅黑";
+}
+.allmenoy{
+	text-align: center;
+	display: inline;
+	line-height: 60px;
+	font-size: 17px;
+	font-family: "微软雅黑";
+}
+.do{
+	text-align: center;
+	display: inline;
+	line-height: 60px;
+	font-size: 17px;
+	font-family: "微软雅黑";
+}
+.eachproduct{
+	border-width: 1px;
+	border-style: solid;
+	border-color: darkgray;
+	height: 160px;
+	margin-top: 10px;
+	margin-bottom: 10px;
+}
+.shopname{
+	height: 30px;
+	font-size: 17px;
+	font-family: "微软雅黑";
+}
+.pic{
+
+}
+.pmess{
+	margin-top: 10px;
+}
+.money{
+	text-align: center;
+	margin-top: 10px;
+}
+.pcount{
+	text-align: center;
+	margin-top: 10px;
+}
+.allmoney{
+	text-align: center;
+	margin-top: 10px;
+}
+.caozuo{
+	text-align: center;
+	margin-top: 10px;
+}
+.pstyle{
+	margin-top: 10px;
+}
+.cart-foot{
+	border-color: #A9A9A9;
+	border-width: 1px;
+	border-style: solid;
+	height: 60px;
+	margin-left: 0px;
+	margin-right: 0px;
+	margin-bottom: 10px;
+}

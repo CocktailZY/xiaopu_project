@@ -1,0 +1,57 @@
+
+.add_shop{
+	width: 90%;
+	font-family: "微软雅黑";
+	font-size: 20px;
+	margin-top: 10px;
+	margin-bottom: 10px;
+}
+.add-shop{
+	width: 88%;
+	margin-bottom: 10px;
+	font-family: "微软雅黑";
+	font-size: 20px;
+	margin-top: 20px;
+}
+.add_view{
+	font-family: "微软雅黑";
+	font-size: 18px;
+	margin-left: auto;
+	margin-right: auto;
+	margin-left: 7%;
+}
+.add_button{
+	text-align: center;
+	display: inline;
+	margin-left: 10%;
+}
+.clear{
+	width: 35%;
+	height: 50px;
+	background-color: #C2C2C2;
+	border-color: #C2C2C2;
+	border-style: solid;
+	color: white;
+	font-family: "微软雅黑";
+	font-size: 18px;
+}
+.clear:hover{
+	background-color: #9D9D9D;
+	border-color: #9D9D9D;
+}
+.submit{
+	width: 35%;
+	height: 50px;
+	background-color: #C43C35;
+	border-color: #C43C35;
+	border-style: solid;
+	color:white;
+	font-family: "微软雅黑";
+	font-size: 18px;
+}
+.submit:hover{
+	background-color: #A9302A;
+	border-color: #A9302A;
+}
+
+

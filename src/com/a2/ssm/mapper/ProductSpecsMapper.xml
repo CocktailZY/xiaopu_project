@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.a2.ssm.mapper.ProductSpecsMapper" >
+  <resultMap id="productSpecsResultMap" type="com.a2.ssm.model.ProductSpecs" >
+    <id column="ps_id" property="psId" jdbcType="INTEGER" />
+    <result column="sp_id" property="spId" jdbcType="INTEGER" />
+    <result column="ps_color" property="psColor" jdbcType="VARCHAR" />
+    <result column="ps_price" property="psPrice" jdbcType="VARCHAR" />
+    <result column="ps_num" property="psNum" jdbcType="VARCHAR" />
+    <result column="p_id" property="pId" jdbcType="INTEGER" />
+    <result column="ts_id" property="tsId" jdbcType="INTEGER" />
+    
+  </resultMap>
+  
+  	<!-- 查询全部ProductSpecs -->
+	<select id="list" parameterType="com.a2.ssm.model.ProductSpecs" resultMap="productSpecsResultMap">
+		select *from t_product_specs where 1=1
+			<if test="spId != null and spId != '' ">
+				and sp_id = #{spId}
+			</if>
+			<if test="psColor != null and psColor != '' ">
+				and ps_color = #{psColor}
+			</if>
+			<if test="psPrice != null and psPrice != '' ">
+				and ps_price = #{psPrice}
+			</if>
+			<if test="psNum != null and psNum != '' ">
+				and ps_num = #{psNum}
+			</if>
+			<if test="tsId != null and tsId != '' ">
+				and ts_id = #{tsId}
+			</if>
+	</select>
+	<!-- 根据id查询信息  -->
+	<select id="getByProductId" parameterType="int" resultMap="productSpecsResultMap">
+		select * from t_product_specs where p_id=#{id}
+	</select>
+	<select id="getById" parameterType="int" resultMap="productSpecsResultMap">
+		select * from t_product_specs where 1=1 and ps_id=#{psId}
+	</select>
+	
+	
+	<!-- 更新信息 -->
+	<update id="update" parameterType="com.a2.ssm.model.ProductSpecs">
+		update t_product_specs
+		<set> 
+			<if test="spId != null and spId != '' ">
+				 sp_id = #{spId},
+			</if>
+			<if test="psColor != null and psColor != '' ">
+				 ps_color = #{psColor},
+			</if>
+			<if test="psPrice != null and psPrice != '' ">
+				 ps_price = #{psPrice},
+			</if>
+			<if test="psNum != null and psNum != '' ">
+				 ps_num = #{psNum},
+			</if>
+			<if test="tsId != null and tsId != '' ">
+				 ts_id = #{tsId},
+			</if>
+ 		 </set>
+		 where ps_id = #{psId}
+	</update>
+	
+	<!-- 删除信息 -->
+	<delete id="delete" parameterType="int">
+		delete from t_product_specs where ps_id = #{psId}
+	</delete>
+	<!-- 添加信息  -->
+	<insert id="save" parameterType="com.a2.ssm.model.ProductSpecs">
+		insert into t_product_specs(sp_id,ps_color,ps_price,ps_num,p_id,ts_id)
+		values(#{spId},#{psColor},#{psPrice},#{psNum},#{pId},#{tsId})
+	</insert>
+	
+	<!--根据商品ID查询对应的所有规格  -->
+	<select id="getByPId" parameterType="int" resultMap="productSpecsResultMap">
+		select * from t_product_specs where p_id=#{pId}
+	
+	</select>
+  
+</mapper>

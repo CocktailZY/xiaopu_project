@@ -1,0 +1,223 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.a2.ssm.mapper.ProductMapper">
+	<!-- 解决表名与字段不匹配 -->
+	<resultMap type="com.a2.ssm.model.Product" id="productResultMap">
+		<id property="pId" column="p_id"/>
+		<result property="pName" column="p_name"/>
+		<result property="pContent" column="p_content"/>
+		<result property="pDiscount" column="p_discount"/>
+		<result property="pOntime" column="p_onTime"/>
+		<result property="pNew" column="p_new"/>
+		<result property="pSpecial" column="p_special"/>
+		<result property="pOnstate" column="p_onState"/>
+		<result column="p_typeId" property="pTypeid" jdbcType="INTEGER" />
+		<result column="p_picId" property="pPicid" jdbcType="INTEGER" />
+		<result column="p_shopId" property="pShopid" jdbcType="INTEGER" />
+	</resultMap>
+	
+	<!-- 查询全部Product -->
+
+	<select id="list" parameterType="com.a2.ssm.model.Product" resultMap="productResultMap">
+		select * from t_product where 1=1 and p_onState=1
+		
+	</select>
+	
+	<select id="cxlist" parameterType="hashmap" resultMap="productResultMap" >
+		select * from t_product where 1=1 and p_onState=1
+		
+		<if test="pName != null and pName != ''">
+			and p_name like '%${pName}%'
+		
+		</if>
+		<if test="pSpecial==0">
+			and p_special=0
+		
+		</if>
+		<if test="pSpecial ==1">
+			and p_special=1
+		
+		</if>
+		<if test="pNew==0">
+			and p_new=0
+		
+		</if>
+		<if test="pNew ==1">
+			and p_new=1
+		
+		</if>
+		<if test="ptId != 0">
+			and p_typeId=#{ptId}
+		</if>
+		
+		<if test="xTime != null and xTime != '' and yTime != null and yTime != ''">
+			and p_onTime between &apos;#{xTime}&apos; and &apos;#{yTime}&apos;
+		
+		</if>
+		<if test="(xTime != null and xTime != '') and (yTime == null or yTime = '')">
+			and p_onTime &gt; &apos;#{xTime}&apos;
+		
+		</if>
+		<if test="(xTime == null or xTime = '') and (yTime != null and yTime != '')">
+			and p_onTime &lt; &apos;#{yTime}&apos;
+		
+		</if>
+		
+		
+
+	
+
+	</select>
+
+	
+	<!-- 分页查询所有商品 -->
+	<select id="listPage" parameterType="hashmap" resultMap="productResultMap">
+		select * from t_product where 1=1 and p_onState=1
+		
+		<if test="pName != null and pName != ''">
+			and p_name like concat(concat('%',#{pName}),'%')
+		
+		</if>
+		<if test="pSpecial==0">
+			and p_special=0
+		
+		</if>
+		<if test="pSpecial ==1">
+			and p_special=1
+		
+		</if>
+		<if test="pNew==0">
+			and p_new=0
+		
+		</if>
+		<if test="pNew ==1">
+			and p_new=1
+		
+		</if>
+		<if test="ptId != 0">
+			and p_typeId=#{ptId}
+		</if>
+		
+		<if test="xTime != null and xTime != '' and yTime != null and yTime != ''">
+			and p_onTime between &apos;#{xTime}&apos; and &apos;#{yTime}&apos;
+		
+		</if>
+		<if test="(xTime != null and xTime != '') and (yTime == null or yTime = '')">
+			and p_onTime &gt; &apos;#{xTime}&apos;
+		
+		</if>
+		<if test="(xTime == null or xTime = '') and (yTime != null and yTime != '')">
+			and p_onTime  concat(&lt;,#{yTime})
+		
+		</if>
+		limit #{rowStart},#{pageSize}
+		
+	
+	</select>
+	
+	
+
+	<!-- 根据id查询商品信息  -->
+
+	
+	
+
+	<select id="getByPid" resultMap="productResultMap" parameterType="com.a2.ssm.model.Product">
+
+		select * from t_product where p_id=#{pId}
+	</select>
+
+
+	<select id="getById" parameterType="int" resultMap="productResultMap">
+		select * from t_product where 1=1 and p_id=#{pId} 
+		
+	</select>
+
+	<!-- 更新商品信息 -->
+	<update id="update" parameterType="com.a2.ssm.model.Product">
+		update t_product
+		<set> 
+			<if test="pName != null and pName != '' ">
+				 p_name = #{pName},
+			</if>
+			
+			<if test="pContent != null and pContent != '' ">
+				 p_content = #{pContent},
+			</if>
+			
+			<if test="pDiscount != null and pDiscount != '' ">
+				 p_discount = #{pDiscount},
+			</if>
+			
+			<if test="pSpecial==0">
+				p_special=0,
+			
+			</if>
+			
+			<if test="pSpecial==1">
+				 p_special=1,
+			
+			</if>
+			
+			<if test="pNew==0">
+				 p_new=0,
+			
+			</if>
+			
+			<if test="pNew==1">
+				 p_new=1,
+			
+			</if>
+			
+			<if test="pOnstate==0">
+				 p_onState=0,
+			</if>
+			<if test="pOnstate==1">
+				 p_onState=1,
+			</if>
+			
+			<if test="pTypeid != null and pTypeid != '' ">
+				 p_typeId = #{pTypeid},
+			</if>
+ 		 </set>
+		 where p_id = #{pId}
+	</update>
+	
+	<!-- 删除商品信息 -->
+
+	<!-- 添加商品 -->
+	<insert id="save" parameterType="com.a2.ssm.model.Product">
+		insert into t_product(p_name,p_content,p_discount,p_onTime,p_new,p_special,p_onState,p_typeId,p_shopId) 
+		values(#{pName},#{pContent},#{pDiscount},#{pOntime},#{pNew},#{pSpecial},#{pOnstate},#{pTypeid},#{pShopid})
+	</insert>
+
+	
+	<!-- 分页查+模糊查询 -->
+	<select id="getAllProductByPage" resultMap="productResultMap" parameterType="com.a2.ssm.model.Product">
+		select * from t_product
+		<where>
+			<if test="pName !=null and pName !=''">
+				and pName like '%${pName}%'
+			</if>
+		</where>
+		limit #{rowStart},#{pageSize}
+	</select>
+	
+
+	<!-- 查询最新添加的商品ID  -->
+	<select id="getMaxId" resultType="int">
+		select max(p_id) from t_product
+	</select>
+
+	<!-- 查该类型的所有父类型 -->
+	<select id="listParentType" resultMap="productResultMap" parameterType="com.a2.ssm.model.Product">
+		select * from t_producttype where parentId=0
+	</select>
+	
+	
+	
+
+	
+	
+</mapper>

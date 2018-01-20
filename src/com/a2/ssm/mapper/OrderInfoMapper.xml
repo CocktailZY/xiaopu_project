@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.a2.ssm.mapper.OrderInfoMapper" >
+  <resultMap id="orderInfoResultMap" type="com.a2.ssm.model.OrderInfo" >
+    <id column="o_id" property="oId" jdbcType="INTEGER" />
+    <result column="o_stime" property="oStime" jdbcType="VARCHAR" />
+    <result column="o_state" property="oState" jdbcType="INTEGER" />
+    <result column="o_total" property="oTotal" jdbcType="VARCHAR" />
+    <result column="o_ftime" property="oFtime" jdbcType="VARCHAR" />
+	<result column="o_userId" property="oUserid" jdbcType="INTEGER" />
+	<result column="o_shopId" property="oShopid" jdbcType="INTEGER" />
+  </resultMap>
+  
+   	<!-- 查询全部订单 -->
+	<select id="list" resultMap="orderInfoResultMap">
+		select *from t_orderinfo
+	</select>
+	<!-- 根据id查询订单信息  -->
+	<select id="getById" resultMap="orderInfoResultMap" parameterType="int">
+		select *from t_orderinfo where o_userId=#{oUserid}
+	</select>
+	<!-- 更新订单信息 -->
+	<update id="update" parameterType="com.a2.ssm.model.OrderInfo">
+		update t_orderinfo set c_num=#{cNum}, c_createTime=#{cCreatetime}, c_productId=#{cProductid}, c_userId=#{cUserid} where c_id=#{cId}
+	</update>
+	<!-- 删除订单信息 -->
+	<delete id="delete" parameterType="com.a2.ssm.model.OrderInfo">
+		delete t_orderinfo  where c_id=#{cId}
+	</delete>
+	<!-- 添加订单 -->
+	<insert id="save" parameterType="com.a2.ssm.model.OrderInfo">
+		insert into t_orderinfo() values()
+	</insert>
+	<!-- 根据店铺ID查询订单信息 -->
+	<select id="getByShopId" parameterType="int" resultMap="orderInfoResultMap">
+		select * from t_orderinfo where 1=1 and o_shopId=#{oShopid}
+	
+	</select>
+	<!-- 根据订单ID查询订单信息 -->
+	<select id="getByOId" parameterType="int" resultMap="orderInfoResultMap">
+		select *from t_orderinfo where 1=1 and o_id=#{oId}
+	</select>
+	<!-- 根据ID更新订单信息 -->
+	<update id="updateorder" parameterType="com.a2.ssm.model.OrderInfo">
+		update t_orderinfo
+		<set>
+			<if test="oStime != null and oStime != '' ">
+				 o_stime = #{oStime},
+			</if>
+			<if test="oState != null and oState != '' ">
+				 o_state = #{oState},
+			</if>
+			<if test="oTotal != null and oTotal != '' ">
+				 o_total = #{oTotal},
+			</if>
+			<if test="oFtime != null and oFtime != '' ">
+				 o_ftime = #{oFtime},
+			</if>
+			<if test="oUserid != null and oUserid != '' ">
+				 o_userId = #{oUserid},
+			</if>
+			<if test="oShopid != null and oShopid != '' ">
+				 o_shopId = #{oShopid},
+			</if>
+		
+		</set> 
+		where o_id=#{oId}
+	</update>
+	<!-- 模糊查询根据店铺ID的所有订单信息 -->
+	<select id="cxListShopId" parameterType="hashmap" resultMap="orderInfoResultMap">
+		select * from t_orderinfo where 1=1 and o_shopId=#{oShopid}
+		<if test="oState == 0 or oState == 1 or oState == 2">
+			and o_state = #{oState }
+		</if>
+	
+	</select>
+	<!-- 模糊查询根据店铺ID的所有订单信息  分页-->
+	<select id="cxListShopIdPage" parameterType="hashmap" resultMap="orderInfoResultMap">
+		select * from t_orderinfo where 1=1 and o_shopId=#{oShopid}
+		<if test="oState == 0 or oState == 1 or oState == 2">
+			and o_state = #{oState }
+		</if>
+		limit #{rowStart},#{pageSize}
+	</select>
+</mapper>

@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.a2.ssm.mapper.ShopMapper" >
+  <resultMap id="shopResultMap" type="com.a2.ssm.model.Shop" >
+    <id column="s_id" property="sId" jdbcType="INTEGER" />
+    <result column="s_name" property="sName" jdbcType="VARCHAR" />
+    <result column="s_state" property="sState" jdbcType="INTEGER" />
+	<result column="s_shopTypeId" property="sShoptypeid" jdbcType="INTEGER" />
+	<result column="s_userId" property="sUserid" jdbcType="INTEGER" />
+	<result column="s_credit" property="sCredit" jdbcType="INTEGER" />
+	<result column="s_grade" property="sGrade" jdbcType="INTEGER" />
+  </resultMap>
+  	
+  	<!-- 查询所有店铺 -->
+  	<select id="list" resultMap="shopResultMap">
+  		select *from t_shop
+  	</select>
+  	<!-- 查询诚信度小于6的店铺（店铺状态不是观察期状态且不是关闭状态） -->
+  	<select id="underList" resultMap="shopResultMap">
+		select * from t_shop where s_credit &lt; 6 and s_state != 2 and s_state != 3
+	</select>
+	
+	<!-- 查询诚状态为观察期（2）的店铺 -->
+  	<select id="seeList" resultMap="shopResultMap">
+		select * from t_shop where s_state = 2
+	</select>
+	
+	<!-- 查询新的店铺申请 -->
+  	<select id="applyList" resultMap="shopResultMap">
+		select * from t_shop where s_state = 0
+	</select>
+
+	
+
+	
+	<!-- 修改店铺的状态为观察期 -->
+	<update id="updateToSee" parameterType="com.a2.ssm.model.Shop">
+		update t_shop set s_state=2 where s_id=#{sId}
+	</update>
+
+	
+	<!-- 修改店铺的状态为正常 -->
+	<update id="updateToNormal" parameterType="com.a2.ssm.model.Shop">
+		update t_shop set s_state=1 where s_id=#{sId}
+	</update>
+	
+	<!-- 修改店铺的状态为关闭 -->
+	<update id="updateToClose" parameterType="com.a2.ssm.model.Shop">
+		update t_shop set s_state=3 where s_id=#{sId}
+	</update>
+	
+	<!-- 退回用户的开店申请 -->
+	<delete id="deleteApply" parameterType="com.a2.ssm.model.Shop">
+		delete from t_shop where s_id=#{sId}
+	</delete>
+	
+  	<!-- 查询全部Shop -->
+
+	<!-- 根据id查询店铺信息  -->
+	<select id="getById" resultMap="shopResultMap" parameterType="com.a2.ssm.model.Shop">
+		select * from t_shop where s_id=#{sId}
+	</select>
+	
+	<!-- 更新店铺信息 -->
+	
+	<!-- 删除店铺信息 -->
+
+	<!-- 店铺注册 -->
+	<insert id="addSell" parameterType="com.a2.ssm.model.Shop">
+		insert into t_shop(s_name,s_state,s_shopTypeId,s_userId) values(#{sName},#{sState},#{sShoptypeid},#{sUserid})
+	</insert>
+	
+	<!-- 根据ID查询所有Shop -->
+  	<select id="getBySid" resultMap="shopResultMap" parameterType="com.a2.ssm.model.Shop">
+  		select *from t_shop where s_id=#{sId}
+  	</select>	
+</mapper>

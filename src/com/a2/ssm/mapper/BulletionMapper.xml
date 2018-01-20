@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.a2.ssm.mapper.BulletionMapper" >
+  <resultMap id="bulletionResultMap" type="com.a2.ssm.model.Bulletion" >
+    <id column="bu_id" property="buId" jdbcType="INTEGER" />
+    <result column="bu_content" property="buContent" jdbcType="VARCHAR" />
+    <result column="bu_start" property="buStart" jdbcType="VARCHAR" />
+    <result column="bu_end" property="buEnd" jdbcType="VARCHAR" />
+    <result column="bu_category" property="buCategory" jdbcType="INTEGER" />
+    <result column="bu_state" property="buState" jdbcType="INTEGER" />
+	<result column="bu_shopId" property="buShopId" jdbcType="INTEGER" />
+  </resultMap>
+ 
+ 	<!-- 查询所有状态为已发布的公告 -->
+  	<select id="allList" resultMap="bulletionResultMap">
+		select * from t_bulletion where bu_state = 2
+	</select>
+	
+	<!-- 查询所有未发布的商城的公告 -->
+  	<select id="mallList" resultMap="bulletionResultMap">
+		select * from t_bulletion where bu_category = 0 and bu_state = 0
+	</select>
+	
+	<!-- 查询所有未审核的店铺的公告） -->
+  	<select id="shopList" resultMap="bulletionResultMap">
+		select * from t_bulletion where bu_category = 1 and bu_state = 1
+	</select>
+	
+	<!-- 修改商城或店铺低公告的状态为已发布 -->
+	<update id="updateToRelease" parameterType="com.a2.ssm.model.Bulletion">
+		update t_bulletion set bu_state=2 where bu_id=#{buId}
+	</update>
+	
+	<!-- 修改公告的状态为删除 -->
+	<update id="updateToDelete" parameterType="com.a2.ssm.model.Bulletion">
+		update t_bulletion set bu_state=3 where bu_id=#{buId}
+	</update>
+	
+	<!-- 后台修改商城的公告 -->
+	<update id="updateMall" parameterType="com.a2.ssm.model.Bulletion">
+		update t_bulletion set bu_start=#{buStart},bu_end=#{buEnd},bu_content=#{buContent} where bu_id=#{buId}
+	</update>
+
+	<!-- 添加商城公告 -->
+	<insert id="addMall" parameterType="com.a2.ssm.model.Bulletion">
+		insert into t_bulletion(bu_content,bu_start,bu_end,bu_category,bu_state) values(#{buContent},#{buStart},#{buEnd},0,0) 
+	</insert>
+	
+	<!-- 删除未发布的公告信息（物理删除） -->
+	<delete id="deleteBulletion" parameterType="com.a2.ssm.model.Bulletion">
+		delete from t_bulletion where bu_id=#{buId}
+	</delete>
+
+	<!-- 根据实体类对象中的属性获取公告信息 -->
+	<select id="list" resultMap="bulletionResultMap" parameterType="com.a2.ssm.model.Bulletion">
+		select * from t_bulletion where bu_category = #{buCategory} and bu_state = #{buState}
+	</select>
+ 
+</mapper>

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.a2.ssm.mapper.FavoritesMapper">
+	<resultMap id="favoritesResultMap" type="com.a2.ssm.model.Favorites">
+		<id column="f_id" property="fId" jdbcType="INTEGER" />
+		<result column="f_shopId" property="fShopid" jdbcType="INTEGER" />
+		<result column="f_userId" property="fProductid" jdbcType="INTEGER" />
+		<result column="f_productId" property="fUserid" jdbcType="INTEGER" />
+	</resultMap>
+	
+	<!-- 查询全部Favorites -->
+	
+	<!-- 根据id查询收藏夹信息  -->
+	
+	<!-- 更新收藏夹信息 -->
+	
+	<!-- 删除收藏夹信息 -->
+
+	<!-- 添加收藏夹 -->
+	
+</mapper>

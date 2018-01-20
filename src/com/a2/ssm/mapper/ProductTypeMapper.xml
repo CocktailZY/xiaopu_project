@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.a2.ssm.mapper.ProductTypeMapper">
+	<!-- 解决表名与字段不匹配 -->
+	<resultMap type="com.a2.ssm.model.ProductType" id="productTypeResultMap">
+		<id property="ptId" column="pt_id"/>
+		<result property="ptName" column="pt_name"/>
+		<result property="parentid" column="parentId"/>
+		<result property="childid" column="childId"/>
+		<result property="type" column="type"/>
+		<result property="delFlag" column="delflag"/>
+	</resultMap>
+	
+	<!-- 查询全部ProductType -->
+	<select id="list" resultMap="productTypeResultMap" parameterType="com.a2.ssm.model.ProductType">
+		select * from t_producttype where 1=1
+			<if test="type != null">
+				and type=#{type}
+			</if>
+		and delflag=0
+	</select>
+	<!-- 查该类型的所有子类型 -->
+	<select id="listChildType" resultMap="productTypeResultMap" parameterType="com.a2.ssm.model.ProductType">
+		select * from t_producttype where parentId=#{ptId} and delflag=0
+	</select>
+	<!-- 查该类型的父类行有无子类型 -->
+	<select id="listByPid" resultMap="productTypeResultMap" parameterType="int">
+		select * from t_producttype where parentId=#{parentid} and delflag=0
+	</select>
+	<!-- 查该所有底层类型 childId为0的类型 -->
+	<select id="listBottomType" resultMap="productTypeResultMap">
+		select * from t_producttype where childId=0 and delflag=0
+	</select>
+	<!-- 根据id查询商品类型信息  -->
+
+	<select id="getById" parameterType="int" resultMap="productTypeResultMap">
+		select * from t_producttype where pt_id=#{ptId} and delflag=0
+	</select>
+	<!-- 更新商品类型信息 -->
+	<update id="update" parameterType="com.a2.ssm.model.ProductType">
+		update t_producttype set pt_name=#{ptName}, parentId=#{parentid}, childId=#{childid}, type=#{type} where pt_id=#{ptId}
+	</update>
+	<!-- 删除商品类型信息 -->
+	<delete id="delete" parameterType="int">
+		update t_producttype set delflag=1 where pt_id=#{ptId}
+	</delete>
+	<!-- 添加商品类型 -->
+	<insert id="save" parameterType="com.a2.ssm.model.ProductType">
+		insert into t_producttype(pt_name,parentId,childId,type,delflag) values(#{ptName},#{parentid},0,#{type},0)
+	</insert>
+	
+	
+	<!-- 查该类型的所有父类型 -->
+	<select id="listParentType" resultMap="productTypeResultMap" parameterType="com.a2.ssm.model.ProductType">
+		select * from t_producttype where parentId=0
+	</select>
+	
+	
+	
+	
+</mapper>

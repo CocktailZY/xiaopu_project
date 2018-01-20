@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.a2.ssm.mapper.ComplaintMapper" >
+  <resultMap id="complaintResultMap" type="com.a2.ssm.model.Complaint" >
+    <id column="co_id" property="coId" jdbcType="INTEGER" />
+    <result column="co_title" property="coTitle" jdbcType="VARCHAR" />
+    <result column="co_content" property="coContent" jdbcType="VARCHAR" />
+    <result column="co_username" property="coUsername" jdbcType="VARCHAR" />
+    <result column="co_creattime" property="coCreattime" jdbcType="VARCHAR" />
+    <result column="co_state" property="coState" jdbcType="INTEGER" />
+    <result column="co_userId" property="coUserid" jdbcType="INTEGER" />
+  </resultMap>
+  	<!-- 通用查询结果列-->
+	<sql id="Base_Column_List">
+		 co_id,	co_title, co_content, co_username, co_creattime, co_state, co_userId
+	</sql>
+  
+    <!-- 查询全部Complaint -->
+	<select id="list" resultMap="complaintResultMap" parameterType="com.a2.ssm.model.Complaint">
+		select *from t_complaint
+		<where>
+			<if test="coState != null">
+				co_state=#{coState}
+			</if>
+		</where>
+	</select>
+	<!-- 根据id查询投诉信息  -->
+	<select id="getById" parameterType="int" resultMap="complaintResultMap">
+		select
+		<!-- 引入通用查询列集 -->
+		 <include refid="Base_Column_List" />
+		from t_complaint where co_id=#{coId}
+	</select>
+	<!-- 更新投诉信息 -->
+	<update id="update" parameterType="com.a2.ssm.model.Complaint">
+		update t_complaint set co_title=#{coTitle},co_content=#{coContent},co_username=#{coUsername},co_state=#{coState} where co_id=#{coId}
+	</update>
+	<!-- 删除投诉信息 -->
+	<update id="delete" parameterType="int">
+		update t_complaint set co_state=10
+	</update>
+	<!-- 添加投诉 -->
+  	<insert id="save" parameterType="com.a2.ssm.model.Complaint">
+  		insert into t_complaint 
+  		 <trim prefix="(" suffix=")" suffixOverrides="," >
+			<if test="coId != null and coId != '' ">
+				 co_id,
+			</if>
+			<if test="coTitle != null and coTitle != '' ">
+				 co_title,
+			</if>
+			<if test="coContent != null and coContent != '' ">
+				 co_content,
+			</if>
+			<if test="coUsername != null and coUsername != '' ">
+				 co_username,
+			</if>
+			<if test="coCreattime != null and coCreattime != '' ">
+				 co_creattime,
+			</if>
+			<if test="coState != null and coState != '' ">
+				 co_state,
+			</if>
+			<if test="coUserid != null and coUserid != '' ">
+				 co_userid,
+			</if>
+
+		 </trim>
+		 <trim prefix="values (" suffix=")" suffixOverrides="," >
+			<if test="coId != null and coId != '' ">
+				 #{coId},
+			</if>
+			<if test="coTitle != null and coTitle != '' ">
+				 #{coTitle},
+			</if>
+			<if test="coContent != null and coContent != '' ">
+				 #{coContent},
+			</if>
+			<if test="coUsername != null and coUsername != '' ">
+				 #{coUsername},
+			</if>
+			<if test="coCreattime != null and coCreattime != '' ">
+				 #{coCreattime},
+			</if>
+			<if test="coState != null and coState != '' ">
+				 0,
+			</if>
+			<if test="coUserid != null and coUserid != '' ">
+				 #{coUserid},
+			</if>
+		 </trim>
+  	</insert>
+  
+</mapper>
