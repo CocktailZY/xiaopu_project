@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.mapper.SpaceMapper" >
+  <resultMap type="com.model.Space" id="spaceResultMap" >
+    <id column="s_id" property="sId" jdbcType="INTEGER" />
+    <result column="s_zone" property="sZone" jdbcType="VARCHAR" />
+    <result column="s_platenumber" property="sPlatenumber" jdbcType="VARCHAR" />
+    <result column="s_state" property="sState" jdbcType="VARCHAR" />
+    <result column="s_number" property="sNumber" jdbcType="INTEGER" />
+  </resultMap>
+  
+  <!-- 车位信息相关的SQL语句 -->
+	
+	<!-- 添加车位 -->
+	<insert id="addSpace" parameterType="com.model.Space">
+		insert into pms_t_space(s_zone,s_state,s_number) values(#{sZone},'0',#{sNumber}) 
+	</insert>
+	
+	<!-- 查询状态为空闲的车位数  -->
+	<select id="getFreeCount" resultType="java.lang.Integer" parameterType="java.lang.Integer">
+		select count(*) from pms_t_space where s_state = '0'
+	</select>
+	
+	<!-- 查询某区块的编号列表  -->
+	<select id="allNumberList" resultType="java.lang.String">
+		select s_number from pms_t_space where s_zone=#{sZone} order by s_number ASC
+	</select>
+	
+	<!-- 查询状态为占用的车位数  -->
+	<select id="getCarCount" resultType="java.lang.Integer" parameterType="java.lang.Integer">
+		select count(*) from pms_t_space where s_state = '1'
+	</select>
+
+	<!-- 删除车位 -->
+	<delete id="deleteSpace" parameterType="java.lang.Integer">
+		delete from pms_t_space where s_id=#{sId}
+	</delete>
+	
+	<select id="allSpaceList" resultMap="spaceResultMap">
+		select * from pms_t_space order by s_zone ASC ,s_number ASC
+	</select>
+	
+	<select id="allZoneNameList" resultType="java.lang.String">
+		select distinct s_zone from pms_t_space where s_state = '1'
+	</select>
+	
+	
+	<select id="selectSpaceByZone" resultMap="spaceResultMap">
+		select * from pms_t_space where s_zone = #{zName}
+	</select>
+	
+	<select id="allFreeList" resultMap="spaceResultMap">
+		select * from pms_t_space where s_state = '0'
+	</select>
+	
+	<update id="updateUserState" parameterType="com.model.Space">
+		update pms_t_space set s_state = '1',s_platenumber=#{sPlatenumber} where s_id= #{sId}
+	</update>
+	
+	<update id="updateLeave" parameterType="java.lang.String">
+		update pms_t_space set s_state = '0',s_platenumber=null where s_platenumber= #{platenumber}
+	</update>
+	
+</mapper>

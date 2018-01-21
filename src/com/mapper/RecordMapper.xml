@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.mapper.RecordMapper" >
+  <resultMap type="com.model.Record" id="recordResultMap" >
+    <id column="r_id" property="rId" jdbcType="INTEGER" />
+    <result column="r_platenumber" property="rPlatenumber" jdbcType="VARCHAR" />
+    <result column="r_cardtype" property="rCardtype" jdbcType="VARCHAR" /> 
+    <result column="r_user" property="rUser" jdbcType="VARCHAR" />
+    <result column="r_parking" property="rParking" jdbcType="VARCHAR" />
+    <result column="r_starttime" property="rStarttime" jdbcType="VARCHAR" />
+    <result column="r_endtime" property="rEndtime" jdbcType="VARCHAR" />
+    <result column="r_prise" property="rPrise" jdbcType="VARCHAR" />
+    <result column="r_prisetype" property="rPriseType" jdbcType="VARCHAR" />
+  </resultMap>
+  
+  <!-- 出入记录相关的SQL语句 -->
+	
+	<!-- 查询所有出入记录，倒序  -->
+	<select id="recordList" resultMap="recordResultMap">
+  		select * from pms_t_record order by r_id DESC
+  	</select>
+  	
+  	<!-- 添加入场记录 -->
+	<insert id="userEnter" parameterType="com.model.Record">
+		insert into pms_t_record(r_platenumber,r_cardtype,r_user,r_parking,r_starttime) values(#{rPlatenumber},#{rCardtype},#{rUser},#{rParking},#{rStarttime}) 
+	</insert>
+	
+	<select id="selectUserList" resultMap="recordResultMap">
+  		select * from pms_t_record where r_user = #{selectString}
+  	</select>
+  	
+  	<select id="selectPlatenumberList" resultMap="recordResultMap">
+  		select * from pms_t_record where r_platenumber = #{selectString}
+  	</select>
+  	
+  	<select id="selectRecordByPlatenumber" resultMap="recordResultMap">
+		select * from pms_t_record where r_platenumber =#{rPlatenumber} 
+	</select>
+	
+	<update id="updateUserLessRecord" parameterType="com.model.Record">
+		update pms_t_record set r_endtime = #{rEndtime},r_prise=#{rPrise},r_prisetype='线上未支付' where r_platenumber= #{rPlatenumber}
+	</update>
+	
+	<update id="updateUserOkRecord" parameterType="com.model.Record">
+		update pms_t_record set r_endtime = #{rEndtime},r_prise=#{rPrise},r_prisetype='线上已支付' where r_platenumber= #{rPlatenumber}
+	</update>
+	
+	
+	<update id="updateTempRecord" parameterType="com.model.Record">
+		update pms_t_record set r_endtime = #{rEndtime},r_prise=#{rPrise},r_prisetype='线下未支付' where r_platenumber= #{rPlatenumber}
+	</update>
+</mapper>

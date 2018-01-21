@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.mapper.ChargeMapper" >
+  <resultMap type="com.model.Charge" id="chargeResultMap" >
+    <id column="ch_id" property="chId" jdbcType="INTEGER" />
+    <result column="ch_name" property="chName" jdbcType="VARCHAR" />
+    <result column="ch_cardtype" property="chCardtype" jdbcType="VARCHAR" /> 
+    <result column="ch_unitprise" property="chUnitprise" jdbcType="VARCHAR" />
+    <result column="ch_unittime" property="chUnittime" jdbcType="VARCHAR" />
+  </resultMap>
+  
+  <!-- 计费规则相关的SQL语句 -->
+	
+	<!-- 查询所有临时卡计费规则  -->
+	<select id="allChargeList" resultMap="chargeResultMap">
+  		select * from pms_t_charge
+  	</select>
+  	
+  	<select id="userHourCharge" resultMap="chargeResultMap">
+  		select * from pms_t_charge where ch_cardtype='会员卡' and ch_unittime='小时'
+  	</select>
+  	
+  	<select id="tempHourCharge" resultMap="chargeResultMap">
+  		select * from pms_t_charge where ch_cardtype='临时卡' and ch_unittime='小时'
+  	</select>
+  	
+  	<select id="userDayCharge" resultMap="chargeResultMap">
+  		select * from pms_t_charge where ch_cardtype='会员卡' and ch_unittime='天'
+  	</select>
+  	
+  	<select id="tempDayCharge" resultMap="chargeResultMap">
+  		select * from pms_t_charge where ch_cardtype='临时卡' and ch_unittime='天'
+  	</select>
+	
+	<!-- 查询所有临时卡计费规则  -->
+	<select id="allInterimList" resultMap="chargeResultMap">
+  		select * from pms_t_charge where ch_cardtype='临时卡'
+  	</select>
+  	
+  	<!-- 查询所有会员卡计费规则  -->
+  	<select id="allMemberList" resultMap="chargeResultMap">
+  		select * from pms_t_charge where ch_cardtype='会员卡'
+  	</select>
+  	
+  	<!-- 添加计费规则 -->
+	<insert id="addCharge" parameterType="com.model.Charge">
+		insert into pms_t_charge(ch_name,ch_cardtype,ch_unitprise,ch_unittime) values(#{chName},#{chCardtype},#{chUnitprise},#{chUnittime}) 
+	</insert>
+	
+	<!-- 删除计费规则 -->
+	<delete id="deleteCharge" parameterType="com.model.Charge">
+		delete from pms_t_charge where ch_id=#{chId}
+	</delete>
+</mapper>

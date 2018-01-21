@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.mapper.ZoneMapper" >
+  <resultMap type="com.model.Zone" id="zoneResultMap" >
+    <id column="z_id" property="zId" jdbcType="INTEGER" />
+    <result column="z_name" property="zName" jdbcType="VARCHAR" />
+
+  </resultMap>
+  
+  <!-- 车位信息相关的SQL语句 -->
+	
+	<!-- 查询状态为空闲的小型车车位号list  -->
+	<select id="allZoneList" resultMap="zoneResultMap">
+		select * from pms_t_zone
+	</select>
+	
+	<!-- 添加入场记录 -->
+	<insert id="addZone" parameterType="com.model.Zone">
+		insert into pms_t_zone(z_name) values(#{zName}) 
+	</insert>
+	
+	<!-- 删除计费规则 -->
+	<delete id="deleteZone" parameterType="java.lang.Integer">
+		delete from pms_t_zone where z_id=#{zId}
+	</delete>
+	
+	<select id="selectZoneById" parameterType="java.lang.Integer" resultType="java.lang.String">
+		select z_name from pms_t_zone where z_id=#{zId}
+	</select>
+	
+</mapper>

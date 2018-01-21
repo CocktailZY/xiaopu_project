@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.mapper.CardMapper" >
+  <resultMap type="com.model.Card" id="cardResultMap" >
+    <id column="c_id" property="cId" jdbcType="INTEGER" />
+    <result column="c_number" property="cNumber" jdbcType="VARCHAR" />
+    <result column="c_platenumber" property="cPlatenumber" jdbcType="VARCHAR" />
+    <result column="c_starttime" property="cStarttime" jdbcType="VARCHAR" />
+    <result column="c_endtime" property="cEndtime" jdbcType="VARCHAR" />
+    <result column="c_money" property="cMoney" jdbcType="VARCHAR" />
+    <result column="c_type" property="cType" jdbcType="VARCHAR" />
+    <result column="c_user" property="cUser" jdbcType="VARCHAR" />
+    <result column="c_tel" property="cTel" jdbcType="VARCHAR" />
+
+  </resultMap>
+  
+  <!-- 车位信息相关的SQL语句 -->
+	
+	<!-- 查询状态为空闲的小型车车位号list  -->
+	<select id="allCardList" resultMap="cardResultMap">
+		select * from pms_t_card where c_type = '会员卡'
+	</select>
+	
+	<!-- 查询相应车牌号的会员卡信息  -->
+	<select id="selectByPlatenumber" resultMap="cardResultMap">
+		select * from pms_t_card where c_platenumber = #{userPlatenumber}
+	</select>
+	
+	<select id="selectNumberList" resultMap="cardResultMap">
+		select * from pms_t_card where c_number = #{selectString}
+	</select>
+	
+	<select id="selectUserList" resultMap="cardResultMap">
+		select * from pms_t_card where c_user = #{selectString}
+	</select>
+	
+	<select id="selectPlatenumberList" resultMap="cardResultMap">
+		select * from pms_t_card where c_platenumber = #{selectString}
+	</select>
+	
+	<!-- 添加会员卡 -->
+	<insert id="addCard" parameterType="com.model.Card">
+		insert into pms_t_card(c_number,c_platenumber,c_starttime,c_money,c_type,c_user,c_tel) values(#{cNumber},#{cPlatenumber},'1',#{cMoney},'会员卡',#{cUser},#{cTel}) 
+	</insert>
+	
+	<!-- 添加临时卡 -->
+	<insert id="addTempCard" parameterType="com.model.Card">
+		insert into pms_t_card(c_number,c_platenumber,c_starttime,c_type) values(#{cNumber},#{cPlatenumber},#{cStarttime},#{cType}) 
+	</insert>
+	
+	<select id="selectMoneyBycNumber" parameterType="java.lang.String" resultType="java.lang.String">
+		select c_money from pms_t_card where c_number=#{cNumber}
+	</select>
+	
+	<update id="addMoney" parameterType="com.model.Card">
+		update pms_t_card set c_money = #{cMoney} where c_number=#{cNumber}
+	</update>
+	
+	<update id="updateUserMoney" parameterType="java.lang.String">
+		update pms_t_card set c_money = #{cMoney} where c_number=#{cNumber}
+	</update>
+	
+	<update id="updateUserEnter" parameterType="com.model.Card">
+		update pms_t_card set c_starttime = #{cStarttime} where c_number=#{cNumber}
+	</update>
+	
+	<update id="reduceMoney" parameterType="java.lang.String">
+		update pms_t_card set c_money = '0' where c_number=#{cNumber}
+	</update>
+	
+	<update id="updateCard" parameterType="com.model.Card">
+		update pms_t_card set c_platenumber = #{cPlatenumber},c_user = #{cUser},c_tel = #{cTel} where c_number=#{cNumber}
+	</update>
+	
+	<!-- 删除会员卡 -->
+	<delete id="deleteCard" parameterType="java.lang.Integer">
+		delete from pms_t_card where c_id=#{cId}
+	</delete>
+	
+	<delete id="deleteTemp" parameterType="java.lang.Integer">
+		delete from pms_t_card where c_platenumber=#{getrPlatenumber}
+	</delete>
+	
+	
+</mapper>

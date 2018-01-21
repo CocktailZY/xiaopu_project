@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.mapper.AdminMapper" >
+  <resultMap type="com.model.Admin" id="adminResultMap" >
+    <id column="a_id" property="aId" jdbcType="INTEGER" />
+    <result column="a_name" property="aName" jdbcType="VARCHAR" />
+    <result column="a_pwd" property="aPwd" jdbcType="VARCHAR" /> 
+  </resultMap>
+  
+  <!-- 管理员相关的SQL语句 -->
+	
+	<!-- 根据管理员名和密码查询管理员信息  -->
+	<select id="getByName" resultMap="adminResultMap" parameterType="com.model.Admin">
+		select *from pms_t_admin where a_name=#{aName} and a_pwd=#{aPwd}
+	</select>
+	
+	<update id="changePwd" parameterType="com.model.Admin">
+		update pms_t_admin set a_pwd=#{aPwd} where a_id = 1
+	</update>
+</mapper>

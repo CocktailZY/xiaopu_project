@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project-module
+  type="WEB"
+  name="NIP"
+  id="myeclipse.1472362150280"
+  context-root="/NIP"
+  j2ee-spec="5.0"
+  archive="NIP.war">
+  <attributes>
+    <attribute name="webrootdir" value="WebRoot" />
+  </attributes>
+</project-module>
+
