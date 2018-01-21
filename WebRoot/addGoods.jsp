@@ -1,0 +1,354 @@
+<%@ page language="java" import="java.util.*,com.util.*"
+	pageEncoding="gb2312"%>
+<%
+	String path = request.getContextPath();
+	String basePath = request.getScheme() + "://"
+			+ request.getServerName() + ":" + request.getServerPort()
+			+ path + "/";
+%> 
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<script language="JavaScript" type="text/javascript"
+	src="<%=path%>/img/My97DatePicker/WdatePicker.js"></script>
+<script language="JavaScript">
+
+function numcheck(n){
+var textnum = document.getElementsByName(n);
+  var reg = /^\d+$/;
+      if( n.value.match( reg )){        
+    var re =n.value.match( reg );       
+     return true;    
+     }else{
+     alert('库存量只能为数字！');}
+}
+
+
+
+
+function reg()
+{
+
+   
+	var pattern = /^[a-zA-Z0-9]+$/;
+	var ints = /^[0-9]+$/;
+	var emails = /^([a-zA-Z0-9]+[_|\_|\.]?)*[a-zA-Z0-9]+@([a-zA-Z0-9]+[_|\_|\.]?)*[a-zA-Z0-9]+\.[a-zA-Z]{2,3}$/;
+	if (document.form1.sNo.value == ""  )  
+	{
+		alert("账号不能为空");
+		document.form1.sNo.focus();
+		return false;
+	} else if (document.form1.pwd.value == ""  )  
+	{
+		alert("密码不能为空");
+		document.form1.pwd.focus();
+		return false;
+	}else if (document.form1.name.value == ""  )  
+	{
+		alert("姓名为空");
+		document.form1.name.focus();
+		return false;
+	}
+	
+}
+</script>
+<style>
+<!--
+.it1 {
+	background-color: #F6F6F6;
+	border-top-color: #999;
+	border-right-color: #999;
+	border-bottom-color: #999;
+	border-left-color: #999;
+	border-top-width: 1px;
+	border-right-width: 1px;
+	border-bottom-width: 1px;
+	border-left-width: 1px;
+}
+
+.it2 {
+	background-color: #F9FC81;
+	border-top-color: #999;
+	border-right-color: #999;
+	border-bottom-color: #999;
+	border-left-color: #999;
+	border-top-width: 1px;
+	border-right-width: 1px;
+	border-bottom-width: 1px;
+	border-left-width: 1px;
+}
+
+h3 {
+	font-size: 14px;
+	font-weight: bold;
+}
+
+pre,p {
+	color: #1E7ACE;
+	margin: 4px;
+}
+
+input,select,textarea {
+	padding: 1px;
+	margin: 2px;
+	font-size: 11px;
+}
+
+.buttom {
+	padding: 1px 10px;
+	font-size: 12px;
+	border: 1px #1E7ACE solid;
+	background: #D0F0FF;
+}
+
+#formwrapper {
+	width: 450px;
+	margin: 15px auto;
+	padding: 20px;
+	text-align: left;
+	border: 1px #1E7ACE solid;
+}
+
+fieldset {
+	padding: 10px;
+	margin-top: 5px;
+	border: 1px solid #1E7ACE;
+	background: #fff;
+}
+
+fieldset legend {
+	color: #1E7ACE;
+	font-weight: bold;
+	padding: 3px 20px 3px 20px;
+	border: 1px solid #1E7ACE;
+	background: #fff;
+}
+
+fieldset label {
+	float: left;
+	width: 120px;
+	text-align: right;
+	padding: 4px;
+	margin: 1px;
+}
+
+fieldset div {
+	clear: left;
+	margin-bottom: 2px;
+}
+
+.enter {
+	text-align: center;
+}
+
+.clear {
+	clear: both;
+}
+-->
+</style>
+<html>
+	<link rel="stylesheet" href="<%=path%>/img/css.css" type="text/css" />
+	<body>
+		<table width="100%" border="0" cellspacing="0" cellpadding="0"
+			background="<%=path%>/img/all_bg.jpg" height="100%">
+			<tr>
+				<td class="border_left border_right border_bottom" height="400"
+					valign="top" align="center">
+					<table border="0" cellspacing="0" cellpadding="0">
+						<tr>
+							<td height="5"></td>
+						</tr>
+					</table>
+					<div id="formwrapper">
+						<h3>
+							新增商品信息
+						</h3>
+						<form action="<%=path%>/GoodsServlet?method=insert" method="post"
+							name="form1" onSubmit="return reg()">
+							<fieldset>
+								<legend>
+									新增商品信息
+								</legend>
+
+
+
+								<div style="display: none;"  >
+									<label for="name">
+										商品编号：
+									</label>
+									<input type="text" class="it1" onBlur="this.className='it1';"
+										style="WIDTH: 160px; FONT-FAMILY: Arial"
+										onFocus="this.className='it2';" name="goodNo">
+									<br />
+								</div>
+								<div>
+									<label for="name">
+										商品名称：
+									</label>
+									<input type="text" class="it1" onBlur="this.className='it1';"
+										style="WIDTH: 160px; FONT-FAMILY: Arial"
+										onFocus="this.className='it2';" name="name">
+									<br />
+								</div>
+
+
+
+								<div>
+									<label for="name">
+										规格：
+									</label>
+									<input type="text" class="it1" onBlur="this.className='it1';"
+										style="WIDTH: 160px; FONT-FAMILY: Arial"
+										onFocus="this.className='it2';" name="guige">
+									<br />
+								</div>
+
+								<div>
+									<label for="name">
+										供应商：
+									</label>
+									<%
+										CommDAO dao1 = new CommDAO();
+										List<HashMap> list1 = dao1
+												.select("select * from t_gongyingshang  ");
+									%>
+									<select name="gongyingshang">
+										<%
+											for (HashMap map1 : list1) {
+										%>
+										<option value="<%=map1.get("name")%>">
+											<%=map1.get("name")%>
+										</option>
+
+										<%
+											}
+										%>
+									</select>
+									<br />
+								</div>
+								<div>
+									<label for="name">
+										颜色：
+									</label>
+									<input type="text" class="it1" onBlur="this.className='it1';"
+										style="WIDTH: 160px; FONT-FAMILY: Arial"
+										onFocus="this.className='it2';" name="yanse">
+									<br />
+								</div>
+
+
+
+
+
+								<div>
+									<label for="name">
+										品牌：
+									</label>
+									<input type="text" class="it1" onBlur="this.className='it1';"
+										style="WIDTH: 160px; FONT-FAMILY: Arial"
+										onFocus="this.className='it2';" name="pinpai">
+									<br />
+								</div>
+								<div>
+									<label for="name">
+										商品类别：
+									</label>
+									<%
+										CommDAO dao12 = new CommDAO();
+										List<HashMap> list12 = dao12.select("select * from t_type  ");
+									%>
+									<select name="type">
+										<%
+											for (HashMap map12 : list12) {
+										%>
+										<option value="<%=map12.get("type")%>">
+											<%=map12.get("type")%>
+										</option>
+
+										<%
+											}
+										%>
+									</select>
+									<br />
+								</div>
+								<div>
+									<label for="name">
+										选择仓库：
+									</label>
+									<%
+										CommDAO dao123 = new CommDAO();
+										List<HashMap> list123 = dao1.select("select * from t_cangku  ");
+									%>
+									<select name="weizhi">
+										<%
+											for (HashMap map123 : list123) {
+										%>
+										<option value="<%=map123.get("name")%>">
+											<%=map123.get("name")%>
+										</option>
+
+										<%
+											}
+										%>
+									</select>
+									<br />
+								</div>
+								<div>
+									<label for="name">
+										库存数量：
+									</label>
+									<input type="text" class="it1"
+										style="WIDTH: 160px; FONT-FAMILY: Arial"
+										onFocus="this.className='it2';" name="num" id="num"
+										onBlur="numcheck(num)">
+									<br />
+								</div>
+								<div>
+									<label for="name">
+										商品价格：
+									</label>
+									<input type="text" class="it1" onBlur="this.className='it1';"
+										style="WIDTH: 160px; FONT-FAMILY: Arial"
+										onFocus="this.className='it2';" name="price">
+									<br />
+								</div>
+								<div>
+									<label for="name">
+										商品单位：
+									</label>
+									<select name="danwei"  style="width:160px" size="1">
+
+									<option value="包">
+										包
+									</option>
+									<option value="袋">
+										袋
+									</option>
+									<option value="克">
+										克
+									</option>
+									<option value="斤">
+										斤
+									</option>
+									<option value="公斤">
+										公斤
+									</option>
+									<option value="顿">
+										顿
+									</option>
+
+								</select>
+									<br />
+								</div>
+
+								<div class="enter">
+									<input type="submit" class="buttom" value="提交" />
+									<input type="reset" class="buttom" value="重置" />
+								</div>
+							</fieldset>
+						</form>
+					</div>
+				</td>
+			</tr>
+		</table>
+	</body>
+</html>
+
