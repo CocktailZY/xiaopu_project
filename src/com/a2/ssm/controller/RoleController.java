@@ -20,7 +20,7 @@ import com.a2.ssm.service.UserService;
  * <p>类名：RoleController</p>
  * <p>类功能描述：角色 Handler层</p>：
  * @类作者：zy
- * @创建时间：2016-8-31 下午2:05:29
+ * @创建时间：2018-8-31 下午2:05:29
  * @小组：A2小组
  */
 @Controller
@@ -37,7 +37,7 @@ public class RoleController {
 	/**
 	 * <p>方法功能描述：查询所有角色</p>
 	 * @方法作者：zy
-	 * @创建时间：2016-8-31 下午2:11:31
+	 * @创建时间：2018-8-31 下午2:11:31
 	 * @参数：@return    
 	 * @返回类型：ModelAndView   
 	 * @throws
@@ -54,7 +54,7 @@ public class RoleController {
 	/**
 	 * <p>方法功能描述：增加角色</p>
 	 * @方法作者：zy
-	 * @创建时间：2016-8-31 下午2:28:51
+	 * @创建时间：2018-8-31 下午2:28:51
 	 * @参数：@param dto 角色实体对象 
 	 * @参数：@return    
 	 * @返回类型：ModelAndView   
@@ -69,7 +69,7 @@ public class RoleController {
 	/**
 	 * <p>方法功能描述：根据id删除某一角色信息</p>
 	 * @方法作者：zy
-	 * @创建时间：2016-8-31 下午3:30:19
+	 * @创建时间：2018-8-31 下午3:30:19
 	 * @参数：@param dto 角色实体对象
 	 * @参数：@return    
 	 * @返回类型：ModelAndView   
@@ -97,7 +97,7 @@ public class RoleController {
 	/**
 	 * <p>方法功能描述：通过角色id获得一个角色信息</p>
 	 * @方法作者：zy
-	 * @创建时间：2016-8-31 下午3:36:34
+	 * @创建时间：2018-8-31 下午3:36:34
 	 * @参数：@param dto 角色实体对象
 	 * @参数：@return    
 	 * @返回类型：ModelAndView   
@@ -115,7 +115,7 @@ public class RoleController {
 	/**
 	 * <p>方法功能描述：更新角色信息</p>
 	 * @方法作者：zy
-	 * @创建时间：2016-8-31 下午6:46:31
+	 * @创建时间：2018-8-31 下午6:46:31
 	 * @参数：@param dto 角色实体对象
 	 * @参数：@return    
 	 * @返回类型：ModelAndView   

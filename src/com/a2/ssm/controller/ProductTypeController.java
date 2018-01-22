@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import net.sf.json.JSONArray;
 import net.sf.json.JSONObject;
+import net.sf.json.util.JSONUtils;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -35,15 +36,9 @@ public class ProductTypeController {
 	private SpecsService specsService;
 
 	/**
-	 * <p>
-	 * 方法功能描述：查询全部商品类型
-	 * </p>
+	 * <p> 方法功能描述：查询全部商品类型 </p>
 	 * 
-	 * @方法作者：zy
-	 * @创建时间：2016-9-7 上午10:18:48
-	 * @参数：@return
-	 * @返回类型：ModelAndView
-	 * @throws
+	 * @方法作者：zy @创建时间：2018-9-7 上午10:18:48 @参数：@return @返回类型：ModelAndView @throws
 	 */
 	@RequestMapping("list")
 	public ModelAndView list(ProductType pt) {
@@ -55,21 +50,80 @@ public class ProductTypeController {
 	}
 
 	/**
-	 * <p>
-	 * 方法功能描述：根据父类型id查询二级类型
-	 * </p>
+	 * <p> 方法功能描述：Ajax查出所有类型 </p>
 	 * 
-	 * @方法作者：zy
-	 * @创建时间：2016-9-7 上午11:30:00
-	 * @参数：@param proType 类型对象
-	 * @参数：@param response
-	 * @参数：@return
-	 * @返回类型：String
-	 * @throws
+	 * @方法作者：zy @创建时间：2018-9-7 下午4:47:06 @参数：@param pt 类型对象 @参数：@param
+	 * response @参数：@return @返回类型：String @throws
+	 */
+	@RequestMapping("index")
+	public String index(HttpServletResponse response) {
+		ProductType pt = new ProductType();
+		pt.setType(1);
+		List<ProductType> flist = productTypeService.list(pt);
+
+		JSONArray json = new JSONArray();// 存完整数据
+		for (ProductType specs : flist) {
+			ProductType ptp = new ProductType();
+			JSONObject jo = new JSONObject();
+			jo.put("id", specs.getPtId());
+			jo.put("ptName", specs.getPtName());
+			jo.put("pId", specs.getParentid());
+			jo.put("cId", specs.getChildid());
+			jo.put("pType", specs.getType());
+			ptp.setPtId(specs.getPtId());
+			if (specs.getChildid() == 1) {
+				JSONArray jsonc = new JSONArray();// 存子数据
+				for (ProductType sec : productTypeService.listChildType(ptp)) {
+					
+					JSONObject josec = new JSONObject();
+					josec.put("id", sec.getPtId());
+					josec.put("ptName", sec.getPtName());
+					josec.put("pId", sec.getParentid());
+					josec.put("cId", sec.getChildid());
+					josec.put("pType", sec.getType());
+					ProductType pts = new ProductType();
+					pts.setPtId(sec.getPtId());
+					if (specs.getChildid() == 1) {
+						JSONArray jsont = new JSONArray();// 存子数据
+						for (ProductType thr : productTypeService.listChildType(pts)) {
+							JSONObject joset = new JSONObject();
+							joset.put("id", thr.getPtId());
+							joset.put("ptName", thr.getPtName());
+							joset.put("pId", thr.getParentid());
+							joset.put("cId", thr.getChildid());
+							joset.put("pType", thr.getType());
+							jsont.add(joset);
+						}
+						josec.put("childs", jsont.toString());
+					}
+					jsonc.add(josec);
+				}
+				jo.put("childs", jsonc.toString());
+			}
+			json.add(jo);
+		}
+		PrintWriter out;
+		try {
+			response.setContentType("application/json;charset=UTF-8");
+			out = response.getWriter();
+			out.write(json.toString());
+			out.flush();
+			out.close();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+
+		return null;
+	}
+
+	/**
+	 * <p> 方法功能描述：根据父类型id查询二级类型 </p>
+	 * 
+	 * @方法作者：zy @创建时间：2018-9-7 上午11:30:00 @参数：@param proType 类型对象 @参数：@param
+	 * response @参数：@return @返回类型：String @throws
 	 */
 	@RequestMapping("childTypelist")
-	public String childTypelist(ProductType proType,
-			HttpServletResponse response) {
+	public String childTypelist(ProductType proType, HttpServletResponse response) {
 		List<ProductType> childlist = productTypeService.listChildType(proType);// 根据父类型id得到其子类型
 		JSONArray json = new JSONArray();
 		JSONObject jo = new JSONObject();
@@ -93,17 +147,10 @@ public class ProductTypeController {
 	}
 
 	/**
-	 * <p>
-	 * 方法功能描述：Ajax查出所有上级类型
-	 * </p>
+	 * <p> 方法功能描述：Ajax查出所有上级类型 </p>
 	 * 
-	 * @方法作者：zy
-	 * @创建时间：2016-9-7 下午4:47:06
-	 * @参数：@param pt 类型对象
-	 * @参数：@param response
-	 * @参数：@return
-	 * @返回类型：String
-	 * @throws
+	 * @方法作者：zy @创建时间：2018-9-7 下午4:47:06 @参数：@param pt 类型对象 @参数：@param
+	 * response @参数：@return @返回类型：String @throws
 	 */
 	@RequestMapping("listFType")
 	public String listFType(ProductType pt, HttpServletResponse response) {
@@ -140,16 +187,10 @@ public class ProductTypeController {
 	}
 
 	/**
-	 * <p>
-	 * 方法功能描述：Ajax查询所有二级类型
-	 * </p>
+	 * <p> 方法功能描述：Ajax查询所有二级类型 </p>
 	 * 
-	 * @方法作者：zy
-	 * @创建时间：2016-9-7 下午4:50:36
-	 * @参数：@param response
-	 * @参数：@return
-	 * @返回类型：String
-	 * @throws
+	 * @方法作者：zy @创建时间：2018-9-7 下午4:50:36 @参数：@param
+	 * response @参数：@return @返回类型：String @throws
 	 */
 	@RequestMapping("listSecond")
 	public String listSecond(ProductType pt, HttpServletResponse response) {
@@ -177,17 +218,10 @@ public class ProductTypeController {
 	}
 
 	/**
-	 * <p>
-	 * 方法功能描述：新增商品类型
-	 * </p>
+	 * <p> 方法功能描述：新增商品类型 </p>
 	 * 
-	 * @方法作者：zy
-	 * @创建时间：2016-9-7 下午7:20:18
-	 * @参数：@param pt 类型对象
-	 * @参数：@param req
-	 * @参数：@return
-	 * @返回类型：ModelAndView
-	 * @throws
+	 * @方法作者：zy @创建时间：2018-9-7 下午7:20:18 @参数：@param pt 类型对象 @参数：@param
+	 * req @参数：@return @返回类型：ModelAndView @throws
 	 */
 	@RequestMapping("save")
 	public ModelAndView save(ProductType pt) {
@@ -202,24 +236,17 @@ public class ProductTypeController {
 	}
 
 	/**
-	 * <p>
-	 * 方法功能描述：更新类型信息
-	 * </p>
+	 * <p> 方法功能描述：更新类型信息 </p>
 	 * 
-	 * @方法作者：zy
-	 * @创建时间：2016-9-7 下午7:23:00
-	 * @参数：@param pt 类型对象
-	 * @参数：@return
-	 * @返回类型：ModelAndView
-	 * @throws
+	 * @方法作者：zy @创建时间：2018-9-7 下午7:23:00 @参数：@param pt
+	 * 类型对象 @参数：@return @返回类型：ModelAndView @throws
 	 */
 	@RequestMapping("update")
 	public ModelAndView update(ProductType pt) {
 
 		// 判断其父类型有无其他子类型，如果没有则将其原有父类型childid置为0
 		ProductType npt = productTypeService.getById(pt.getPtId());
-		List<ProductType> ptlist = productTypeService.listByPid(npt
-				.getParentid());
+		List<ProductType> ptlist = productTypeService.listByPid(npt.getParentid());
 		if (ptlist.size() == 1) {
 			ProductType p = productTypeService.getById(npt.getParentid());
 			p.setChildid(0);
@@ -244,17 +271,17 @@ public class ProductTypeController {
 			p.setChildid(0);
 			productTypeService.update(p);
 		}
-		
-		//删除该类型关联的规格及规格详情
+
+		// 删除该类型关联的规格及规格详情
 		TypeSpecs ts = new TypeSpecs();
 		ts.setTsProducttypeid(pt.getType());
 		List<TypeSpecs> tslist = typeSpecsService.list(ts);
-		for(int i = 0 ; i < tslist.size(); i++){
+		for (int i = 0; i < tslist.size(); i++) {
 			TypeSpecs typespecs = tslist.get(i);
 			Specs s = new Specs();
 			s.setTsId(typespecs.getTsId());
 			List<Specs> slist = specsService.list(s);
-			for(int j = 0 ; j < slist.size(); j++){
+			for (int j = 0; j < slist.size(); j++) {
 				specsService.delete(slist.get(j).getSpId());
 			}
 			typeSpecsService.delete(typespecs.getTsId());

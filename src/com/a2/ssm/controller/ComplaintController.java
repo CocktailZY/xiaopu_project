@@ -18,7 +18,7 @@ import com.a2.ssm.service.UserService;
  * <p>类名：ComplaintController</p>
  * <p>类功能描述：投诉 Handler层</p>：
  * @类作者：zy
- * @创建时间：2016-9-5 下午7:55:39
+ * @创建时间：2018-9-5 下午7:55:39
  * @小组：A2小组
  */
 @Controller
@@ -33,7 +33,7 @@ public class ComplaintController {
 	/**
 	 * <p>方法功能描述：显示所有投诉</p>
 	 * @方法作者：zy
-	 * @创建时间：2016-9-5 下午7:56:06
+	 * @创建时间：2018-9-5 下午7:56:06
 	 * @参数：@return    
 	 * @返回类型：ModelAndView   
 	 * @throws
@@ -51,7 +51,7 @@ public class ComplaintController {
 	/**
 	 * <p>方法功能描述：确认审核投诉</p>
 	 * @方法作者：zy
-	 * @创建时间：2016-9-6 下午5:18:03
+	 * @创建时间：2018-9-6 下午5:18:03
 	 * @参数：@param comp 投诉实体对象
 	 * @参数：@return    
 	 * @返回类型：ModelAndView   

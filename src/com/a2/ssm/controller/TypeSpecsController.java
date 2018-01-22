@@ -37,7 +37,7 @@ public class TypeSpecsController {
 	/**
 	 * <p>方法功能描述：显示所有childid为0的底层菜单</p>
 	 * @方法作者：zy
-	 * @创建时间：2016-9-9 下午3:20:07
+	 * @创建时间：2018-9-9 下午3:20:07
 	 * @参数：@return    
 	 * @返回类型：ModelAndView   
 	 * @throws
@@ -53,7 +53,7 @@ public class TypeSpecsController {
 	/**
 	 * <p>方法功能描述：根据当前商品类型id查询所有该类型的规格</p>
 	 * @方法作者：zy
-	 * @创建时间：2016-9-9 下午6:30:46
+	 * @创建时间：2018-9-9 下午6:30:46
 	 * @参数：@param typeSpecs 类型规格对象
 	 * @参数：@return    
 	 * @返回类型：ModelAndView   
@@ -73,7 +73,7 @@ public class TypeSpecsController {
 	/**
 	 * <p>方法功能描述：AJAX查询所有childid为0的底层类型</p>
 	 * @方法作者：lenovo
-	 * @创建时间：2016-9-11 下午7:17:06
+	 * @创建时间：2018-9-11 下午7:17:06
 	 * @参数：@param response
 	 * @参数：@return    
 	 * @返回类型：String   
@@ -106,7 +106,7 @@ public class TypeSpecsController {
 	/**
 	 * <p>方法功能描述：查询该规格详情</p>
 	 * @方法作者：zy
-	 * @创建时间：2016-9-11 下午8:08:17
+	 * @创建时间：2018-9-11 下午8:08:17
 	 * @参数：@param typeSpecs 类型规格对象
 	 * @参数：@return    
 	 * @返回类型：ModelAndView   
@@ -128,7 +128,7 @@ public class TypeSpecsController {
 	/**
 	 * <p>方法功能描述：增加前取出所有类型规格</p>
 	 * @方法作者：zy
-	 * @创建时间：2016-9-11 下午9:40:02
+	 * @创建时间：2018-9-11 下午9:40:02
 	 * @参数：@return    
 	 * @返回类型：ModelAndView   
 	 * @throws
@@ -145,7 +145,7 @@ public class TypeSpecsController {
 	/**
 	 * <p>方法功能描述：给类型增加规格</p>
 	 * @方法作者：zy
-	 * @创建时间：2016-9-9 下午3:34:54
+	 * @创建时间：2018-9-9 下午3:34:54
 	 * @参数：@param typeSpecs 类型规格对象
 	 * @参数：@return    
 	 * @返回类型：ModelAndView   
@@ -160,7 +160,7 @@ public class TypeSpecsController {
 	/**
 	 * <p>方法功能描述：更新类型对应规格</p>
 	 * @方法作者：zy
-	 * @创建时间：2016-9-9 下午3:48:18
+	 * @创建时间：2018-9-9 下午3:48:18
 	 * @参数：@param typeSpecs 类型规格对象
 	 * @参数：@return    
 	 * @返回类型：ModelAndView   
@@ -175,7 +175,7 @@ public class TypeSpecsController {
 	/**
 	 * <p>方法功能描述：删除该规格</p>
 	 * @方法作者：zy
-	 * @创建时间：2016-9-9 下午3:50:28
+	 * @创建时间：2018-9-9 下午3:50:28
 	 * @参数：@param typeSpecs 类型规格对象
 	 * @参数：@return    
 	 * @返回类型：ModelAndView   
@@ -197,7 +197,7 @@ public class TypeSpecsController {
 	/**
 	 * <p>方法功能描述：增加规格详情项</p>
 	 * @方法作者：zy
-	 * @创建时间：2016-9-11 下午10:29:41
+	 * @创建时间：2018-9-11 下午10:29:41
 	 * @参数：@param specs 规格详情对象
 	 * @参数：@return    
 	 * @返回类型：ModelAndView   
@@ -212,7 +212,7 @@ public class TypeSpecsController {
 	/**
 	 * <p>方法功能描述：删除规格详情</p>
 	 * @方法作者：zy
-	 * @创建时间：2016-9-12 上午9:18:25
+	 * @创建时间：2018-9-12 上午9:18:25
 	 * @参数：@param specs 规格详情对象
 	 * @参数：@return    
 	 * @返回类型：ModelAndView   
@@ -227,7 +227,7 @@ public class TypeSpecsController {
 	/**
 	 * <p>方法功能描述：更新规格详情</p>
 	 * @方法作者：zy
-	 * @创建时间：2016-9-12 上午9:51:03
+	 * @创建时间：2018-9-12 上午9:51:03
 	 * @参数：@param specs 规格详情对象
 	 * @参数：@return    
 	 * @返回类型：ModelAndView   

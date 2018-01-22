@@ -9,7 +9,7 @@ import com.a2.ssm.model.Shop;
  * <p>类名：BulletionService</p>
  * <p>类功能描述：公告的service接口</p>
  * @类作者：任光启
- * @创建时间：2016-9-6 上午9:55:03
+ * @创建时间：2018-9-6 上午9:55:03
  * @小组：A2小组
  */
 public interface BulletionService {

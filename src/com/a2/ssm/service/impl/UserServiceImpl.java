@@ -18,7 +18,7 @@ import com.a2.ssm.util.MailUtils;
  * <p>类名：UserService</p>
  * <p>类功能描述：User service层实现类</p>：
  * @类作者：zy
- * @创建时间：2016-8-29 下午7:33:59
+ * @创建时间：2018-8-29 下午7:33:59
  * @小组：A2小组
  */
 @Service
@@ -70,7 +70,7 @@ public class UserServiceImpl implements UserService {
 	/**
 	 * <p>方法功能描述：普通用户注册</p>
 	 * @方法作者：lx
-	 * @创建时间：2016-9-14 上午11:14:03
+	 * @创建时间：2018-9-14 上午11:14:03
 	 * @参数：@param dto      
 	 * @throws
 	 */
@@ -88,7 +88,7 @@ public class UserServiceImpl implements UserService {
 	/**
 	 * <p>方法功能描述：管理员注册</p>
 	 * @方法作者：zy
-	 * @创建时间：2016-9-17 下午7:27:50
+	 * @创建时间：2018-9-17 下午7:27:50
 	 * @参数：@param dto 用户对象
 	 * @返回类型：void   
 	 * @throws
@@ -125,7 +125,7 @@ public class UserServiceImpl implements UserService {
 	/**
 	 * <p>方法功能描述：更新管理员对象</p>
 	 * @方法作者：zy
-	 * @创建时间：2016-9-17 下午7:47:36
+	 * @创建时间：2018-9-17 下午7:47:36
 	 * @参数：@param dto 用户对象     
 	 * @throws
 	 */

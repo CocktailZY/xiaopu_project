@@ -291,7 +291,7 @@ h3.w3ls-title {
     text-align: left;
     font-size: 2em;
     color: #000;
-    margin: 5em 0;
+    margin: 2em 0;
     font-family: 'Offside', cursive;
 }
 h4.w3ls-title {
@@ -3931,3 +3931,21 @@ h3.w3ls-title.w3ls-title1 {
 }
 }
 /*-- //responsive-design --*/
+.my_signBtn{
+	border: none;
+    outline: none;
+    cursor: pointer;
+    color: #fff;
+    background: #0280e1;
+    width: 100%;
+    padding: .8em 1em;
+    font-size: 1em;
+    margin: 0.5em 0 0;
+    -webkit-transition: .5s all;
+    -moz-transition: .5s all;
+    -o-transition: .5s all;
+    -ms-transition: .5s all;
+    transition: .5s all;
+    text-transform: uppercase;
+    -webkit-appearance: none;
+}

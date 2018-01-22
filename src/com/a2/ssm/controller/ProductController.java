@@ -77,7 +77,7 @@ public class ProductController {
 	 * 
 	 * <p>方法功能描述：商品添加到数据库</p>
 	 * @方法作者：luchuan
-	 * @创建时间：2016-9-2 上午9:12:30
+	 * @创建时间：2018-9-2 上午9:12:30
 	 * @参数：@throws Exception    
 	 * @返回类型：String   
 	 * @throws
@@ -184,7 +184,7 @@ public class ProductController {
 	/**
 	 * <p>方法功能描述：</p>
 	 * @方法作者：lenovo
-	 * @创建时间：2016-9-8 下午7:41:54
+	 * @创建时间：2018-9-8 下午7:41:54
 	 * @参数：@param map
 	 * @参数：@return    
 	 * @返回类型：String   
@@ -204,7 +204,7 @@ public class ProductController {
 	 * 
 	 * <p>方法功能描述：商品类型_商品品牌,商品类型_商品规格 的二级联动</p>
 	 * @方法作者：luchuan
-	 * @创建时间：2016-9-2 上午9:14:44
+	 * @创建时间：2018-9-2 上午9:14:44
 	 * @参数：@param request
 	 * @参数：@param response
 	 * @参数：@throws IOException    
@@ -253,7 +253,7 @@ public class ProductController {
 	 * 
 	 * <p>方法功能描述：商品规格_商品规格详情 的二级联动</p>
 	 * @方法作者：luchuan
-	 * @创建时间：2016-9-2 上午9:16:32
+	 * @创建时间：2018-9-2 上午9:16:32
 	 * @参数：@param request
 	 * @参数：@param response
 	 * @参数：@throws IOException    
@@ -300,7 +300,7 @@ public class ProductController {
 	 * 
 	 * <p>方法功能描述：卖家商品列表显示</p>
 	 * @方法作者：luchuan
-	 * @创建时间：2016-9-4 上午9:17:17
+	 * @创建时间：2018-9-4 上午9:17:17
 	 * @参数：@param modelMap
 	 * @参数：@return    
 	 * @返回类型：String   
@@ -470,7 +470,7 @@ public class ProductController {
 	 * 
 	 * <p>方法功能描述：查询商品详情</p>
 	 * @方法作者：luchuan
-	 * @创建时间：2016-9-7 上午9:33:49
+	 * @创建时间：2018-9-7 上午9:33:49
 	 * @参数：@param modelMap
 	 * @参数：@param pId
 	 * @参数：@return    
@@ -550,7 +550,7 @@ public class ProductController {
 	 * 
 	 * <p>方法功能描述：传参到商品修改页面</p>
 	 * @方法作者：luchuan
-	 * @创建时间：2016-9-7 上午9:34:23
+	 * @创建时间：2018-9-7 上午9:34:23
 	 * @参数：@param modelMap
 	 * @参数：@param pId
 	 * @参数：@return    
@@ -642,7 +642,7 @@ public class ProductController {
 	 * 
 	 * <p>方法功能描述：商品信息修改上传</p>
 	 * @方法作者：luchuan
-	 * @创建时间：2016-9-7 下午9:56:19
+	 * @创建时间：2018-9-7 下午9:56:19
 	 * @参数：@return
 	 * @参数：@throws Exception    
 	 * @返回类型：String   
@@ -740,7 +740,7 @@ public class ProductController {
 	 * 
 	 * <p>方法功能描述：逻辑删除商品</p>
 	 * @方法作者：luchuan
-	 * @创建时间：2016-9-8 下午3:07:37
+	 * @创建时间：2018-9-8 下午3:07:37
 	 * @参数：@param pId
 	 * @参数：@return    
 	 * @返回类型：String   
@@ -883,7 +883,7 @@ public class ProductController {
 	 * 
 	 * <p>方法功能描述：查询该类型的所有child为0的所有子类型</p>
 	 * @方法作者：zy
-	 * @创建时间：2016-9-12 上午9:22:30
+	 * @创建时间：2018-9-12 上午9:22:30
 	 * @参数：@param pt
 	 * @参数：@return    
 	 * @返回类型：List<Product>   
@@ -941,7 +941,7 @@ public class ProductController {
 	 * 
 	 * <p>方法功能描述：跳转商品评价页面</p>
 	 * @方法作者：luchuan
-	 * @创建时间：2016-9-12 下午7:04:37
+	 * @创建时间：2018-9-12 下午7:04:37
 	 * @参数：@return     
 	 * @返回类型：String   
 	 * @throws

@@ -21,7 +21,7 @@ public class PowerServiceImpl implements PowerService {
 	/**
 	 * <p>方法功能描述：查询所有权限</p>
 	 * @方法作者：zy
-	 * @创建时间：2016-9-1 上午11:25:29
+	 * @创建时间：2018-9-1 上午11:25:29
 	 * @参数：@return      
 	 * @throws
 	 */
@@ -33,7 +33,7 @@ public class PowerServiceImpl implements PowerService {
 	/**
 	 * <p>方法功能描述：根据id获取权限</p>
 	 * @方法作者：zy
-	 * @创建时间：2016-9-1 上午11:25:48
+	 * @创建时间：2018-9-1 上午11:25:48
 	 * @参数：@param id 权限id
 	 * @参数：@return      
 	 * @throws
@@ -46,7 +46,7 @@ public class PowerServiceImpl implements PowerService {
 	/**
 	 * <p>方法功能描述：根据父权限id查询子权限</p>
 	 * @方法作者：zy
-	 * @创建时间：2016-9-5 下午4:28:59
+	 * @创建时间：2018-9-5 下午4:28:59
 	 * @参数：@param dto 权限对象
 	 * @参数：@return      
 	 * @throws
@@ -59,7 +59,7 @@ public class PowerServiceImpl implements PowerService {
 	/**
 	 * <p>方法功能描述：更新权限</p>
 	 * @方法作者：zy
-	 * @创建时间：2016-9-1 上午11:46:04
+	 * @创建时间：2018-9-1 上午11:46:04
 	 * @参数：@param dto  权限对象    
 	 * @throws
 	 */
@@ -70,7 +70,7 @@ public class PowerServiceImpl implements PowerService {
 	/**
 	 * <p>方法功能描述：根据id删除权限</p>
 	 * @方法作者：zy
-	 * @创建时间：2016-9-1 上午11:46:41
+	 * @创建时间：2018-9-1 上午11:46:41
 	 * @参数：@param id      
 	 * @throws
 	 */
@@ -81,7 +81,7 @@ public class PowerServiceImpl implements PowerService {
 	/**
 	 * <p>方法功能描述：增加权限</p>
 	 * @方法作者：zy
-	 * @创建时间：2016-9-1 上午11:47:31
+	 * @创建时间：2018-9-1 上午11:47:31
 	 * @参数：@param dto      
 	 * @throws
 	 */
@@ -92,7 +92,7 @@ public class PowerServiceImpl implements PowerService {
 	/**
 	 * <p>方法功能描述：查询所有父权限</p>
 	 * @方法作者：zy
-	 * @创建时间：2016-9-1 下午6:39:03
+	 * @创建时间：2018-9-1 下午6:39:03
 	 * @参数：@return      
 	 * @throws
 	 */
@@ -104,7 +104,7 @@ public class PowerServiceImpl implements PowerService {
 	/**
 	 * <p>方法功能描述：根据id查询所有权限</p>
 	 * @方法作者：zy
-	 * @创建时间：2016-9-5 下午4:29:38
+	 * @创建时间：2018-9-5 下午4:29:38
 	 * @参数：@param id 权限id
 	 * @参数：@return      
 	 * @throws

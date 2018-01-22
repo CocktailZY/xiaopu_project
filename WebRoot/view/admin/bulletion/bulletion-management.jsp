@@ -281,7 +281,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				</div>
 			</div>
 		</div>
-		<div style="color:white;background: black;width:100%;text-align: center;"> 2016 &copy; 安博实训A2小组</div>
+		<div style="color:white;background: black;width:100%;text-align: center;"> 2018 &copy; 安博实训A2小组</div>
 
 		<!-- 点击切换div的JS -->
 		<script type="text/javascript">

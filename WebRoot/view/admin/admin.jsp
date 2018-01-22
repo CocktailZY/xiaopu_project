@@ -78,7 +78,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<img style="position: absolute;left:29%;top:22%;" src="<%=basePath %>img/111.jpg">
 	<div style="height:75%;"></div>
 </div>
-<div style="color:white;background: black;width:100%;text-align: center;"> 2016 &copy; 安博实训A2小组</div>
+<div style="color:white;background: black;width:100%;text-align: center;"> 2018 &copy; 安博实训A2小组</div>
 <script src="<%=basePath %>js/jquery.min.js"></script> 
 <script src="<%=basePath %>js/jquery.ui.custom.js"></script> 
 <script src="<%=basePath %>js/bootstrap.min.js"></script>

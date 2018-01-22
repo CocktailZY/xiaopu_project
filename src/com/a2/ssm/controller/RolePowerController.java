@@ -34,7 +34,7 @@ public class RolePowerController {
 	 * </p>
 	 * 
 	 * @方法作者：zy
-	 * @创建时间：2016-8-31 下午9:06:55
+	 * @创建时间：2018-8-31 下午9:06:55
 	 * @参数：@return
 	 * @返回类型：ModelAndView
 	 * @throws
@@ -54,7 +54,7 @@ public class RolePowerController {
 	 * </p>
 	 * 
 	 * @方法作者：zy
-	 * @创建时间：2016-8-31 下午9:53:05
+	 * @创建时间：2018-8-31 下午9:53:05
 	 * @参数：@param dto
 	 * @参数：@return
 	 * @返回类型：ModelAndView
@@ -86,7 +86,7 @@ public class RolePowerController {
 	 * </p>
 	 * 
 	 * @方法作者：zy
-	 * @创建时间：2016-9-1 上午10:26:30
+	 * @创建时间：2018-9-1 上午10:26:30
 	 * @参数：@param role 角色对象
 	 * @参数：@return
 	 * @返回类型：ModelAndView
@@ -122,7 +122,7 @@ public class RolePowerController {
 	 * </p>
 	 * 
 	 * @方法作者：zy
-	 * @创建时间：2016-9-1 下午7:54:04
+	 * @创建时间：2018-9-1 下午7:54:04
 	 * @参数：@param role 角色对象
 	 * @参数：@param power 权限对象
 	 * @参数：@return
@@ -151,7 +151,7 @@ public class RolePowerController {
 	 * </p>
 	 * 
 	 * @方法作者：zy
-	 * @创建时间：2016-9-1 下午7:54:45
+	 * @创建时间：2018-9-1 下午7:54:45
 	 * @参数：@param role 角色对象
 	 * @参数：@param power 权限对象
 	 * @参数：@return
@@ -187,7 +187,7 @@ public class RolePowerController {
 	 * </p>
 	 * 
 	 * @方法作者：zy
-	 * @创建时间：2016-9-1 下午9:30:59
+	 * @创建时间：2018-9-1 下午9:30:59
 	 * @参数：@param role 角色对象
 	 * @参数：@param power 权限对象
 	 * @参数：@return
@@ -228,7 +228,7 @@ public class RolePowerController {
 	 * </p>
 	 * 
 	 * @方法作者：zy
-	 * @创建时间：2016-9-1 下午10:25:52
+	 * @创建时间：2018-9-1 下午10:25:52
 	 * @参数：@param role 角色对象
 	 * @参数：@param power 权限对象
 	 * @参数：@return
@@ -257,7 +257,7 @@ public class RolePowerController {
 	 * </p>
 	 * 
 	 * @方法作者：zy
-	 * @创建时间：2016-9-5 下午2:56:21
+	 * @创建时间：2018-9-5 下午2:56:21
 	 * @参数：@param power 权限对象
 	 * @参数：@param role 角色对象
 	 * @参数：@return
@@ -289,7 +289,7 @@ public class RolePowerController {
 	/**
 	 * <p>方法功能描述：菜单权限控制</p>
 	 * @方法作者：zy
-	 * @创建时间：2016-9-16 下午7:17:28
+	 * @创建时间：2018-9-16 下午7:17:28
 	 * @参数：@param role 角色对象
 	 * @参数：@param req
 	 * @参数：@return    

@@ -15,7 +15,7 @@ import com.a2.ssm.service.TypeSpecsService;
  * <p>类名：TypeSpecsServiceImpl</p>
  * <p>类功能描述： 类型规格service层实现类</p>
  * @类作者：zy
- * @创建时间：2016-9-9 下午7:51:07
+ * @创建时间：2018-9-9 下午7:51:07
  * @小组：A2小组
  */
 @Service

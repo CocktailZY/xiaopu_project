@@ -47,7 +47,13 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <body>
 	<!-- header -->
 	<div class="header">
-		<div class="w3ls-header" style="height: 34px">
+		<div class="w3ls-header" style="height: 36px">
+			<div class="w3ls-header-left">
+				<div class="header-logo">
+					<h3><a href="<%=basePath %>index.jsp"><span>S</span>mart <i>Bazaar</i></a></h3>
+					<h6>Your stores. Your place.</h6> 
+				</div>
+			</div>
 			<div class="w3ls-header-right">
 				<ul>
 					<li class="dropdown head-dpdn">
@@ -56,22 +62,22 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				</ul>
 			</div>
 		</div>
-		<div class="header-two"><!-- header-two -->
+		<%-- <div class="header-two"><!-- header-two -->
 			<div class="container">
 				<div class="header-logo">
 					<h1><a href="<%=basePath %>index.jsp"><span>S</span>mart <i>Bazaar</i></a></h1>
 					<h6>Your stores. Your place.</h6> 
 				</div>	
 			</div>		
-		</div>
+		</div> --%>
 		<div>
 			 
 		</div>
 		<div class="header-three">
-			<div class="container">
+			<!-- <div class="container">
 				<div class="menu" style="height: 50px;">	 
 				</div>
-			</div>
+			</div> -->
 		</div>
 	</div>
 	<!-- //header --> 	
@@ -85,13 +91,13 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 					<input type="password" name="uPwd" class="lock" placeholder="密码" required="">
 					<input type="hidden" name="uRoleId" value="2" required="">
 					<input type="submit" value="登 录">
-					<div class="forgot-grid">
+					<!-- <div class="forgot-grid">
 						<label class="checkbox"><input type="checkbox" name="checkbox"><i></i>记住账号</label>
 						<div class="forgot">
 							<a href="#">忘记密码？</a>
 						</div>
 						<div class="clearfix"> </div>
-					</div>
+					</div> -->
 				</form>
 				<h6>还没有账号？<a href="<%=basePath %>/view/user/signup.jsp">马上注册 »»</a> </h6> 
 			</div>
@@ -108,7 +114,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 						<h6>Your stores. Your place.</h6>
 					</div>
 					<ul>
-						<li><i class="fa fa-map-marker"></i>光明路1号, 昆山  苏州市  江苏省 中国.</li>
+						<li><i class="fa fa-map-marker"></i>红山区  赤峰市  内蒙古 中国</li>
 						<li><i class="fa fa-mobile"></i> 333 222 3333 </li>
 						<li><i class="fa fa-phone"></i> +222 11 4444 </li>
 						<li><i class="fa fa-envelope-o"></i> <a href="mailto:example@mail.com"> mail@example.com</a></li>
@@ -153,7 +159,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<!-- 底部广告和功能菜单结束 -->		
 	<div class="copy-right"> 
 		<div class="container">
-			<p>Copyright &copy; 2016.Company name All rights reserved.<a target="_blank" href="#">联系我们</a></p>
+			<p>Copyright &copy; 2018 解忧小铺 All rights reserved.</p>
 		</div>
 	</div> 
 

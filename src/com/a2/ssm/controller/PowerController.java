@@ -30,7 +30,7 @@ import com.a2.ssm.service.PowerService;
  * ：
  * 
  * @类作者：zy
- * @创建时间：2016-9-4 下午4:45:58
+ * @创建时间：2018-9-4 下午4:45:58
  * @小组：A2小组
  */
 @Controller
@@ -46,7 +46,7 @@ public class PowerController {
 	 * </p>
 	 * 
 	 * @方法作者：zy
-	 * @创建时间：2016-9-2 下午3:43:07
+	 * @创建时间：2018-9-2 下午3:43:07
 	 * @参数：@return
 	 * @返回类型：ModelAndView
 	 * @throws
@@ -66,7 +66,7 @@ public class PowerController {
 	 * </p>
 	 * 
 	 * @方法作者：zy
-	 * @创建时间：2016-9-2 下午4:04:08
+	 * @创建时间：2018-9-2 下午4:04:08
 	 * @参数：@param power 权限对象
 	 * @参数：@param response
 	 * @参数：@return
@@ -103,7 +103,7 @@ public class PowerController {
 	 * </p>
 	 * 
 	 * @方法作者：zy
-	 * @创建时间：2016-9-4 下午1:58:38
+	 * @创建时间：2018-9-4 下午1:58:38
 	 * @参数：@param response
 	 * @参数：@return
 	 * @返回类型：String
@@ -140,7 +140,7 @@ public class PowerController {
 	 * </p>
 	 * 
 	 * @方法作者：zy
-	 * @创建时间：2016-9-4 下午4:46:51
+	 * @创建时间：2018-9-4 下午4:46:51
 	 * @参数：@return
 	 * @返回类型：ModelAndView
 	 * @throws
@@ -170,7 +170,7 @@ public class PowerController {
 	 * </p>
 	 * 
 	 * @方法作者：zy
-	 * @创建时间：2016-9-4 下午6:49:17
+	 * @创建时间：2018-9-4 下午6:49:17
 	 * @参数：@param power
 	 * @参数：@return
 	 * @返回类型：ModelAndView
@@ -196,7 +196,7 @@ public class PowerController {
 	 * </p>
 	 * 
 	 * @方法作者：zy
-	 * @创建时间：2016-9-4 下午7:16:47
+	 * @创建时间：2018-9-4 下午7:16:47
 	 * @参数：@return
 	 * @返回类型：ModelAndView
 	 * @throws
@@ -223,7 +223,7 @@ public class PowerController {
 	/**
 	 * <p>方法功能描述：删除权限</p>
 	 * @方法作者：zy
-	 * @创建时间：2016-9-5 上午11:44:37
+	 * @创建时间：2018-9-5 上午11:44:37
 	 * @参数：@param power 权限对象
 	 * @参数：@return    
 	 * @返回类型：ModelAndView   

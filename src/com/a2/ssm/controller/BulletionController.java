@@ -20,7 +20,7 @@ import com.a2.ssm.service.BulletionService;
  * <p>类名：公告管理的controller</p>
  * <p>类功能描述：接收页面的请求，并将结果返回到相应的页面</p>
  * @类作者：任光启
- * @创建时间：2016-9-7 下午2:14:59
+ * @创建时间：2018-9-7 下午2:14:59
  * @小组：A2小组
  */
 @Controller
@@ -33,7 +33,7 @@ public class BulletionController {
 	/**
 	 * <p>方法功能描述：查询所有的、店铺的和商城的公告信息</p>
 	 * @方法作者：任光启
-	 * @创建时间：2016-9-5 下午2:39:14
+	 * @创建时间：2018-9-5 下午2:39:14
 	 * @参数：@return    
 	 * @返回类型：ModelAndView
 	 * @throws
@@ -54,7 +54,7 @@ public class BulletionController {
 	/**
 	 * <p>方法功能描述：修改公告的状态为已发布（2）</p>
 	 * @方法作者：任光启
-	 * @创建时间：2016-9-6 上午9:44:27
+	 * @创建时间：2018-9-6 上午9:44:27
 	 * @参数：@param dto
 	 * @参数：@return    
 	 * @返回类型：String   
@@ -69,7 +69,7 @@ public class BulletionController {
 	/**
 	 * <p>方法功能描述：修改公告的状态为删除状态（3）</p>
 	 * @方法作者：任光启
-	 * @创建时间：2016-9-6 上午11:11:09
+	 * @创建时间：2018-9-6 上午11:11:09
 	 * @参数：@param dto
 	 * @参数：@return    
 	 * @返回类型：String   
@@ -84,7 +84,7 @@ public class BulletionController {
 	/**
 	 * <p>方法功能描述：后台修改商城公告信息</p>
 	 * @方法作者：任光启
-	 * @创建时间：2016-9-6 下午2:53:28
+	 * @创建时间：2018-9-6 下午2:53:28
 	 * @参数：@param dto
 	 * @参数：@return    
 	 * @返回类型：String  
@@ -99,7 +99,7 @@ public class BulletionController {
 	/**
 	 * <p>方法功能描述：添加商城公告</p>
 	 * @方法作者：任光启
-	 * @创建时间：2016-9-6 下午5:13:00
+	 * @创建时间：2018-9-6 下午5:13:00
 	 * @参数：@param dto
 	 * @参数：@return    
 	 * @返回类型：ModelAndView
@@ -114,7 +114,7 @@ public class BulletionController {
 	/**
 	 * <p>方法功能描述：删除未发布过的公告</p>
 	 * @方法作者：任光启
-	 * @创建时间：2016-9-7 下午2:13:19
+	 * @创建时间：2018-9-7 下午2:13:19
 	 * @参数：@param buId
 	 * @参数：@return    
 	 * @返回类型：String   
@@ -131,7 +131,7 @@ public class BulletionController {
 	 * @throws IOException 
 	 * <p>方法功能描述：利用ajax回调卖家的公告</p>
 	 * @方法作者：lx
-	 * @创建时间：2016-9-8 下午4:31:10
+	 * @创建时间：2018-9-8 下午4:31:10
 	 * @参数：    
 	 * @返回类型：void   
 	 * @throws

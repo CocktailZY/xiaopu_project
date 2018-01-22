@@ -16,7 +16,7 @@ public interface OrderDetailService {
 	/**
 	 * <p>方法功能描述：通过id查询订单详情的list</p>
 	 * @方法作者：sun
-	 * @创建时间：2016-9-5 下午2:02:38
+	 * @创建时间：2018-9-5 下午2:02:38
 	 * @参数：@param id
 	 * @参数：@id    
 	 * @返回类型：List<OrderDetail>   

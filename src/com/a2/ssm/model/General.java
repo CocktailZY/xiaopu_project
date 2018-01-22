@@ -9,7 +9,7 @@ import com.a2.ssm.util.Page;
  * <p>类名：General</p>
  * <p>类功能描述：通用实体类</p>
  * @类作者：luchuan
- * @创建时间：2016-9-2 上午11:16:57
+ * @创建时间：2018-9-2 上午11:16:57
  * @小组：A2小组
  */
 public class General {

@@ -1297,7 +1297,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<!-- products -->
 	<div class="products">
 		<div class="container">
-			<div class="col-md-9 product-w3ls-right">
+			<div class="col-md-12 product-w3ls-right">
 				<!-- breadcrumbs -->
 				<ol class="breadcrumb breadcrumb1">
 					<li><a href="index.html">主页</a>
@@ -1446,183 +1446,13 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				<div class="w3ls-add-grids w3agile-add-products">
 					<a href="#">
 						<h4>
-							TOP 10 TRENDS FOR YOU FLAT <span>20%</span> OFF
+							挑你想挑的 选你想选的 我的就是你的!
 						</h4>
 						<h6>
-							Shop now <i class="fa fa-arrow-circle-right" aria-hidden="true"></i>
+							快点行动吧 <i class="fa fa-arrow-circle-right" aria-hidden="true"></i>
 						</h6> </a>
 				</div>
 				
-			</div>
-			<div class="col-md-3 rsidebar">
-				<div class="rsidebar-top">
-					<div class="slider-left">
-						<h4>Filter By Price</h4>
-						<div class="row row1 scroll-pane">
-							<label class="checkbox"><input type="checkbox"
-								name="checkbox"><i></i>0 - $100 </label> <label class="checkbox"><input
-								type="checkbox" name="checkbox"><i></i>$100 - $200 </label> <label
-								class="checkbox"><input type="checkbox" name="checkbox"><i></i>$200
-								- $250 </label> <label class="checkbox"><input type="checkbox"
-								name="checkbox"><i></i>$250 - $300 </label> <label
-								class="checkbox"><input type="checkbox" name="checkbox"><i></i>$350
-								- $400 </label> <label class="checkbox"><input type="checkbox"
-								name="checkbox"><i></i>$450 - $500 </label> <label
-								class="checkbox"><input type="checkbox" name="checkbox"><i></i>More</label>
-						</div>
-					</div>
-					<div class="sidebar-row">
-						<h4>Fashion Store</h4>
-						<ul class="faq">
-							<li class="item1"><a href="#">Clothing<span
-									class="glyphicon glyphicon-menu-down"></span>
-							</a>
-								<ul>
-									<li class="subitem1"><a href="#">Ethnic wear</a>
-									</li>
-									<li class="subitem1"><a href="#">Maternity wear</a>
-									</li>
-									<li class="subitem1"><a href="#">Sports wear</a>
-									</li>
-									<li class="subitem1"><a href="#">Inner & nightwear</a>
-									</li>
-								</ul></li>
-							<li class="item2"><a href="#">Accessories<span
-									class="glyphicon glyphicon-menu-down"></span>
-							</a>
-								<ul>
-									<li class="subitem1"><a href="#">Watches</a>
-									</li>
-									<li class="subitem1"><a href="#">Eyewear</a>
-									</li>
-									<li class="subitem1"><a href="#">Jewellery</a>
-									</li>
-									<li class="subitem1"><a href="#">Footwear</a>
-									</li>
-								</ul></li>
-							<li class="item3"><a href="#">Beauty<span
-									class="glyphicon glyphicon-menu-down"></span>
-							</a>
-								<ul>
-									<li class="subitem1"><a href="#">Face Care</a>
-									</li>
-									<li class="subitem1"><a href="#">Perfumes & Deos</a>
-									</li>
-									<li class="subitem1"><a href="#">Personal Grooming</a>
-									</li>
-								</ul></li>
-						</ul>
-						<!-- script for tabs -->
-						<script type="text/javascript">
-							$(function() {
-
-								var menu_ul = $('.faq > li > ul'), menu_a = $('.faq > li > a');
-
-								menu_ul.hide();
-
-								menu_a
-										.click(function(e) {
-											e.preventDefault();
-											if (!$(this).hasClass('active')) {
-												menu_a.removeClass('active');
-												menu_ul.filter(':visible')
-														.slideUp('normal');
-												$(this).addClass('active')
-														.next()
-														.stop(true, true)
-														.slideDown('normal');
-											} else {
-												$(this).removeClass('active');
-												$(this).next().stop(true, true)
-														.slideUp('normal');
-											}
-										});
-
-							});
-						</script>
-						<!-- script for tabs -->
-					</div>
-					<!-- <div class="sidebar-row">
-						<h4>DISCOUNTS</h4>
-						<div class="row row1 scroll-pane">
-							<label class="checkbox"><input type="checkbox"
-								name="checkbox"><i></i>Upto - 10% (20)</label> <label
-								class="checkbox"><input type="checkbox" name="checkbox"><i></i>70%
-								- 60% (5)</label> <label class="checkbox"><input type="checkbox"
-								name="checkbox"><i></i>50% - 40% (7)</label> <label
-								class="checkbox"><input type="checkbox" name="checkbox"><i></i>30%
-								- 20% (2)</label> <label class="checkbox"><input type="checkbox"
-								name="checkbox"><i></i>10% - 5% (5)</label> <label
-								class="checkbox"><input type="checkbox" name="checkbox"><i></i>30%
-								- 20% (7)</label> <label class="checkbox"><input type="checkbox"
-								name="checkbox"><i></i>10% - 5% (2)</label> <label
-								class="checkbox"><input type="checkbox" name="checkbox"><i></i>Other(50)</label>
-						</div>
-					</div> -->
-					<div class="sidebar-row">
-						<h4>Color</h4>
-						<div class="row row1 scroll-pane">
-							<label class="checkbox"><input type="checkbox"
-								name="checkbox" checked=""><i></i>White</label> <label
-								class="checkbox"><input type="checkbox" name="checkbox"><i></i>Pink</label>
-							<label class="checkbox"><input type="checkbox"
-								name="checkbox"><i></i>Gold</label> <label class="checkbox"><input
-								type="checkbox" name="checkbox"><i></i>Blue</label> <label
-								class="checkbox"><input type="checkbox" name="checkbox"><i></i>Orange</label>
-							<label class="checkbox"><input type="checkbox"
-								name="checkbox"><i></i> Brown</label>
-						</div>
-					</div>
-				</div>
-				<div class="related-row">
-					<h4>Related Searches</h4>
-					<ul>
-						<li><a href="products.html">Travel Bags</a>
-						</li>
-						<li><a href="products.html">Casual Wear</a>
-						</li>
-						<li><a href="products.html">Beauty Gift Hampers</a>
-						</li>
-						<li><a href="products.html">T-Shirts</a>
-						</li>
-						<li><a href="products.html">Blazers</a>
-						</li>
-						<li><a href="products.html">Parkas</a>
-						</li>
-						<li><a href="products.html">Shoes</a>
-						</li>
-						<li><a href="products.html">Hair Care</a>
-						</li>
-						<li><a href="products.html">Bath & Spa</a>
-						</li>
-						<li><a href="products.html">Handbags</a>
-						</li>
-					</ul>
-				</div>
-				<div class="related-row">
-					<h4>YOU MAY ALSO LIKE</h4>
-					<div class="galry-like">
-						<a href="single.html"><img src="images/e1.png"
-							class="img-responsive" alt="img">
-						</a>
-						<h4>
-							<a href="products.html">Audio speaker</a>
-						</h4>
-						<h5>$100</h5>
-					</div>
-				</div>
-				<div class="related-row">
-					<h4>YOU MAY ALSO LIKE</h4>
-					<div class="galry-like">
-						<a href="single.html"><img src="images/e1.png"
-							class="img-responsive" alt="img">
-						</a>
-						<h4>
-							<a href="products.html">Audio speaker</a>
-						</h4>
-						<h5>$100</h5>
-					</div>
-				</div>
 			</div>
 			<div class="clearfix"></div>
 			<!-- recommendations -->

@@ -1,4 +1,5 @@
 <%@ page language="java" pageEncoding="utf-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%
 String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
@@ -82,24 +83,37 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <body>
 	<!-- header -->
 	<div class="header">
-		<div class="w3ls-header">
+		<div class="w3ls-header" style="height: 36px">
+			<div class="w3ls-header-left">
+				<div class="header-logo">
+					<h3><a href="<%=basePath %>index.jsp"><span>S</span>mart <i>Bazaar</i></a></h3>
+					<h6>Your stores. Your place.</h6> 
+				</div>
+			</div>
+			<div class="w3ls-header-right">
+				<ul>
+					<li class="dropdown head-dpdn">
+						<a href="<%=basePath %>user/admin.do" class="dropdown-toggle">进入后台</a>
+					</li>
+				</ul>
+			</div>
 		</div>
-		<div class="header-two"><!-- header-two -->
+		<%-- <div class="header-two"><!-- header-two -->
 			<div class="container">
 				<div class="header-logo">
-					<h1><a href="../"><span>S</span>mart <i>Bazaar</i></a></h1>
+					<h1><a href="<%=basePath %>index.jsp"><span>S</span>mart <i>Bazaar</i></a></h1>
 					<h6>Your stores. Your place.</h6> 
 				</div>	
 			</div>		
-		</div>
+		</div> --%>
 		<div>
 			 
 		</div>
 		<div class="header-three">
-			<div class="container">
+			<!-- <div class="container">
 				<div class="menu" style="height: 50px;">	 
 				</div>
-			</div>
+			</div> -->
 		</div>
 	</div>
 	<!-- //header --> 	
@@ -201,7 +215,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			if(flag2){
 				if(flag3){
 					if(flag4){
-						return ture;
+						return true;
 					}else{
 						alert("有规范不合格的信息，请正确输入！");
 						return false;
@@ -220,18 +234,28 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		}
 		
 	}
-	
-	function onn2(){
+	function subbtonFunc(obj){
+		if ($(obj).prop('checked') == true) {
+		    // do something
+		    $("#subBtn").removeAttr("disabled");
+		}else{
+			$("#subBtn").prop("disabled","true");
+		}
+	}
+	function subForm(){
+		$('#myForm').submit();
+	}
+	/* function onn2(){
 		alert("hehe");
 		document.getElementById("agreement").style.display = "";
-	}
+	} */
 	</script>
 	<!-- sign up-page -->
 	<div class="login-page">
 		<div class="container"> 
 			<h3 class="w3ls-title w3ls-title1"style="font-family: '微软雅黑';color: slategray;font-size: 35px;">新用户注册</h3>  
 			<div class="login-body">
-				<form action="<%=basePath%>user/save.do" method="post"  onsubmit="return checkForm();">
+				<form id="myForm" action="<%=basePath%>user/save.do" method="post" onsubmit="return checkForm();">
 					<span id="span1"></span>
 					<input type="text" class="user" id="uName" name="uName" placeholder="输入你的用户名" required="" onblur="checkUsername()" onclick="tip1()">
 					<span id="span2"></span>
@@ -240,8 +264,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 					<input type="password" class="lock" id="tPwd" name="tPwd" placeholder="再次输入你的密码" required="" onblur="checktPwd()" onclick="tip3()">
 					<span id="span4"></span>
 					<input type="text" class="user" id="uEmail" name="uEmail" placeholder="输入你的邮箱账号" required="" onblur="checkuEmail()" onclick="tip4()">
-					<a id="aa" href="javascript:onn2()">这里是用户协议</a>
-						<div id="agreement" class="agreement" style="height: 200px;width: 450;overflow-y:scroll;overflow-x:hidden;display: none">
+					<!-- <a id="aa" href="javascript:onn2()">这里是用户协议</a> -->
+						<div id="agreement" class="agreement" style="height: 200px;overflow-y:scroll;overflow-x:hidden;display: block;">
 							<p>尊敬的用户欢迎您注册成为本网站会员。请用户仔细阅读以下全部内容。如用户不同意本服务条款任意内容，请不要注册或使用本网站服务。如用户通过本网站注册程序，即表示用户与本网站已达成协议，自愿接受本服务条款的所有内容。此后，用户不得以未阅读本服务条款内容作任何形式的抗辩。</p>
 							<p>
 								一、本站服务条款的确认和接纳<br>本网站涉及的各项服务的所有权和运作权归本网站所有。本网站所提供的服务必须按照其发布的服务条款和操作规则严格执行。本服务条款的效力范围及于本网站的一切产品和服务，用户在享受本网站的任何服务时，应当受本服务条款的约束。
@@ -299,7 +323,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 								十四、法律<br>本协议的订立、执行和解释及争议的解决均应适用中华人民共和国的法律。用户和本网站一致同意服从本网站所在地有管辖权的法院管辖。如发生本网站服务条款与中华人民共和国法律相抵触时，则这些条款将完全按法律规定重新解释，而其它条款则依旧保持对用户的约束力。
 							</p>
 						</div>
-					<input type="submit" value="立即注册">
+						<input type="checkbox" checked="checked" onchange="subbtonFunc(this)">我同意上述协议
+						<input id="subBtn" type="button" value="立即注册" class="my_signBtn" onclick="subForm()">
 				</form>
 			</div>  
 			<h6>已经拥有账号了吗? <a href="<%=basePath %>login.jsp">现在登录 »»</a> </h6>  
@@ -363,7 +388,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<!-- 底部结尾 -->
 	<div class="copy-right"> 
 		<div class="container">
-			<p>Copyright &copy; 2016.实训第二组  All rights reserved.</p>
+			<p>Copyright &copy; 2018.解忧小铺  All rights reserved.</p>
 		</div>
 	</div>
 	<!-- 底部结尾结束 --> 

@@ -10,7 +10,7 @@ import java.util.Date;
  * <p>类名：CompareTime </p>
  * <p>类功能描述：计算时间差</p>
  * @类作者：luchuan
- * @创建时间：2016-9-6 上午12:47:15
+ * @创建时间：2018-9-6 上午12:47:15
  * @小组：A2小组
  */
 public class CompareTime {

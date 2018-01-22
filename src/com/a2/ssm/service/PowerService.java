@@ -9,7 +9,7 @@ import com.a2.ssm.model.Power;
  * <p>类名：PowerService</p>
  * <p>类功能描述：权限 Service层接口</p>：
  * @类作者：zy
- * @创建时间：2016-9-5 下午4:25:15
+ * @创建时间：2018-9-5 下午4:25:15
  * @小组：A2小组
  */
 public interface PowerService {
@@ -17,7 +17,7 @@ public interface PowerService {
 	/**
 	 * <p>方法功能描述：查询所有权限</p>
 	 * @方法作者：zy
-	 * @创建时间：2016-9-5 下午4:25:50
+	 * @创建时间：2018-9-5 下午4:25:50
 	 * @参数：@return    
 	 * @返回类型：List<Power>   
 	 * @throws
@@ -26,7 +26,7 @@ public interface PowerService {
 	/**
 	 * <p>方法功能描述：查询所有一级权限</p>
 	 * @方法作者：zy
-	 * @创建时间：2016-9-5 下午4:26:04
+	 * @创建时间：2018-9-5 下午4:26:04
 	 * @参数：@return    
 	 * @返回类型：List<Power>   
 	 * @throws
@@ -35,7 +35,7 @@ public interface PowerService {
 	/**
 	 * <p>方法功能描述：通过id查询一级权限</p>
 	 * @方法作者：zy
-	 * @创建时间：2016-9-5 下午4:26:19
+	 * @创建时间：2018-9-5 下午4:26:19
 	 * @参数：@param id 权限id
 	 * @参数：@return    
 	 * @返回类型：Power   
@@ -45,7 +45,7 @@ public interface PowerService {
 	/**
 	 * <p>方法功能描述：通过id查询所有权限</p>
 	 * @方法作者：zy
-	 * @创建时间：2016-9-5 下午4:26:46
+	 * @创建时间：2018-9-5 下午4:26:46
 	 * @参数：@param id 权限id
 	 * @参数：@return    
 	 * @返回类型：Power   
@@ -55,7 +55,7 @@ public interface PowerService {
 	/**
 	 * <p>方法功能描述：根据一级权限id查询其二级权限</p>
 	 * @方法作者：zy
-	 * @创建时间：2016-9-5 下午4:27:07
+	 * @创建时间：2018-9-5 下午4:27:07
 	 * @参数：@param dto 权限对象
 	 * @参数：@return    
 	 * @返回类型：List<Power>   
@@ -65,7 +65,7 @@ public interface PowerService {
 	/**
 	 * <p>方法功能描述：更新权限信息</p>
 	 * @方法作者：zy
-	 * @创建时间：2016-9-5 下午4:27:37
+	 * @创建时间：2018-9-5 下午4:27:37
 	 * @参数：@param dto 权限对象   
 	 * @返回类型：void   
 	 * @throws
@@ -74,7 +74,7 @@ public interface PowerService {
 	/**
 	 * <p>方法功能描述：根据id删除权限</p>
 	 * @方法作者：zy
-	 * @创建时间：2016-9-5 下午4:28:01
+	 * @创建时间：2018-9-5 下午4:28:01
 	 * @参数：@param id 权限id  
 	 * @返回类型：void   
 	 * @throws
@@ -83,7 +83,7 @@ public interface PowerService {
 	/**
 	 * <p>方法功能描述：增加权限信息</p>
 	 * @方法作者：zy
-	 * @创建时间：2016-9-5 下午4:28:22
+	 * @创建时间：2018-9-5 下午4:28:22
 	 * @参数：@param dto 权限对象   
 	 * @返回类型：void   
 	 * @throws

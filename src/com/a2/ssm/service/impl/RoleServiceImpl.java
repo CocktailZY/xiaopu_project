@@ -21,7 +21,7 @@ public class RoleServiceImpl implements RoleService {
 	/**
 	 * <p>方法功能描述：查询所有角色</p>
 	 * @方法作者：zy
-	 * @创建时间：2016-8-31 下午3:10:09
+	 * @创建时间：2018-8-31 下午3:10:09
 	 * @参数：@return      
 	 * @throws
 	 */
@@ -33,7 +33,7 @@ public class RoleServiceImpl implements RoleService {
 	/**
 	 * <p>方法功能描述：通过角色id查询单条角色信息</p>
 	 * @方法作者：zy
-	 * @创建时间：2016-8-31 下午3:10:26
+	 * @创建时间：2018-8-31 下午3:10:26
 	 * @参数：@param id
 	 * @参数：@return      
 	 * @throws
@@ -46,7 +46,7 @@ public class RoleServiceImpl implements RoleService {
 	/**
 	 * <p>方法功能描述：更新角色信息</p>
 	 * @方法作者：zy
-	 * @创建时间：2016-8-31 下午3:10:45
+	 * @创建时间：2018-8-31 下午3:10:45
 	 * @参数：@param dto      
 	 * @throws
 	 */
@@ -57,7 +57,7 @@ public class RoleServiceImpl implements RoleService {
 	/**
 	 * <p>方法功能描述：删除角色</p>
 	 * @方法作者：zy
-	 * @创建时间：2016-8-31 下午3:10:59
+	 * @创建时间：2018-8-31 下午3:10:59
 	 * @参数：@param id      
 	 * @throws
 	 */
@@ -68,7 +68,7 @@ public class RoleServiceImpl implements RoleService {
 	/**
 	 * <p>方法功能描述：增加角色</p>
 	 * @方法作者：zy
-	 * @创建时间：2016-8-31 下午3:11:28
+	 * @创建时间：2018-8-31 下午3:11:28
 	 * @参数：@param dto      
 	 * @throws
 	 */
@@ -79,7 +79,7 @@ public class RoleServiceImpl implements RoleService {
 	/**
 	 * <p>方法功能描述：查询所有管理员角色</p>
 	 * @方法作者：zy
-	 * @创建时间：2016-9-18 下午1:28:20
+	 * @创建时间：2018-9-18 下午1:28:20
 	 * @参数：@return      
 	 * @throws
 	 */

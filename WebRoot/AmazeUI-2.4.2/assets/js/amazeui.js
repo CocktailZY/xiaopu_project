@@ -1,4 +1,4 @@
-/*! Amaze UI v2.5.1 | by Amaze UI Team | (c) 2016 AllMobilize, Inc. | Licensed under MIT | 2016-01-19T14:45:42+0800 */ 
+/*! Amaze UI v2.5.1 | by Amaze UI Team | (c) 2018 AllMobilize, Inc. | Licensed under MIT | 2018-01-19T14:45:42+0800 */ 
 (function webpackUniversalModuleDefinition(root, factory) {
 	if(typeof exports === 'object' && typeof module === 'object')
 		module.exports = factory(require("jquery"));

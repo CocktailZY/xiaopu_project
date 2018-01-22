@@ -16,7 +16,7 @@ import com.a2.ssm.service.FavoritesService;
  * <p>类名：FavoritesController</p>
  * <p>类功能描述：收藏夹</p>
  * @类作者：sun
- * @创建时间：2016-9-1 上午11:33:09
+ * @创建时间：2018-9-1 上午11:33:09
  * @小组：A2小组
  */
 @Controller
@@ -29,7 +29,7 @@ public class FavoritesController {
 	/**
 	 * <p>方法功能描述：收藏夹登录验证</p>
 	 * @方法作者：sun
-	 * @创建时间：2016-9-1 下午1:55:49
+	 * @创建时间：2018-9-1 下午1:55:49
 	 * @参数：@return    
 	 * @返回类型：ModelAndView   
 	 * @throws

@@ -22,7 +22,7 @@ public interface ProductService {
 	/**
 	 * <p>方法功能描述：通过id查询产品的list</p>
 	 * @方法作者：sun
-	 * @创建时间：2016-9-5 下午2:00:59
+	 * @创建时间：2018-9-5 下午2:00:59
 	 * @参数：@param id
 	 * @参数：@id
 	 * @返回类型：List<Product>   

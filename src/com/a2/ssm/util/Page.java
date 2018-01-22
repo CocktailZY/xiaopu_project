@@ -7,7 +7,7 @@ import java.io.Serializable;
  * <p>类名：</p>
  * <p>类功能描述：分页</p>
  * @类作者：Administrator
- * @创建时间：2016-9-5 下午5:39:42
+ * @创建时间：2018-9-5 下午5:39:42
  * @小组：A2小组
  */
 public class Page implements Serializable{

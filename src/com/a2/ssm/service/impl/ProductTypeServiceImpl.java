@@ -15,7 +15,7 @@ import com.a2.ssm.service.ProductTypeService;
  * <p>类名：ProductTypeServiceImpl</p>
  * <p>类功能描述：商品类型 Service层实现类</p>
  * @类作者：zy
- * @创建时间：2016-9-7 下午2:06:17
+ * @创建时间：2018-9-7 下午2:06:17
  * @小组：A2小组
  */
 @Service
@@ -28,7 +28,7 @@ public class ProductTypeServiceImpl implements ProductTypeService {
 	/**
 	 * <p>方法功能描述：查询所有类型</p>
 	 * @方法作者：zy
-	 * @创建时间：2016-9-7 下午2:06:47
+	 * @创建时间：2018-9-7 下午2:06:47
 	 * @参数：@return      
 	 * @throws
 	 */
@@ -40,7 +40,7 @@ public class ProductTypeServiceImpl implements ProductTypeService {
 	/**
 	 * <p>方法功能描述：根据父类型id得到其子类型对象list</p>
 	 * @方法作者：zy
-	 * @创建时间：2016-9-7 下午2:08:43
+	 * @创建时间：2018-9-7 下午2:08:43
 	 * @参数：@param dto 类型对象
 	 * @参数：@return    
 	 * @返回类型：List<ProductType>   
@@ -54,7 +54,7 @@ public class ProductTypeServiceImpl implements ProductTypeService {
 	/**
 	 * <p>方法功能描述：根据类型id获取类型对象</p>
 	 * @方法作者：zy
-	 * @创建时间：2016-9-7 下午2:11:09
+	 * @创建时间：2018-9-7 下午2:11:09
 	 * @参数：@param id 类型id
 	 * @参数：@return      
 	 * @throws
@@ -69,7 +69,7 @@ public class ProductTypeServiceImpl implements ProductTypeService {
 	/**
 	 * <p>方法功能描述：根据类型对象id更新类型信息</p>
 	 * @方法作者：zy
-	 * @创建时间：2016-9-7 下午2:11:33
+	 * @创建时间：2018-9-7 下午2:11:33
 	 * @参数：@param dto 类型对象     
 	 * @throws
 	 */
@@ -80,7 +80,7 @@ public class ProductTypeServiceImpl implements ProductTypeService {
 	/**
 	 * <p>方法功能描述：删除类型</p>
 	 * @方法作者：zy
-	 * @创建时间：2016-9-7 下午2:12:03
+	 * @创建时间：2018-9-7 下午2:12:03
 	 * @参数：@param id 类型id     
 	 * @throws
 	 */
@@ -91,7 +91,7 @@ public class ProductTypeServiceImpl implements ProductTypeService {
 	/**
 	 * <p>方法功能描述：新增一个商品类型</p>
 	 * @方法作者：zy
-	 * @创建时间：2016-9-7 下午2:13:20
+	 * @创建时间：2018-9-7 下午2:13:20
 	 * @参数：@param dto  商品对象    
 	 * @throws
 	 */
@@ -113,7 +113,7 @@ public class ProductTypeServiceImpl implements ProductTypeService {
 	/**
 	 * <p>方法功能描述：</p>
 	 * @方法作者：lds
-	 * @创建时间：2016-9-7 下午2:08:43
+	 * @创建时间：2018-9-7 下午2:08:43
 	 * @参数：@param dto 类型对象
 	 * @参数：@return    
 	 * @返回类型：List<ProductType>   

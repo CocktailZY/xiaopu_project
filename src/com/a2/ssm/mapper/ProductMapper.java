@@ -24,7 +24,7 @@ public interface ProductMapper {
 	/**
 	 * <p>方法功能描述：根据类型id查询该类型下的商品</p>
 	 * @方法作者：lds
-	 * @创建时间：2016-9-7 下午2:20:04
+	 * @创建时间：2018-9-7 下午2:20:04
 	 * @参数：@param dto 类型对象
 	 * @参数：@return    
 	 * @返回类型：List<Product>   

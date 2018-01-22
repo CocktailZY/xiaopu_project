@@ -42,7 +42,7 @@ public class CartController{
 	 * 
 	 * <p>购物车验证是否登录：</p>
 	 * @方法作者：sun
-	 * @创建时间：2016-8-30 下午4:19:34
+	 * @创建时间：2018-8-30 下午4:19:34
 	 * @参数：@return    
 	 * @返回类型：String   
 	 * @throws
@@ -61,7 +61,7 @@ public class CartController{
 	 * 
 	 * <p>创建购物车：</p>
 	 * @方法作者：sun
-	 * @创建时间：2016-8-30 下午4:19:34
+	 * @创建时间：2018-8-30 下午4:19:34
 	 * @参数：@return    
 	 * @返回类型：ModelAndView   
 	 * @throws
@@ -105,7 +105,7 @@ public class CartController{
 	 * 
 	 * <p>方法描述：删除用户对应产品编号的购物车信息</p>
 	 * @方法作者：sun
-	 * @创建时间：2016-8-30 下午4:19:34
+	 * @创建时间：2018-8-30 下午4:19:34
 	 * @参数：@return    
 	 * @返回类型：ModelAndView   
 	 * @throws
@@ -121,7 +121,7 @@ public class CartController{
 	 * 
 	 * <p>添加产品数量：</p>
 	 * @方法作者：sun
-	 * @创建时间：2016-8-30 下午4:19:34
+	 * @创建时间：2018-8-30 下午4:19:34
 	 * @参数：@return    
 	 * @返回类型：ModelAndView   
 	 * @throws
@@ -151,7 +151,7 @@ public class CartController{
 	 * 
 	 * <p>减去产品数量：</p>
 	 * @方法作者：sun
-	 * @创建时间：2016-8-30 下午4:19:34
+	 * @创建时间：2018-8-30 下午4:19:34
 	 * @参数：@return    
 	 * @返回类型：ModelAndView   
 	 * @throws
@@ -184,7 +184,7 @@ public class CartController{
 	/**
 	 * <p>方法功能描述：查看某个用户的购物车列表</p>
 	 * @方法作者：sun
-	 * @创建时间：2016-9-2 上午9:03:11
+	 * @创建时间：2018-9-2 上午9:03:11
 	 * @参数：@return    
 	 * @返回类型：ModelAndView   
 	 * @throws

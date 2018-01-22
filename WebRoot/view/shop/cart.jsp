@@ -283,7 +283,7 @@ $(document).ready(function() {
 	<!-- 底部结尾 -->
 	<div class="copy-right"> 
 		<div class="container">
-			<p>Copyright &copy; 2016.实训第二组  All rights reserved.</p>
+			<p>Copyright &copy; 2018.解忧小铺  All rights reserved.</p>
 		</div>
 	</div>
 	<!-- 底部结尾结束 -->

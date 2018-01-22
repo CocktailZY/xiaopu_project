@@ -15,7 +15,7 @@ import com.a2.ssm.service.ComplaintService;
  * <p>类名：ComplaintServiceImpl</p>
  * <p>类功能描述：投诉 Service层</p>：
  * @类作者：zy
- * @创建时间：2016-9-5 下午8:50:56
+ * @创建时间：2018-9-5 下午8:50:56
  * @小组：A2小组
  */
 @Service
@@ -28,7 +28,7 @@ public class ComplaintServiceImpl implements ComplaintService {
 	/**
 	 * <p>方法功能描述：显示所有投诉</p>
 	 * @方法作者：zy
-	 * @创建时间：2016-9-5 下午8:51:21
+	 * @创建时间：2018-9-5 下午8:51:21
 	 * @参数：@return      
 	 * @throws
 	 */
@@ -40,7 +40,7 @@ public class ComplaintServiceImpl implements ComplaintService {
 	/**
 	 * <p>方法功能描述：通过id查询投诉</p>
 	 * @方法作者：zy
-	 * @创建时间：2016-9-5 下午9:21:13
+	 * @创建时间：2018-9-5 下午9:21:13
 	 * @参数：@param id 投诉id
 	 * @参数：@return      
 	 * @throws
@@ -53,7 +53,7 @@ public class ComplaintServiceImpl implements ComplaintService {
 	/**
 	 * <p>方法功能描述：更新投诉状态</p>
 	 * @方法作者：zy
-	 * @创建时间：2016-9-5 下午9:21:34
+	 * @创建时间：2018-9-5 下午9:21:34
 	 * @参数：@param dto 投诉实体对象     
 	 * @throws
 	 */
@@ -64,7 +64,7 @@ public class ComplaintServiceImpl implements ComplaintService {
 	/**
 	 * <p>方法功能描述：逻辑删除</p>
 	 * @方法作者：zy
-	 * @创建时间：2016-9-5 下午9:22:14
+	 * @创建时间：2018-9-5 下午9:22:14
 	 * @参数：@param id 投诉id     
 	 * @throws
 	 */
@@ -75,7 +75,7 @@ public class ComplaintServiceImpl implements ComplaintService {
 	/**
 	 * <p>方法功能描述：新增投诉</p>
 	 * @方法作者：zy
-	 * @创建时间：2016-9-5 下午9:23:20
+	 * @创建时间：2018-9-5 下午9:23:20
 	 * @参数：@param dto 投诉实体对象     
 	 * @throws
 	 */

@@ -30,7 +30,7 @@ jQuery(document).ready(function($){
         	$(row).children().removeClass('is-active');
         	if( $('li.has-children:hover').length == 0 || $('li.has-children:hover').is($(row)) ) {
         		$('.cd-dropdown-content').find('.fade-in').removeClass('fade-in');
-        		$(row).children('ul').addClass('fade-out')
+        		$(row).children('ul').addClass('fade-out');
         	}
         },
         exitMenu: function() {

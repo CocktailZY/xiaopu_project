@@ -10,7 +10,7 @@ import com.a2.ssm.model.ShopType;
  * <p>类名：店铺的service</p>
  * <p>类功能描述：主要是前台的店铺添加和后台的店铺管理</p>
  * @类作者：任光启
- * @创建时间：2016-9-2 下午2:35:46
+ * @创建时间：2018-9-2 下午2:35:46
  * @小组：A2小组
  */
 public interface ShopService {
@@ -20,7 +20,7 @@ public interface ShopService {
 	/**
 	 * <p>方法功能描述：通过id查询店铺的list</p>
 	 * @方法作者：sun
-	 * @创建时间：2016-9-5 下午2:03:21
+	 * @创建时间：2018-9-5 下午2:03:21
 	 * @参数：@param id
 	 * @参数：@id   
 	 * @返回类型：List<Shop>   
@@ -30,7 +30,7 @@ public interface ShopService {
 	public void update(Shop dto);
 	public void delete(int id);
 	public void save(Shop dto);
-	//2016-9-12
+	//2018-9-12
 	public List<Shop> getByUid(int id);
 	public List<Shop> getBySid(int id);
 	

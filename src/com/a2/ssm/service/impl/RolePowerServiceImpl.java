@@ -21,7 +21,7 @@ public class RolePowerServiceImpl implements RolePowerService {
 	/**
 	 * <p>方法功能描述：查询所有角色权限关系</p>
 	 * @方法作者：zy
-	 * @创建时间：2016-9-1 下午6:56:12
+	 * @创建时间：2018-9-1 下午6:56:12
 	 * @参数：@return      
 	 * @throws
 	 */
@@ -33,7 +33,7 @@ public class RolePowerServiceImpl implements RolePowerService {
 	/**
 	 * <p>方法功能描述：根据角色id查询所有关系</p>
 	 * @方法作者：zy
-	 * @创建时间：2016-9-1 下午6:56:37
+	 * @创建时间：2018-9-1 下午6:56:37
 	 * @参数：@param roleId 角色id
 	 * @参数：@return      
 	 * @throws
@@ -46,7 +46,7 @@ public class RolePowerServiceImpl implements RolePowerService {
 	/**
 	 * <p>方法功能描述：根据id查询关系</p>
 	 * @方法作者：zy
-	 * @创建时间：2016-9-1 下午6:57:03
+	 * @创建时间：2018-9-1 下午6:57:03
 	 * @参数：@param id 关系id
 	 * @参数：@return      
 	 * @throws
@@ -59,7 +59,7 @@ public class RolePowerServiceImpl implements RolePowerService {
 	/**
 	 * <p>方法功能描述：更新关系</p>
 	 * @方法作者：zy
-	 * @创建时间：2016-9-1 下午7:02:50
+	 * @创建时间：2018-9-1 下午7:02:50
 	 * @参数：@param dto 关系对象     
 	 * @throws
 	 */
@@ -70,7 +70,7 @@ public class RolePowerServiceImpl implements RolePowerService {
 	/**
 	 * <p>方法功能描述：删除关系</p>
 	 * @方法作者：zy
-	 * @创建时间：2016-9-1 下午7:03:10
+	 * @创建时间：2018-9-1 下午7:03:10
 	 * @参数：@param id 关系id     
 	 * @throws
 	 */
@@ -81,7 +81,7 @@ public class RolePowerServiceImpl implements RolePowerService {
 	/**
 	 * <p>方法功能描述：增加关系</p>
 	 * @方法作者：zy
-	 * @创建时间：2016-9-1 下午7:03:28
+	 * @创建时间：2018-9-1 下午7:03:28
 	 * @参数：@param dto 关系对象     
 	 * @throws
 	 */

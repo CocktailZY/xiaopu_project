@@ -40,7 +40,7 @@ import com.a2.ssm.util.Page;
  * <p>类名：订单表类</p>
  * <p>类功能描述：该类里存放订单的基本信息</p>
  * @类作者：sun
- * @创建时间：2016-9-2 下午1:46:26
+ * @创建时间：2018-9-2 下午1:46:26
  * @小组：A2小组
  */
 @Controller
@@ -67,7 +67,7 @@ public class OrderInfoController {
 	/**
 	 * <p>方法功能描述：验证用户是否登录</p>
 	 * @方法作者：sun
-	 * @创建时间：2016-9-2 下午2:00:33
+	 * @创建时间：2018-9-2 下午2:00:33
 	 * @参数：@return    
 	 * @返回类型：ModelAndView   
 	 * @throws
@@ -86,7 +86,7 @@ public class OrderInfoController {
 	/**
 	 * <p>方法功能描述：按照用户ID查找历史记录</p>
 	 * @方法作者：sun
-	 * @创建时间：2016-9-2 下午1:46:15
+	 * @创建时间：2018-9-2 下午1:46:15
 	 * @参数：@return    
 	 * @返回类型：void
 	 * @throws
@@ -170,7 +170,7 @@ public class OrderInfoController {
 	/**
 	 * <p>方法功能描述：利用前台的ajax传要删除的订单ID，对订单的状态修改实现逻辑删除</p>
 	 * @方法作者：sun
-	 * @创建时间：2016-9-5 上午10:53:49
+	 * @创建时间：2018-9-5 上午10:53:49
 	 * @参数：@return    
 	 * @返回类型：ModelAndView   
 	 * @throws
@@ -189,7 +189,7 @@ public class OrderInfoController {
 	/**
 	 * <p>方法功能描述：提交订单-添加数据库</p>
 	 * @方法作者：sun
-	 * @创建时间：2016-9-6 上午10:43:02
+	 * @创建时间：2018-9-6 上午10:43:02
 	 * @参数：@return    
 	 * @返回类型：ModelAndView   
 	 * @throws

@@ -36,30 +36,66 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <body>
 	<!-- header -->
 	<div class="header">
-		<div class="w3ls-header">
+		<div class="w3ls-header" style="height: 36px">
+			<div class="w3ls-header-left">
+				<div class="header-logo">
+					<h3><a href="<%=basePath %>index.jsp"><span>S</span>mart <i>Bazaar</i></a></h3>
+					<h6>Your stores. Your place.</h6> 
+				</div>
+			</div>
+			<div class="w3ls-header-right">
+				<ul>
+					<li class="dropdown head-dpdn">
+						<a href="<%=basePath %>user/admin.do" class="dropdown-toggle">进入后台</a>
+					</li>
+				</ul>
+			</div>
 		</div>
-		<div class="header-two"><!-- header-two -->
+		<%-- <div class="header-two"><!-- header-two -->
 			<div class="container">
 				<div class="header-logo">
-					<h1><a href="index.html"><span>S</span>mart <i>Bazaar</i></a></h1>
+					<h1><a href="<%=basePath %>index.jsp"><span>S</span>mart <i>Bazaar</i></a></h1>
 					<h6>Your stores. Your place.</h6> 
 				</div>	
 			</div>		
-		</div>
+		</div> --%>
 		<div>
 			 
 		</div>
 		<div class="header-three">
-			<div class="container">
+			<!-- <div class="container">
 				<div class="menu" style="height: 50px;">	 
 				</div>
-			</div>
+			</div> -->
 		</div>
 	</div>
 	<!-- //header --> 	
 	
-	<div align="center">
-		<h1>快点去激活！！！！！！！</h1>
+	<!-- <div align="center">
+		<h1>请登录填写的注册邮箱进行激活操作</h1>
+	</div> -->
+	<div class="login-page">
+		<div class="container">
+			<div class="login-body" style="width: 60%;">
+			<img src="<%=basePath %>img/icons/success.png">
+			<h3 class="w3ls-title w3ls-title1" style="font-family: '微软雅黑';color: slategrey;margin-top:8px;">注册成功!</h3>
+			<h4 class="w3ls-title w3ls-title1" style="font-family: '微软雅黑';color: slategrey;text-align: center;">请登录填写的注册邮箱进行激活操作</h4>  
+				<%-- <form action="<%=basePath%>user/login.do" method="post">
+					<input type="text" class="user" name="uName" placeholder="输入你的账号" required="">
+					<input type="password" name="uPwd" class="lock" placeholder="密码" required="">
+					<input type="hidden" name="uRoleId" value="2" required="">
+					<input type="submit" value="登 录">
+					<!-- <div class="forgot-grid">
+						<label class="checkbox"><input type="checkbox" name="checkbox"><i></i>记住账号</label>
+						<div class="forgot">
+							<a href="#">忘记密码？</a>
+						</div>
+						<div class="clearfix"> </div>
+					</div> -->
+				</form>
+				<h6>还没有账号？<a href="<%=basePath %>/view/user/signup.jsp">马上注册 »»</a> </h6> --%> 
+			</div>
+		</div>
 	</div>
 	
 	
@@ -120,7 +156,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<!-- 底部广告和功能菜单结束 -->		
 	<div class="copy-right"> 
 		<div class="container">
-			<p>Copyright &copy; 2016.Company name All rights reserved.<a target="_blank" href="http://sc.chinaz.com/moban/">&#x7F51;&#x9875;&#x6A21;&#x677F;</a></p>
+			<p>Copyright &copy; 2018 解忧小铺 All rights reserved.<a target="_blank" href="http://sc.chinaz.com/moban/">&#x7F51;&#x9875;&#x6A21;&#x677F;</a></p>
 		</div>
 	</div> 
 

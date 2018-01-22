@@ -81,12 +81,12 @@ public class ShopServiceImpl implements ShopService {
 		shopMapper.deleteApply(sid);
 	}
 	
-	//2016-9-12
+	//2018-9-12
 	public List<Shop> getByUid(int id) {
 		return shopMapper.selectShop(id);
 	}
 
-	//2016-9-12
+	//2018-9-12
 	public List<Shop> getBySid(int id) {
 		return shopMapper.getBySid(id);
 	}

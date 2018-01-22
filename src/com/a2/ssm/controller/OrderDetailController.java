@@ -12,7 +12,7 @@ import com.a2.ssm.service.OrderDetailService;
  * <p>类名：订单详情</p>
  * <p>类功能描述：存放订单的</p>
  * @类作者：sun
- * @创建时间：2016-9-2 下午1:48:08
+ * @创建时间：2018-9-2 下午1:48:08
  * @小组：A2小组
  */
 @Controller
@@ -25,7 +25,7 @@ public class OrderDetailController {
 	/**
 	 * <p>方法功能描述：</p>
 	 * @方法作者：sun
-	 * @创建时间：2016-9-2 下午1:58:39
+	 * @创建时间：2018-9-2 下午1:58:39
 	 * @参数：@return    
 	 * @返回类型：ModelAndView   
 	 * @throws
