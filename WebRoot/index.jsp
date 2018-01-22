@@ -543,8 +543,7 @@ $(document).ready(function() {
 								</div>
 							</div>
 						</div>
-						<div role="tabpanel" class="tab-pane fade" id="carl"
-							aria-labelledby="carl-tab">
+						<div role="tabpanel" class="tab-pane fade" id="carl" aria-labelledby="carl-tab">
 							<div class="tabcontent-grids">
 								<script>
 									$(document).ready(function() {

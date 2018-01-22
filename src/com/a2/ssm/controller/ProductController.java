@@ -874,10 +874,10 @@ public class ProductController {
 			
 			}		
 		}
-				map.put("generalList2", generalList2);
-	
-		
-				return "/product/products1";
+		map.put("generalList2", generalList2);
+
+
+		return "/product/products1";
 	}
 	/**
 	 * 
