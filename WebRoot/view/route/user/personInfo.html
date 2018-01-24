@@ -1,0 +1,46 @@
+<div class="panel panel-default removePadding remove-radius">
+    <div class="panel-heading">
+        <strong>个人信息</strong>
+    </div>
+    <div class="panel-body">
+        <form class="form-horizontal">
+            <div class="form-group">
+                <label for="inputEmail2" class="col-sm-2 control-label">头像</label>
+                <div class="col-sm-10">
+                    <span id="inputEmail2">
+                        <img ng-src="{{baseurl+'/file/readImg.do?name='+info.headImg}}" width="40" height="40">
+                        <span class="btn btn-nav fileinput-button margin-left" ng-if="showBtn">
+                            <p>上传头像
+                                <input type="file" class="fileuploadComponent" nv-file-select="" uploader="uploader">
+                            </p>
+                        </span>
+                    </span>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="inputEmail3" class="col-sm-2 control-label">用户名</label>
+                <div class="col-sm-10">
+                    <input type="text" class="form-control" id="inputEmail3" ng-model="info.userName" readonly>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="inputPassword3" class="col-sm-2 control-label">密码</label>
+                <div class="col-sm-10">
+                    <input type="password" class="form-control mark" id="inputPassword3" ng-model="info.passWord" readonly>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="inputEmail4" class="col-sm-2 control-label">手机</label>
+                <div class="col-sm-10">
+                    <input type="text" class="form-control mark" id="inputEmail4" ng-model="info.phone" readonly>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-sm-offset-2 col-sm-10">
+                    <button type="button" class="btn btn-default" ng-click="editUserInfo()" ng-if="!showBtn">修改</button>
+                    <button type="button" class="btn btn-default" ng-click="updateUserInfo(info)" ng-if="showBtn">保存</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>

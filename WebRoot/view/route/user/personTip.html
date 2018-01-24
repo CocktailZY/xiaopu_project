@@ -1,0 +1,58 @@
+<!--我的消息-->
+<div class="panel panel-default removePadding remove-radius">
+    <div class="panel-heading pHead">
+        <strong class="lineHeight">我的消息</strong>
+        <button class="btn btn-default pull-right" ng-click="allRead()"  ng-if="personTips.length > 0">全部已读</button>
+    </div>
+    <div class="panel-body">
+        <div class="col-xs-12 padding">
+       		<div ng-if="personTips.length == 0">
+             	<p>抱歉，没有消息!</p>
+            </div>
+            <div class="list-group removeMargin-bottom table-responsive" ng-if="personTips.length > 0">
+                <table class="table" ng-repeat="tab in personTips">
+                    <thead>
+                        <tr>
+                           <th rowspan="2" style="text-align: left;">{{tab.byTime}}</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr ng-repeat="tipInfo in tab.tabList"><!-- tip.tipObj.type == 'table' ng-if="tip.tipObj.type == 'msg'"-->
+                            <td ng-if="tipInfo.tipObj.type == 'table'">
+                            	<span class="badge badge-color" ng-if="tipInfo.tipObj.mark == 'new'">新</span>
+                            	<strong>{{tipInfo.userObj.userName}}</strong>想购买您的
+                            	<a href class="msg-a" ui-sref="goodDtail({goodsId:tipInfo.tipObj.goodId})">{{tipInfo.goodObj.goodName}}</a>
+                            	，提交了交易单
+                            	<span class="pull-right">{{tipInfo.tipObj.createTime}}</span>
+                            </td>
+                            <td ng-if="tipInfo.tipObj.type == 'msg'">
+	                            <span class="badge badge-color" ng-if="tipInfo.tipObj.mark == 'new'">新</span>
+	                            <strong>{{tipInfo.userObj.userName}}</strong>想购买您的
+	                            <a href class="msg-a" ui-sref="goodDtail({goodsId:tipInfo.tipObj.goodId})">
+	                            {{tipInfo.goodObj.goodName}}
+	                            </a>，给您留了言
+	                            <span class="pull-right">{{tipInfo.tipObj.createTime}}</span>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+                <!-- 分页 -->
+				<div id="foot" ng-if="personTips.length > 0">
+					<nav class="text-right page-footer" aria-label="Page navigation">
+						<ul class="pagination pagination-sm page">
+							<li id="left"><a href aria-label="Previous"
+								ng-click="pageLeft()"> <span aria-hidden="true">&laquo;</span>
+							</a></li>
+							<li id="page{{page}}" ng-repeat="page in pageStr" ng-class="{'active' : page.nowPage}" ng-click="toPage(page.pageIndex,$event)">
+							<a href>{{page.pageIndex}}</a>
+							</li>
+							<li id="right"><a href aria-label="Next"
+								ng-click="pageRight()"> <span aria-hidden="true">&raquo;</span>
+							</a></li>
+						</ul>
+					</nav>
+				</div>
+            </div>
+        </div>
+    </div>
+</div>

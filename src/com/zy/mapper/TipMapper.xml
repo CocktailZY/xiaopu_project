@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.zy.mapper.TipMapper" >
+  <resultMap type="com.zy.model.Tip" id="tipResultMap" >
+    <id column="tipid" property="tipId" jdbcType="INTEGER" />
+    <result column="goodid" property="goodId" jdbcType="INTEGER" />
+    <result column="userid" property="userId" jdbcType="INTEGER" />
+    <result column="fromid" property="fromId" jdbcType="INTEGER" />
+    <result column="userid" property="userId" jdbcType="INTEGER" />
+    <result column="type" property="type" jdbcType="VARCHAR" />
+    <result column="createtime" property="createTime" jdbcType="VARCHAR" />
+    <result column="mark" property="mark" jdbcType="VARCHAR" />
+  </resultMap>
+  
+  	<!-- 查询全部Good -->
+	<select id="listAll" parameterType="hashmap" resultMap="tipResultMap">
+		select * from tip where 1=1
+		<if test="userId != null and userId != ''">
+			and userid=#{userId}
+		</if>
+		<if test="mark != null and mark != ''">
+			and mark=#{mark}
+		</if>
+	</select>
+	<!-- 根据id查询地址信息  -->
+	<select id="getById" resultMap="tipResultMap" parameterType="int">
+		select * from tip where tipid=#{tipId}
+	</select>
+	<!-- 更新地址信息 -->
+	<update id="update" parameterType="com.zy.model.Tip">
+		update tip set tipcontent=#{tipContent}, userid=#{userId} where tipid=#{tipId}
+	</update>
+	<!-- 根据id删除地址信息 -->
+	<delete id="delete" parameterType="com.zy.model.Tip">
+		delete from tip where tipid=#{tipId}
+	</delete>
+	<!-- 添加商品 -->
+  	<insert id="save" parameterType="com.zy.model.Tip">
+		insert into tip(tipcontent,userid) values(#{tipContent},#{userId})
+	</insert>
+	
+	<!-- Extend -->
+	<select id="tipGetTime" resultMap="tipResultMap">
+		select * from tip group by date_format( createtime, "%Y-%m-%d" )	
+	</select>
+	<select id="likeByTime" resultMap="tipResultMap" parameterType="hashmap">
+		select * from tip where 1=1
+		 <if test="userId != null and userId != ''">
+			and userid=#{userId}
+		</if>
+		<if test="mark != null and mark != ''">
+			and mark=#{mark}
+		</if>
+		<if test="goodId != null and goodId != ''">
+			and goodid=#{goodId}
+		</if>
+		<if test="createTime != null and createTime != ''">
+			and createtime like '${createTime}%'	
+		</if>
+		<if test="rowStart != null and rowStart != '' and pageSize != null and pageSize != ''">
+			limit #{rowStart},#{pageSize}
+		</if>
+	</select>
+	<update id="allReadGuide" parameterType="com.zy.model.Tip">
+		update tip set mark=#{mark} where userid=#{userId}
+	</update>
+</mapper>

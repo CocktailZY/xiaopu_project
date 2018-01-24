@@ -1,0 +1,64 @@
+<div class="span12">
+    <div class="widget-box">
+        <div class="widget-title">
+            <span class="icon"><i class="glyphicon glyphicon-th"></i></span>
+            <h5>交易单</h5>
+        </div>
+        <div class="widget-content nopadding">
+            <div class="accordion" id="collapse-group" >
+                <div class="accordion-group widget-box" ng-repeat="complete in tableList">
+                    <div class="accordion-heading">
+                        <div class="widget-title table-bg">
+                            <a href style="text-decoration: none;" ng-click="toogle(complete.byTime)">
+                                <h5>{{complete.byTime}}</h5>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="accordion-body" id="{{complete.byTime}}" ng-show="!complete.show">
+                        <div class="widget-content">
+                            <table class="table table-bordered-black text-center">
+                                <thead>
+                                    <th>卖家昵称</th>
+                                    <th>商品名称</th>
+                                    <th>商品价格</th>
+                                    <th>买家昵称</th>
+                                    <th>买家联系方式</th>
+                                    <th>状态</th>
+                                </thead>
+                                <tbody ng-repeat="un in complete.tabList">
+                               <!--  <tr>
+                                    <td rowspan="{{un.goodList.length + 1}}"><!-- rowspan="{{un.goodList.length + 1}}" 
+                                        {{un.userName}}
+                                        <p>{{un.phone}}</p>
+                                    </td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                 </tr> -->
+                                <tr ng-repeat="good in un.goodList">
+	                                <td rowspan="{{un.goodList.length}}" ng-if="$index == 0">
+                                		{{un.userName}}
+                                        <p>{{un.phone}}</p>
+	                                </td>
+                                    <td>{{good.goodObj.goodName}}</td>
+                                    <td>{{good.goodObj.price}}￥</td>
+                                    <td>{{good.userObj.userName}}</td>
+                                    <td>{{good.userObj.phone}}</td>
+                                    <td ng-if="good.tabObj.status == 1">
+                                        已完成
+                                    </td>
+                                    <td ng-if="good.tabObj.status == 0">
+                                        未完成
+                                    </td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

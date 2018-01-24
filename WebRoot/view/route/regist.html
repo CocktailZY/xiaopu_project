@@ -1,0 +1,39 @@
+<div class="col-sm-6 col-sm-offset-3 form-box">
+    <div class="form-top">
+        <div class="form-top-left">
+            <h3>请填写注册信息</h3>
+            <p>已经注册,请<a href ui-sref="login">登录</a></p>
+        </div>
+        <div class="form-top-right">
+            <i class="fa fa-lock"></i>
+        </div>
+    </div>
+    <div class="form-bottom">
+        <form class="login-form" name="registForm">
+            <div class="form-group">
+                <label class="sr-only" for="userName">用户名</label>
+                <input type="text" title="此项必填" name="userName" placeholder="用户名" class="form-username form-control"
+                       id="userName" ng-model="user.userName" required ng-minlength="6">
+                       <span ng-if="registForm.userName.$error.minlength">最少6位</span>
+            </div>
+            <div class="form-group">
+                <label class="sr-only" for="userPhone">手机</label>
+                <input type="text" title="此项必填" name="userPhone" placeholder="手机" class="form-username form-control"
+                       id="userPhone" ng-model="user.phone" required ng-pattern="/^1[3|4|5|8|7]\d{9}$/">
+						<span ng-if="registForm.userPhone.$error.pattern">请填写正确的手机号码 </span>
+            </div>
+            <div class="form-group">
+                <label class="sr-only" for="form-password">密码</label>
+                <input type="password" title="此项必填" name="form-password" placeholder="密码" class="form-password form-control"
+                       id="form-password" ng-model="user.passWord" required ng-minlength="6">
+                       <span ng-if="registForm.userName.$error.minlength">最少6位</span>
+            </div>
+            <div class="form-group">
+                <label class="sr-only" for="form-checkPassword">确认密码</label>
+                <input type="password" title="此项必填" name="form-checkPassword" placeholder="密码" class="form-password form-control"
+                       id="form-checkPassword" ng-model="user.checkPassword" required>
+            </div>
+            <button type="button" class="btn btn-warning" ng-click="regist(user)" ng-disabled="registForm.$invalid">注册</button>
+        </form>
+    </div>
+</div>

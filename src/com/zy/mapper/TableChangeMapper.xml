@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.zy.mapper.TableChangeMapper">
+	<resultMap type="com.zy.model.TableChange" id="tableChangeResultMap">
+		<id column="tableid" property="tableId" jdbcType="INTEGER" />
+		<result column="fromid" property="fromId" jdbcType="INTEGER" />
+		<result column="goodid" property="goodId" jdbcType="INTEGER" />
+		<result column="userid" property="userId" jdbcType="INTEGER" />
+		<result column="ordertime" property="orderTime" jdbcType="VARCHAR" />
+		<result column="finishtime" property="finishTime" jdbcType="VARCHAR" />
+		<result column="status" property="status" jdbcType="INTEGER" />
+		<result column="mark" property="mark" jdbcType="VARCHAR" />
+	</resultMap>
+
+	<!-- 查询全部Good -->
+	<select id="list" resultMap="tableChangeResultMap">
+		select * from table_change
+	</select>
+	<!-- 分页查询所有商品 -->
+	<select id="listAll" parameterType="hashmap" resultMap="tableChangeResultMap">
+		select * from table_change where 1=1
+		<if test="userId != null and userId != ''">
+			and userid=#{userId}
+		</if>
+		<if test="mark != null and mark != ''">
+			and mark=#{mark}
+		</if>
+		<if test="goodId != null and goodId != ''">
+			and goodid=#{goodId}
+		</if>
+		<if
+			test="rowStart != null and rowStart != '' and pageSize != null and pageSize != ''">
+			limit #{rowStart},#{pageSize}
+		</if>
+	</select>
+	<!-- 根据id查询地址信息 -->
+	<select id="getById" resultMap="tableChangeResultMap"
+		parameterType="int">
+		select * from table_change where tableid=#{tableId}
+	</select>
+	<!-- 更新地址信息 -->
+	<update id="update" parameterType="com.zy.model.TableChange">
+		update table_change set
+		<if test="fromId != null and fromId != ''">
+			fromid=#{fromId},
+		</if>
+		<if test="goodId != null and goodId != ''">
+			goodid=#{goodId},
+		</if>
+		<if test="orderTime != null and orderTime != ''">
+			ordertime=#{orderTime},
+		</if>
+		<if test="finishTime != null and finishTime != ''">
+			finishtime=#{finishTime},
+		</if>
+		<if test="status != null and status != ''">
+			status=#{status}
+		</if>
+		where tableid=#{tableId}
+	</update>
+	<update id="updateStatus" parameterType="com.zy.model.TableChange">
+		update table_change set
+		status=#{status}, mark=#{mark} where tableid=#{tableId}
+	</update>
+	<!-- 根据id删除地址信息 -->
+	<delete id="delete" parameterType="com.zy.model.TableChange">
+		delete from table_change where
+		tableid=#{tableId}
+	</delete>
+	<!-- 添加商品 -->
+	<insert id="save" parameterType="com.zy.model.TableChange" useGeneratedKeys="true" keyProperty="tableId">
+		insert into
+		table_change(tableid,fromid,goodid,userid,ordertime,finishtime,status,mark)
+		values(#{tableId},#{fromId},#{goodId},#{userId},#{orderTime},#{finishTime},0,#{mark})
+	</insert>
+	<!-- Extend -->
+	<select id="tableCheck" parameterType="com.zy.model.TableChange"
+		resultMap="tableChangeResultMap">
+		select * from table_change where goodid=#{goodId} and
+		fromid=#{fromId} and mark=#{mark}
+	</select>
+	<select id="tableGetTime" resultMap="tableChangeResultMap">
+		select * from table_change
+		group by date_format( ordertime, "%Y-%m-%d" )
+	</select>
+	<select id="likeByTime" resultMap="tableChangeResultMap"
+		parameterType="hashmap">
+		select * from table_change where 1=1
+		<if test="userId != null and userId != ''">
+			and userid=#{userId}
+		</if>
+		<if test="mark != null and mark != ''">
+			and mark=#{mark}
+		</if>
+		<if test="status != null and status != ''">
+			and status=#{status}
+		</if>
+		<if test="goodId != null and goodId != ''">
+			and goodid=#{goodId}
+		</if>
+		<if test="orderTime != null and orderTime != ''">
+			and ordertime like '${orderTime}%'
+		</if>
+		<if test="fromId != null and fromId != ''">
+			and fromid&lt;&gt;#{fromId}
+		</if>
+		<if
+			test="rowStart != null and rowStart != '' and pageSize != null and pageSize != ''">
+			limit #{rowStart},#{pageSize}
+		</if>
+	</select>
+	<select id="likeByTimeMy" resultMap="tableChangeResultMap"
+		parameterType="hashmap">
+		select * from table_change where 1=1
+		<if test="mark != null and mark != ''">
+			and mark=#{mark}
+		</if>
+		<if test="status != null and status != ''">
+			and status=#{status}
+		</if>
+		<if test="goodId != null and goodId != ''">
+			and goodid=#{goodId}
+		</if>
+		<if test="orderTime != null and orderTime != ''">
+			and ordertime like '${orderTime}%'
+		</if>
+		<if test="fromId != null and fromId != ''">
+			and fromid=#{fromId}
+		</if>
+		<if
+			test="rowStart != null and rowStart != '' and pageSize != null and pageSize != ''">
+			limit #{rowStart},#{pageSize}
+		</if>
+	</select>
+	
+	<select id="pageListAll" parameterType="hashmap" resultMap="tableChangeResultMap">
+		select * from table_change limit #{rowStart},#{pageSize}
+	</select>
+</mapper>

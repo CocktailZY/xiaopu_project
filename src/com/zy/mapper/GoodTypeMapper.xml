@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.zy.mapper.GoodTypeMapper" >
+  <resultMap type="com.zy.model.GoodType" id="goodTypeResultMap" >
+    <id column="goodtypeid" property="goodTypeId" jdbcType="INTEGER" />
+    <result column="goodtypename" property="goodTypeName" jdbcType="VARCHAR" />
+  </resultMap>
+  
+  	<select id="list" resultMap="goodTypeResultMap">
+		select * from goodtype
+	</select>
+  
+	<!-- 根据name查询 -->
+	<select id="getByName" resultMap="goodTypeResultMap" parameterType="String">
+		select * from goodtype where goodtypename=#{goodTypeName}
+	</select>
+	<!-- 根据id查询地址信息  -->
+	<select id="getById" resultMap="goodTypeResultMap" parameterType="int">
+		select * from goodtype where goodtypeid=#{goodTypeId}
+	</select>
+	
+	<!-- 更新地址信息 -->
+	<update id="update" parameterType="com.zy.model.GoodType">
+		update goodtype set goodtypename=#{goodTypeName} where goodtypeid=#{goodTypeId}
+	</update>
+	<!-- 根据id删除地址信息 -->
+	<delete id="delete" parameterType="com.zy.model.GoodType">
+		delete from goodtype where goodtypeid=#{goodTypeId}
+	</delete>
+	<!-- 添加商品 -->
+  	<insert id="save" parameterType="com.zy.model.GoodType">
+		insert into goodtype(goodtypename) values(#{goodTypeName})
+	</insert>
+	<!-- Extend -->
+	<!-- 条件查询 -->
+	<select id="listAll" parameterType="hashmap" resultMap="goodTypeResultMap">
+		select * from goodtype where 1=1
+		<if test="goodId != null and goodId != ''">
+			and goodtypeid=#{goodTypeId}
+		</if>
+		<if test="goodTypeName != null and goodTypeName != ''">
+			and goodtypename=#{goodTypeName}
+		</if>
+	</select>
+	
+	<select id="pageListAll" parameterType="hashmap" resultMap="goodTypeResultMap">
+		select * from goodtype limit #{rowStart},#{pageSize}
+	</select>
+</mapper>

@@ -1,0 +1,64 @@
+<div class="span12">
+	<!--<button class="btn" onclick="window.location.href='<%=basePath %>view/user/signup.jsp'">注册新用户</button>-->
+	<div id="delModel" class="reveal-modal">
+		<h3 class="modal-title">提示信息!</h3>
+		<div class="modal-body">确定删除<strong>{{userInfo.userName}}</strong>这个角色吗?</div>
+		<div class="modal-footer">
+			<button class="btn btn-danger" ng-click="delUser(userInfo.userId)">删除</button>
+			<button class="btn btn-default" ng-click="delCansle()">取消</button>
+		</div>
+	</div>
+	<div class="widget-box">
+		<div class="widget-title">
+			<span class="icon"><i class="glyphicon glyphicon-th"></i> </span>
+			<h5>用户列表</h5>
+		</div>
+		<div class="widget-content nopadding">
+			<table class="table table-bordered data-table">
+				<thead>
+					<tr>
+						<th>用户编号</th>
+						<th>用户头像</th>
+						<th>用户名</th>
+						<th>密码</th>
+						<th>用户角色</th>
+						<th>操 作</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr class="gradeX" ng-repeat="user in userList | filter:query">
+						<td>{{user.userObj.userId}}</td>
+						<td><img
+							ng-src="{{baseurl+'/file/readImg.do?name='+user.userObj.headImg}}"
+							width="30px" height="30px" />
+						</td>
+						<td>{{user.userObj.userName}}</td>
+						<td>{{user.userObj.passWord}}</td>
+						<td>{{user.roleObj.roleName}}</td>
+						<td class="center">
+							<button class="btn btn-danger" data-reveal-id="delModel" ng-click="showDelModel(user.userObj.userId)">删除</button>
+						</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+		<!-- 分页 -->
+		<div id="foot">
+			<nav class="text-right page-footer" aria-label="Page navigation">
+			<label style="position: relative; top: 9px;float: left;">Search: 
+			<input type="text" ng-model="query" class="ng-valid ng-dirty ng-valid-parse ng-touched"></label>
+				<ul class="pagination pagination-sm page">
+					<li id="left"><a href aria-label="Previous"
+						ng-click="pageLeft()"> <span aria-hidden="true">&laquo;</span>
+					</a></li>
+					<li id="page{{page}}" ng-repeat="page in pageStr" ng-class="{'active' : page.nowPage}" ng-click="toPage(page.pageIndex,$event)">
+					<a href>{{page.pageIndex}}</a>
+					</li>
+					<li id="right"><a href aria-label="Next"
+						ng-click="pageRight()"> <span aria-hidden="true">&raquo;</span>
+					</a></li>
+				</ul>
+			</nav>
+		</div>
+	</div>
+</div>

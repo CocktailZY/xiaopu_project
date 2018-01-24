@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.zy.mapper.GoodMapper" >
+  <resultMap type="com.zy.model.Good" id="goodResultMap" >
+    <id column="goodid" property="goodId" jdbcType="INTEGER" />
+    <result column="goodname" property="goodName" jdbcType="VARCHAR" />
+    <result column="price" property="price" jdbcType="VARCHAR" />
+    <result column="content" property="content" jdbcType="VARCHAR" />
+	<result column="ontime" property="onTime" jdbcType="VARCHAR" />
+	<result column="goodtypeid" property="goodTypeId" jdbcType="INTEGER" /> 
+	<result column="userid" property="userId" jdbcType="INTEGER" />  
+	<result column="status" property="status" jdbcType="INTEGER" />
+  </resultMap>
+  
+  	<!-- 查询全部Good -->
+	<select id="listAll" parameterType="hashmap" resultMap="goodResultMap">
+		select * from good where 1=1 and status &lt;&gt; 9 and status &lt;&gt; 0
+		<if test="goodName != null and goodName != ''">
+			and goodname=#{goodName}
+		</if>
+		<if test="goodTypeId != null and goodTypeId != ''">
+			and goodtypeid=#{goodTypeId}
+		</if>
+		<if test="userId != null and userId != ''">
+			and userid=#{userId}
+		</if>
+		<if test="type != null and type != ''">
+			and userid &lt;&gt; #{userId}
+		</if>
+		<if test="status != null and status != ''">
+			and status=#{status}
+		</if>
+		<if test="rowStart != null and pageSize != null">
+			limit #{rowStart},#{pageSize}
+		</if>
+	</select>
+
+	<!-- 模糊查询 -->
+	<select id="mohuList" parameterType="hashmap" resultMap="goodResultMap">
+		select * from good where goodname like '%${conds}%'
+		<if test="goodTypeId != null and goodTypeId != ''">
+			or goodtypeid=#{goodTypeId}
+		</if>
+		and status=#{status}
+		<if test="rowStart != null and  pageSize != null">
+			limit #{rowStart},#{pageSize}
+		</if>
+	</select>
+	
+	<!-- 根据id查询地址信息  -->
+	<select id="getById" resultMap="goodResultMap" parameterType="int">
+		select * from good where goodid=#{goodId}
+	</select>
+	<!-- 更新地址信息 -->
+	<update id="update" parameterType="com.zy.model.Good">
+		update good set goodname=#{goodName}, price=#{price}, content=#{content}, goodtypeid=#{goodTypeId},status=#{status} where goodid=#{goodId}
+	</update>
+	<!-- 根据id删除地址信息 -->
+	<update id="delete" parameterType="com.zy.model.Good">
+		update good set status=9 where goodid=#{goodId}
+	</update>
+	<!-- 添加商品 -->
+  	<insert id="save" parameterType="com.zy.model.Good" useGeneratedKeys="true" keyProperty="goodId">
+		insert into good(goodid,goodname,price,content,goodtypeid,ontime,userid,status) values(#{goodId},#{goodName},#{price},#{content},#{goodTypeId},#{onTime},#{userId},1)
+	</insert>
+</mapper>

@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.zy.mapper.GoodImgMapper" >
+  <resultMap type="com.zy.model.GoodImg" id="goodImgResultMap" >
+    <id column="imgid" property="imgId" jdbcType="INTEGER" />
+    <result column="imgurl" property="imgUrl" jdbcType="VARCHAR" />
+    <result column="goodid" property="goodId" jdbcType="INTEGER" />
+  </resultMap>
+  
+  	<!-- 查询全部GoodImg -->
+	<select id="listAll" resultMap="goodImgResultMap">
+		select * from goodimg
+	</select>
+	<!-- 根据id查询信息  -->
+	<select id="getById" resultMap="goodImgResultMap" parameterType="int">
+		select * from goodimg where imgid=#{imgId}
+	</select>
+	<!-- 更新地址信息 -->
+	<update id="update" parameterType="com.zy.model.GoodImg">
+		update goodimg set imgurl=#{imgUrl}, goodid=#{goodId} where imgid=#{imgId}
+	</update>
+	<!-- 根据id删除地址信息 -->
+	<delete id="delete" parameterType="com.zy.model.GoodImg">
+		delete from goodimg where imgid=#{imgId}
+	</delete>
+	<!-- 添加商品 -->
+  	<insert id="save" parameterType="com.zy.model.GoodImg">
+		insert into goodimg(imgurl,goodid) values(#{imgUrl},#{goodId})
+	</insert>
+	<!-- Extend -->
+	<select id="listByGoodId" resultMap="goodImgResultMap" parameterType="int">
+		select * from goodimg where goodid=#{goodId}
+	</select>
+</mapper>

@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.zy.mapper.CartMapper" >
+  <resultMap type="com.zy.model.Cart" id="cartResultMap" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="num" property="num" jdbcType="INTEGER" />
+    <result column="total" property="total" jdbcType="VARCHAR" />
+    <result column="goodid" property="goodId" jdbcType="INTEGER" />
+    <result column="userid" property="userId" jdbcType="INTEGER" />
+  </resultMap>
+  
+  	<!-- 查询全部GoodImg -->
+	<select id="listAll" resultMap="cartResultMap">
+		select * from cart
+	</select>
+	<!-- 根据id查询信息  -->
+	<select id="getById" resultMap="cartResultMap" parameterType="int">
+		select * from cart where id=#{id}
+	</select>
+	<!-- 更新地址信息 -->
+	<update id="update" parameterType="com.zy.model.Cart">
+		update cart set num=#{num}, total=#{total} where id=#{id}
+	</update>
+	<!-- 根据id删除地址信息 -->
+	<delete id="delete" parameterType="com.zy.model.Cart">
+		delete from cart where id=#{id}
+	</delete>
+	<!-- 添加商品 -->
+  	<insert id="save" parameterType="com.zy.model.Cart">
+		insert into cart(num,total,goodid,userid) values(#{num},#{total},#{goodId},#{userId})
+	</insert>
+	<!-- Extend -->
+	<select id="listByUserId" resultMap="cartResultMap" parameterType="hashmap">
+		select * from cart where 1=1
+		<if test="userId != null and userId != ''">
+			and userid=#{userId}
+		</if>
+		<if test="rowStart != null and pageSize != null">
+			limit #{rowStart},#{pageSize}
+		</if>
+		
+	</select>
+	<select id="getByGoodId" resultMap="cartResultMap" parameterType="int">
+		select * from cart where goodid=#{goodId}
+	</select>
+</mapper>

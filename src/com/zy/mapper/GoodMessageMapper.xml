@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.zy.mapper.GoodMessageMapper" >
+  <resultMap type="com.zy.model.GoodMessage" id="goodMessageResultMap" >
+    <id column="msgid" property="msgId" jdbcType="INTEGER" />
+    <result column="parentmsgid" property="parentMsgId" jdbcType="INTEGER" />
+    <result column="goodid" property="goodId" jdbcType="INTEGER" />
+    <result column="userid" property="userId" jdbcType="INTEGER" />
+    <result column="msgcontent" property="msgContent" jdbcType="VARCHAR" />
+	<result column="inserttime" property="insertTime" jdbcType="VARCHAR" />
+	<result column="mark" property="mark" jdbcType="VARCHAR" />
+  </resultMap>
+  
+	<!-- 分页查询所有商品 -->
+	<select id="listAll" parameterType="hashmap" resultMap="goodMessageResultMap">
+		select * from goodmessage where 1=1 and mark &lt;&gt; '0'
+		<if test="userId != null and userId != ''">
+			and userid=#{userId}
+		</if>
+		<if test="mark != null and mark != ''">
+			and mark=#{mark}
+		</if>
+		<if test="goodId != null and goodId != ''">
+			and goodid=#{goodId}
+		</if>
+		<if test="rowStart != null and rowStart != '' and pageSize != null and pageSize != ''">
+			limit #{rowStart},#{pageSize}
+		</if>
+	</select>
+	
+	<!-- 根据id查询地址信息  -->
+	<select id="getById" resultMap="goodMessageResultMap" parameterType="int">
+		select * from goodmessage where msgid=#{msgId}
+	</select>
+	
+	<!-- 根据goodid查询地址信息  -->
+	<select id="getByGoodId" resultMap="goodMessageResultMap" parameterType="hashmap">
+		select * from goodmessage where goodid=#{goodId} and mark='1' limit #{rowStart},#{pageSize}
+	</select>
+	<!-- 更新地址信息 -->
+	<!-- <update id="update" parameterType="com.zy.model.GoodMessage">
+		update goodmessage set goodname=#{goodName}, price=#{price}, content=#{content}, goodtypeid=#{goodTypeId}, status=#{status} where msgid=#{msgId}
+	</update> -->
+	<!-- 根据id删除地址信息 -->
+	<delete id="delete" parameterType="com.zy.model.GoodMessage">
+		update goodmessage set mark='0' where msgid=#{msgId}
+	</delete>
+	<!-- 添加商品 -->
+  	<insert id="save" parameterType="com.zy.model.GoodMessage" useGeneratedKeys="true" keyProperty="msgId">
+		insert into goodmessage(msgid,parentmsgid,goodid,userid,msgcontent,inserttime,mark) values(#{msgId},#{parentMsgId},#{goodId},#{userId},#{msgContent},#{insertTime},'1')
+	</insert>
+</mapper>

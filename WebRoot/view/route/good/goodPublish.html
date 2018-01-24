@@ -1,0 +1,69 @@
+<!--发布商品-->
+<div class="panel panel-default removePadding remove-radius">
+    <div class="panel-heading">
+        <p><strong>发布商品</strong></p>
+    </div>
+    <div class="panel-body">
+        <div class="col-xs-12 padding">
+            <div class="list-group removeMargin-bottom">
+                <div class="col-xs-12 input-group table-responsive">
+                    <form>
+                        <table class="table table-bordered text-center">
+                            <colgroup>
+                                <col class="col-xs-2">
+                                <col class="col-xs-10">
+                            </colgroup>
+                            <tbody>
+                            <tr>
+                                <th scope="row">
+                                    商品图片
+                                    <p style="color: #555;font-size: 10px;">(最多可上传5张,且需为单数)</p>
+                                </th>
+                                <td>
+                                    <span class="icon" ng-repeat="img in goodimgs"><i class="glyphicon glyphicon-remove-circle icon-iremove" ng-click="removeImg($index)"></i>
+                                    	<img class="" ng-src="{{baseurl+'/file/readImg.do?name='+img}}" width="80" height="80">
+                                    </span>
+                                	<span class="btn btn-nav span-upload-btn">
+                                        <p>
+                                            <span class="span-upload-word">上传图片</span>
+                                            <input class="input-upload-btn" type="file" nv-file-select="" uploader="uploader" multiple>
+                                        </p>
+                                    </span>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th scope="row">商品名称</th>
+                                <td><input type="text" class="form-control" ng-model="good.goodName"></td>
+                            </tr>
+                            <tr>
+                                <th scope="row">商品描述</th>
+                                <td><input type="text" class="form-control" ng-model="good.content"></td>
+                            </tr>
+                            <tr>
+                                <th scope="row">商品价格</th>
+                                <td><input type="text" class="form-control" ng-model="good.price"></td>
+                            </tr>
+                            <tr>
+                                <th scope="row">商品类别</th>
+                                <td>
+                                    <select class="form-control" ng-model="good.goodTypeId">
+                                        <option ng-repeat="type in goodTypes" value="{{type.typeObj.goodTypeId}}">
+                                            {{type.typeObj.goodTypeName}}
+                                        </option>
+                                    </select>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td colspan="2">
+                                    <button class="btn btn-default btn-info" style="width: 111px;" ng-click="pubGood(good)">保存</button>
+                                    <button class="btn btn-default btn-info" style="width: 111px;" ng-click="cansol()">取消</button>
+                                </td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

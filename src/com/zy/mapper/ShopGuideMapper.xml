@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.zy.mapper.ShopGuideMapper" >
+  <resultMap type="com.zy.model.ShopGuide" id="shopGuideResultMap" >
+    <id column="guideid" property="guideId" jdbcType="INTEGER" />
+    <result column="guidecontent" property="guideContent" jdbcType="VARCHAR" />
+    <result column="status" property="status" jdbcType="INTEGER" />
+    <result column="userid" property="userId" jdbcType="INTEGER" />
+    <result column="goodid" property="goodId" jdbcType="INTEGER" />
+    <result column="mark" property="mark" jdbcType="VARCHAR" />
+  </resultMap>
+  
+  	<!-- 查询全部Good -->
+	<select id="listAll" resultMap="shopGuideResultMap">
+		select * from guide where 1=1
+		<!-- <if test="status != null || status != '' ">
+			and status = #{status}
+		</if> -->
+	</select>
+	<!-- 根据id查询地址信息  -->
+	<select id="getById" resultMap="shopGuideResultMap" parameterType="int">
+		select * from guide where guideid=#{guideId}
+	</select>
+	<!-- 更新地址信息 -->
+	<update id="update" parameterType="com.zy.model.ShopGuide">
+		update guide set guidecontent=#{guideContent}, status=#{status}, mark=#{mark} where guideid=#{guideId}
+	</update>
+	<!-- 根据id删除地址信息 -->
+	<delete id="delete" parameterType="com.zy.model.ShopGuide">
+		delete from guide where guideid=#{guideId}
+	</delete>
+	<!-- 添加商品 -->
+  	<insert id="save" parameterType="com.zy.model.ShopGuide">
+		insert into guide(guidecontent,status,userid,goodid,mark) values(#{guideContent},0,#{userId},#{goodId},#{mark})
+	</insert>
+	<!-- Extend -->
+	<select id="pageListAll" parameterType="hashmap" resultMap="shopGuideResultMap">
+		select * from guide where 1=1
+		<if test="userId != null and userId != '' ">
+			and userid = #{userId}
+		</if>
+		<if test="status != null and status != '' ">
+			and status = #{status}
+		</if>
+		<if test="mark != null and mark != ''">
+			and mark=#{mark}
+		</if> 
+		<if test="rowStart != null and rowStart != '' and pageSize != null and pageSize != ''">
+			limit #{rowStart},#{pageSize}
+		</if>
+	</select>
+	<update id="allReadGuide" parameterType="com.zy.model.ShopGuide">
+		update guide set mark=#{mark} where userid=#{userId}
+	</update>
+</mapper>

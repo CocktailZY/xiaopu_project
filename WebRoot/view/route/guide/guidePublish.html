@@ -1,0 +1,45 @@
+<!--发布商品-->
+<div class="panel panel-default removePadding remove-radius">
+    <div class="panel-heading">
+        <p><strong>公告申请</strong></p>
+    </div>
+    <div class="panel-body">
+        <div class="col-xs-12 padding">
+            <div class="list-group removeMargin-bottom">
+                <div class="col-xs-12 input-group table-responsive">
+                    <form>
+                        <table class="table table-bordered text-center">
+                            <colgroup>
+                                <col class="col-xs-2">
+                                <col class="col-xs-10">
+                            </colgroup>
+                            <tbody>
+                            <tr>
+                                <th scope="row">
+                                    公告内容
+                                </th>
+                                <td><textarea class="form-control" rows="3" ng-model="guide.guideContent"></textarea></td>
+                            <tr>
+                                <th scope="row">关联商品</th>
+                                <td>
+                                    <select class="form-control" ng-model="guide.goodId">
+                                        <option ng-repeat="good in personGoods" value="{{good.goodObj.goodId}}">
+                                            {{good.goodObj.goodName}}
+                                        </option>
+                                    </select>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td colspan="2">
+                                    <button class="btn btn-default btn-info" style="width: 111px;" ng-click="pubGuide(guide)">提交申请</button>
+                                    <!-- <button class="btn btn-default btn-info" style="width: 111px;" ng-click="cansol()">取消</button> -->
+                                </td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

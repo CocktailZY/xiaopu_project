@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>校园二手商品交易平台</title>
+    <link href="css/bootstrap.css" rel="stylesheet"/>
+    <link href="css/font-awesome.css" rel="stylesheet"/>
+    <link href="css/style.css" rel="stylesheet"/>
+    <link href="css/animate.min.css" rel="stylesheet"/>
+    <link href="css/main.css" rel="stylesheet"/>
+    <link href="css/layout.css" rel="stylesheet"/>
+    <link href="css/view.css" rel="stylesheet"/>
+    <link href="css/reveal.css" rel="stylesheet"/>
+</head>
+<body class="bg-gary" ng-app="mainApp" ng-controller="rootCtrl" ng-cloak>
+<!--导航条开始-->
+<nav class="navbar navbar-default navbar-fixed-top">
+    <div class="container-fluid" >
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <form class="navbar-form navbar-right removePadding ml45">
+            <div class="input-group">
+			     <input type="text" class="form-control" placeholder="Search for..." ng-model="condition">
+			     <span class="input-group-btn">
+				       <button class="btn btn-default" type="button" ng-click="likeSearch(condition)">Go!</button>
+			     </span>
+    		</div><!-- /input-group -->
+        </form>
+        <div class="collapse navbar-collapse mt10" id="bs-example-navbar-collapse-1">
+        	<div class="nav navbar-nav navbar-right pl-10" ng-if="loginUser != null">
+	            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <a class="navbar-brand" href ng-click="loginOut()">注销</a>
+            </div>
+            <div class="nav navbar-nav navbar-right pt-10" ng-if="loginUser != null">
+                <img ng-src="{{baseUrl+'/file/readImg.do?name='+loginUser.headImg}}" width="30" height="30">
+                {{loginUser.userName}}
+            </div>
+            <div class="nav navbar-nav navbar-right pt-10" ng-if="loginUser == null">
+                <p style="margin-top:3px;"><a href="{{baseUrl}}/view/index.html#/login">登录</a>/
+                <a href="{{baseUrl}}/view/index.html#/regist">注册</a></p>
+            </div>
+            <ul class="nav navbar-nav navbar-right">
+                <li class="dropdown">
+                    <a href class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" style="width: 111px;">个人中心<span class="caret"></span></a>
+                    <ul class="dropdown-menu" style="min-width:110px;">
+                        <li><a href ui-sref="personCenter({type:'good'})" ui-sref-opts="{reload:true}">我的商品</a></li><!--user.userid-->
+                        <li><a href ui-sref="personCenter({type:'tip'})" ui-sref-opts="{reload:true}">我的消息<span class="badge badge-color" ng-if="msgNum != 0">{{msgNum}}</span></a></li>
+                        <li><a href ui-sref="personCenter({type:'guide'})" ui-sref-opts="{reload:true}">我的公告<span class="badge badge-color" ng-if="guideNum != 0">{{guideNum}}</span></a></li>
+                        <li><a href ui-sref="personCenter({type:'table'})" ui-sref-opts="{reload:true}">交易单<span class="badge badge-color" ng-if="tableNum != 0">{{tableNum}}</span></a></li><!--user.userid-->
+                        <li><a href ui-sref="personCenter({type:'info'})" ui-sref-opts="{reload:true}">个人设置</a></li>
+                    </ul>
+                </li>
+            </ul>
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <!-- <div class="nav navbar-nav navbar-right">
+                <a class="navbar-brand" href ui-sref="guide">二手指南</a>
+            </div> -->
+            <div class="nav navbar-nav navbar-right">
+                <a class="navbar-brand" href ui-sref="cart" ui-sref-opts="{reload:true}">购物车<span class="badge badge-color" ng-if="cartNum != 0">{{cartNum}}</span></a>
+            </div>
+            <div class="nav navbar-nav navbar-right">
+                <a class="navbar-brand" href ui-sref="personCenter.personTable({type:'table'})" ui-sref-opts="{reload:true}">交易单<span class="badge badge-color" ng-if="tableNum != 0">{{tableNum}}</span></a>
+            </div>
+            <div class="navbar-header navbar-right">
+                <a class="navbar-brand" href ui-sref="goods" ui-sref-opts="{reload:true}">首页</a>
+            </div>
+            <div class="nav navbar-nav navbar-left pb-10">
+                <img src="images/logo.png" width="40" height="40" alt="logo">
+                <span style="font-size: 20px; font-family:'Calibri Light'">校园二手商品交易平台</span>
+            </div>
+            
+        </div><!-- /.navbar-collapse -->
+    </div><!-- /.container-fluid -->
+</nav>
+<!--导航条结束-->
+<!--路由模版部分-->
+<div class="container-fluid container-fluid-bg mt60 margin-bottom" ui-view="">
+</div>
+
+<!--.loading-modal  正在加载模态框-->
+<div class="modal loading-modal" data-backdrop="static" data-keyboard="false">
+    <div class="modal-dialog">
+        <div class="modal-content text-center"  style="margin:40%">
+            <div class="modal-body">
+                <img src="images/loading.gif">
+            </div>
+        </div>
+    </div>
+</div>
+
+<!--引入js-->
+<script src="lib/jquery/jquery.min.js"></script>
+
+<script src="lib/bootstrap/bootstrap.min.js"></script>
+<script src="lib/bootstrap/bootstrap-growl.min.js"></script>
+<script src="lib/jquery/jquery-confirm.min.js"></script>
+<script src="lib/angular/angular.js"></script>
+<script src="lib/angularFileUpload/angular-file-upload.js"></script>
+<script src="lib/angular/angular-resource.min.js"></script>
+<script src="lib/angular/angular-ui-router.min.js"></script>
+<!--<script src="lib/angular/angular-storage.min.js"></script>-->
+
+<script src="script/restful.js"></script>
+<script src="script/urlProperties.js"></script>
+<script src="script/util.js"></script>
+
+
+<!--引入项目js-->
+<script src="script/rootCtrl.js"></script>
+
+<script src="lib/jquery/school.js"></script>
+<script src="script/ui_tool.js"></script>
+<script src="script/common.js"></script>
+
+<script src="script/good/cartCtrl.js"></script>
+<script src="script/good/goodCtrl.js"></script>
+<script src="script/good/goodPublishCtrl.js"></script>
+<script src="script/good/goodDetailCtrl.js"></script>
+
+<script src="lib/jquery/jQuery-easing.js"></script>
+<script src="lib/jquery/jQuery-jcImgScroll.js"></script>
+
+<script src="script/user/personCenterCtrl.js"></script>
+<script src="script/user/personInfoCtrl.js"></script>
+<script src="script/user/personGoodsCtrl.js"></script>
+<script src="script/user/personTipCtrl.js"></script>
+<script src="script/user/personTableCtrl.js"></script>
+
+<script src="script/guide/guideCtrl.js"></script>
+<script src="script/guide/guidePublishCtrl.js"></script>
+<script src="script/good/goodSearchResult.js"></script>
+</body>
+</html>

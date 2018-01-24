@@ -1,0 +1,51 @@
+<div class="miacol-xs-12 removePadding mt-50">
+	<div class="panel panel-default">
+		<div class="panel-heading">
+			<strong>搜索结果</strong> <span class="margin-left">{{conditions}}</span>
+		</div>
+		<div class="panel-body">
+			<div class="panel-body" ng-if="!flag">
+				<div ui-sref="goodDtail({goodsId:goods.goodObj.goodId})"
+					class="col-xs-12 col-sm-6 col-md-4 col-lg-3"
+					ng-repeat="goods in goodsList">
+					<div class="speical speical-default speical-radius">
+						<div class="shape">
+							<div class="shape-text" ng-if="goods.goodObj.status == '1'">在售</div>
+							<div class="shape-black" ng-if="goods.goodObj.status == '0'">已售</div>
+						</div>
+						<div class="speical-content">
+							<h3 class="text-special-default">{{goods.goodObj.goodName}}</h3>
+							<p>
+								<img class="img-responsive img-rounded img-show"
+									ng-src="{{baseUrl+'/file/readImg.do?name='+goods.imgObj.imgUrl}}">
+							</p>
+							<p class="text-right">售价:{{goods.goodObj.price}}</p>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<div class="panel-body" ng-if="flag">
+				<p>抱歉，没有找到商品!</p>
+			</div>
+			
+			<!-- 分页 -->
+			<div id="foot" ng-if="!flag">
+				<nav class="text-right page-footer" aria-label="Page navigation">
+					<ul class="pagination pagination-sm page">
+						<li id="left"><a href aria-label="Previous"
+							ng-click="pageLeft()"> <span aria-hidden="true">&laquo;</span>
+						</a></li>
+						<li id="page{{page}}" ng-repeat="page in pageStr" ng-class="{'active' : page.nowPage}" ng-click="toPage(page.pageIndex,$event)">
+						<a href>{{page.pageIndex}}</a>
+						</li>
+						<li id="right"><a href aria-label="Next"
+							ng-click="pageRight()"> <span aria-hidden="true">&raquo;</span>
+						</a></li>
+					</ul>
+				</nav>
+			</div>
+		</div>
+	</div>
+
+</div>

@@ -1,0 +1,25 @@
+.bg-gary{
+    background-color: #ddd;
+}
+
+.bg-white{
+    background-color: #fff;
+}
+
+.active {
+    background-color: #428bca;
+    border-radius: 4px;
+}
+
+.bg-dark {
+    background-color: #3a3f51;
+}
+/*cover*/
+.nav > li > a:hover, .nav > li > a:focus {
+    text-decoration: none;
+    background-color: #428bca;
+}
+
+.status-color{
+	color:#d9534f;
+}

@@ -1,0 +1,117 @@
+<!--我的商品-->
+<div class="panel panel-default removePadding remove-radius">
+    <div class="panel-heading">
+        <p class="p_panel">
+            <strong>我的商品</strong>
+            <button class="btn btn-default pull-right" ui-sref="personCenter.goodPublish">发布商品</button>
+        </p>
+
+    </div>
+    <div class="panel-body">
+        <div class="col-xs-12 padding">
+            <div class="list-group removeMargin-bottom">
+                <div class="media clearfix paddiing-bottom" ng-repeat="good in personGoods">
+                    <div class="pull-left media-middle">
+                        <img class="media-object" ng-src="{{baseUrl+'/file/readImg.do?name='+good.imgObj.imgUrl}}" alt="..." width="80" height="80">
+                    </div>
+                    
+                    <div class="media-body">
+                        <div class="col-xs-12 input-group table-responsive">
+                            <table class="table table-bordered text-center">
+                                <colgroup>
+                                    <col class="col-xs-2">
+                                    <col class="col-xs-8">
+                                    <col class="col-xs-2">
+                                </colgroup>
+                                <tbody>
+                                <tr>
+                                    <th scope="row">商品名称</th>
+                                    <td>{{good.goodObj.goodName}}</td>
+                                    <td rowspan="5">
+                                    	<button type="button" class="btn btn-default" data-reveal-id="infoModel" ng-click="editGoodInfo(good.goodObj.goodId)">修改商品</button>
+                   						<button type="button" class="btn btn-default mt10" data-reveal-id="delModel" ng-click="showDelModel(good.goodObj.goodId)">删除商品</button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">商品描述</th>
+                                    <td>{{good.goodObj.content}}</td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">商品价格</th>
+                                    <td>{{good.goodObj.price}}￥</td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">商品类别</th>
+                                    <td>{{good.typeObj.goodTypeName}}</td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">商品状态</th>
+                                    <td ng-if="good.goodObj.status == 1"><span style="color:#428bca">在售</span></td>
+                                    <td ng-if="good.goodObj.status == 0"><span style="color:#555">已售</span></td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+                <!-- 分页 -->
+				<div id="foot" ng-if="personGoods.length != 0 ">
+					<nav class="text-right page-footer" aria-label="Page navigation">
+						<ul class="pagination pagination-sm page">
+							<li id="left"><a href aria-label="Previous"
+								ng-click="pageLeft()"> <span aria-hidden="true">&laquo;</span>
+							</a></li>
+							<li id="page{{page}}" ng-repeat="page in pageStr" ng-class="{'active' : page.nowPage}" ng-click="toPage(page.pageIndex,$event)">
+							<a href>{{page.pageIndex}}</a>
+							</li>
+							<li id="right"><a href aria-label="Next"
+								ng-click="pageRight()"> <span aria-hidden="true">&raquo;</span>
+							</a></li>
+						</ul>
+					</nav>
+				</div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="delModel" class="reveal-modal">
+	<h3 class="modal-title">提示信息!</h3>
+	<div class="modal-body">确定移除这个商品吗?</div>
+	<div class="modal-footer">
+		<button class="btn btn-danger" ng-click="delGood()">删除</button>
+		<button class="btn btn-default" ng-click="delCansle()">取消</button>
+	</div>
+</div>
+<div class="reveal-modal" id="infoModal">
+		<h4 class="modal-title">修改商品</h4>
+		<div class="modal-body">
+			<form class="form-inline">
+				<div class="form-group">
+					<label for="uName"> 商品名称:</label> 
+					<input type="text" class="form-control" name="gName" ng-model="goodDetail.goodObj.goodName" />
+				</div>
+				<div class="form-group">
+					<label for="type">商品类别:</label> 
+					<select class="form-control" name="type" ng-model="goodDetail.goodObj.goodTypeId">
+	                    <option ng-repeat="type in goodTypes" value="{{type.typeObj.goodTypeId}}">
+	                        {{type.typeObj.goodTypeName}}
+	                    </option>
+	                </select>
+				</div>
+				<div class="form-group">
+					<label for="price">商品价格:</label> 
+					<input type="text" class="form-control" name="price" ng-model="goodDetail.goodObj.price" />
+				</div>
+				<div class="form-group">
+					<label for="content">商品描述:</label> 
+					<textarea class="form-control" name="content" row="2" ng-model="goodDetail.goodObj.content" />
+				</div>
+			</form>
+		</div>
+		<div class="modal-footer">
+			<button class="btn btn-primary" ng-click="updateGood(goodDetail.goodObj)">修改</button>
+			<button class="btn btn-default" ng-click="updateCansle()">取消</button>
+		</div>
+		
+	</div>

@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.zy.mapper.UserMapper">
+	<resultMap type="com.zy.model.User" id="userResultMap">
+		<id column="userid" property="userId" jdbcType="INTEGER" />
+		<result column="username" property="userName" jdbcType="VARCHAR" />
+		<result column="password" property="passWord" jdbcType="VARCHAR" />
+		<result column="headimg" property="headImg" jdbcType="VARCHAR" />
+		<result column="phone" property="phone" jdbcType="VARCHAR" />
+		<result column="roleid" property="roleId" jdbcType="INTEGER" />
+	</resultMap>
+
+	<!-- 查询全部user -->
+	<select id="listAll" resultMap="userResultMap">
+		select * from user
+	</select>
+	<!-- 根据id查询地址信息 -->
+	<select id="getById" resultMap="userResultMap" parameterType="int">
+		select * from user where userid=#{userId}
+	</select>
+	<!-- 根据用户名和密码查询地址信息 -->
+	<select id="getByUserNameAndPassword" resultMap="userResultMap"
+		parameterType="com.zy.model.User">
+		select * from user where username=#{userName} and
+		password=#{passWord}
+	</select>
+	<!-- 根据用户名检查密码 -->
+	<select id="checkUsername" resultMap="userResultMap"
+		parameterType="com.zy.model.User">
+		select * from user where username=#{userName}
+	</select>
+	<!-- 更新地址信息 -->
+	<update id="update" parameterType="com.zy.model.User" >
+		update user set
+		password=#{passWord}, headimg=#{headImg}, phone=#{phone} where
+		userid=#{userId}
+	</update>
+	<!-- 根据id删除地址信息 -->
+	<delete id="delete" parameterType="com.zy.model.User">
+		delete from user where
+		userid=#{userId}
+	</delete>
+	<!-- 添加商品 -->
+	<insert id="save" parameterType="com.zy.model.User" useGeneratedKeys="true" keyProperty="userId">
+		insert into user(userid,username,password,headimg,phone,roleid)
+		values(#{userId},#{userName},#{passWord},#{headImg},#{phone},1)
+	</insert>
+	<!-- Extend -->
+	<select id="pageListAll" parameterType="hashmap" resultMap="userResultMap">
+		select * from user limit #{rowStart},#{pageSize}
+	</select>
+	<select id="getByUserName" parameterType="String" resultMap="userResultMap">
+		select * from user where username=#{userName}
+	</select>
+	
+</mapper>

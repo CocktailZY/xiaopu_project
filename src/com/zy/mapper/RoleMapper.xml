@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.zy.mapper.RoleMapper" >
+  <resultMap type="com.zy.model.Role" id="roleResultMap" >
+    <id column="roleid" property="roleId" jdbcType="INTEGER" />
+    <result column="rolename" property="roleName" jdbcType="VARCHAR" />
+  </resultMap>
+  
+  	<!-- 查询全部role -->
+	<select id="listAll" resultMap="roleResultMap">
+		select * from role
+	</select>
+	<!-- 根据id查询地址信息  -->
+	<select id="getById" resultMap="roleResultMap" parameterType="int">
+		select * from role where roleid=#{roleId}
+	</select>
+	<!-- 更新地址信息 -->
+	<update id="update" parameterType="com.zy.model.Role">
+		update role set rolename=#{roleName} where roleid=#{roleId}
+	</update>
+	<!-- 根据id删除地址信息 -->
+	<delete id="delete" parameterType="com.zy.model.Role">
+		delete from role where roleid=#{roleId}
+	</delete>
+	<!-- 添加商品 -->
+  	<insert id="save" parameterType="com.zy.model.Role">
+		insert into role(rolename) values(#{roleName})
+	</insert>
+	<!-- Extend -->
+	<select id="pageListAll" parameterType="hashmap" resultMap="roleResultMap">
+		select * from role limit #{rowStart},#{pageSize}
+	</select>
+</mapper>
